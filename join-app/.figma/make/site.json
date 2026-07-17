@@ -1,0 +1,10 @@
+{
+  "description": "Connect with your local Shakha through an informative platform that highlights its benefits, encourages registration, and helps find nearby gatherings.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "figma-make-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "pnpm run generate:share-pages",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "oxfmt",
+    "update:shakhas": "node scripts/update-shakhas.mjs && pnpm run generate:share-pages",
+    "generate:share-pages": "node scripts/generate-shakha-share-pages.mjs",
+    "seed:shakhas": "node scripts/seed-shakhas-to-supabase.mjs",
+    "seed:admin": "node scripts/seed-admin-user.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "oxfmt": "^0.2.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.0.0"
+  }
+}
