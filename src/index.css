@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --color-saffron-50: #fff7ed;
+  --color-saffron-100: #ffedd5;
+  --color-saffron-200: #fed7aa;
+  --color-saffron-400: #fb923c;
+  --color-saffron-500: #D4531A;
+  --color-saffron-600: #c2410c;
+  --color-saffron-700: #9a3412;
+
+  --color-navy-50: #f0f4ff;
+  --color-navy-100: #dde5ff;
+  --color-navy-500: #1B3A6B;
+  --color-navy-600: #152e57;
+  --color-navy-700: #0f2240;
+  --color-navy-800: #0b1a32;
+  --color-navy-900: #071020;
+
+  --color-cream: #FDF6ED;
+  --color-cream-dark: #F5E8D4;
+  --color-gold: #C8940A;
+}
+
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(circle at 0% 0%, #fff9f2 0%, rgba(255, 249, 242, 0) 38%),
+    radial-gradient(circle at 100% 0%, #fff3e8 0%, rgba(255, 243, 232, 0) 30%),
+    var(--color-cream);
+  color: var(--color-navy-800);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
