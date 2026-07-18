@@ -52,6 +52,31 @@ async function findUserByEmail(supabase, targetEmail) {
   }
 }
 
+async function upsertAdminMapping(supabase, userId, mobile) {
+  const attempts = [
+    { tableName: 'admin_members', payload: { user_id: userId } },
+    { tableName: 'admin_members', payload: { user_id: userId, mobile } },
+    { tableName: 'admin_users', payload: { user_id: userId, mobile } },
+  ]
+
+  for (const attempt of attempts) {
+    const { error } = await supabase
+      .from(attempt.tableName)
+      .upsert(attempt.payload, { onConflict: 'user_id' })
+
+    if (!error) {
+      return attempt.tableName
+    }
+
+    const message = String(error.message || '').toLowerCase()
+    if (!message.includes('table') && !message.includes('column') && !message.includes('constraint')) {
+      throw error
+    }
+  }
+
+  throw new Error('Neither admin_members nor admin_users is available in Supabase')
+}
+
 async function main() {
   const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -82,20 +107,12 @@ async function main() {
     throw new Error(`No auth user found for email: ${email}`)
   }
 
-  const { error } = await supabase
-    .from('admin_users')
-    .upsert({
-      user_id: user.id,
-      mobile,
-    }, { onConflict: 'user_id' })
-
-  if (error) {
-    throw error
-  }
+  const tableName = await upsertAdminMapping(supabase, user.id, mobile)
 
   console.log('Admin mapping saved successfully.')
   console.log(`Email: ${email}`)
   console.log(`User ID: ${user.id}`)
+  console.log(`Table: ${tableName}`)
   console.log(`Mobile: ${mobile}`)
 }
 
