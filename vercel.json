@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/admin-join-app",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api/|_next/|assets/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

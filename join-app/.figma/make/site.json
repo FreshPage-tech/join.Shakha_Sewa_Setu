@@ -4,9 +4,6 @@
   "openGraph": {
     "image": "/social/site-banner.png"
   },
-  "robots": {
-    "index": false
-  },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false

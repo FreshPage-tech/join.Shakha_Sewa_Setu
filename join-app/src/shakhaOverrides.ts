@@ -7,6 +7,11 @@ type ShakhaShareOverride = {
   shareTitle?: string
   shareDescription?: string
   shareMessage?: string
+  shareUrl?: string
+  shareImage?: string
+  shareImageType?: string
+  shareImageWidth?: string
+  shareImageHeight?: string
 }
 
 const DEFAULT_SHARE_MESSAGE = `🚩 Join HSS Shakha - Build Yourself, Build Society

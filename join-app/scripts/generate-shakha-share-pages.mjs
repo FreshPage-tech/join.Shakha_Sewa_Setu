@@ -144,11 +144,14 @@ function getUniqueSlug(baseSlug, usedSlugs) {
 }
 
 function buildPageHtml(row, slug, override) {
-  const url = `${siteUrl}/${slug}`
+  const url = override?.shareUrl || `${siteUrl}/${slug}`
   const title = override?.shareTitle || `${row.name} | Shakha Sewa Setu`
   const description = override?.shareDescription || `${shareMessage} ${row.city}, ${row.state}.`
   const pageMessage = override?.shareMessage || shareMessage
-  const image = `${siteUrl}/social/shakha-banner.png`
+  const image = override?.shareImage || `${siteUrl}/social/shakha-banner.png`
+  const imageType = override?.shareImageType || 'image/png'
+  const imageWidth = override?.shareImageWidth || '1200'
+  const imageHeight = override?.shareImageHeight || '630'
   const contacts = (row.contacts ?? []).filter(contact => contact.name || contact.mobile || contact.email)
 
   return `<!doctype html>
@@ -158,11 +161,15 @@ function buildPageHtml(row, slug, override) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
+    <meta property="og:site_name" content="Shakha Sewa Setu" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="${escapeHtml(url)}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
-    <meta property="og:url" content="${escapeHtml(url)}" />
     <meta property="og:image" content="${escapeHtml(image)}" />
+    <meta property="og:image:type" content="${escapeHtml(imageType)}" />
+    <meta property="og:image:width" content="${escapeHtml(imageWidth)}" />
+    <meta property="og:image:height" content="${escapeHtml(imageHeight)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />

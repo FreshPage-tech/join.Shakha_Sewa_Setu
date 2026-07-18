@@ -64,6 +64,13 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+function normalizePathname(path: string): string {
+  if (!path || path === '/') {
+    return '/'
+  }
+  return path.endsWith('/') ? path.replace(/\/+$/, '') || '/' : path
+}
+
 function extractZip(record: ShakhaRecord): string {
   const fromZipField = (record.zipCode || '').trim().match(/\d{5}/)?.[0]
   if (fromZipField) {
@@ -1831,12 +1838,12 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
 export default function App() {
   const [shakhaRecords, setShakhaRecords] = useState<ShakhaRecord[]>(() => getDefaultShakhaRecords())
   const [pathname, setPathname] = useState(() =>
-    typeof window !== 'undefined' ? window.location.pathname : '/',
+    typeof window !== 'undefined' ? normalizePathname(window.location.pathname) : '/',
   )
   const [loadingShakhas, setLoadingShakhas] = useState(true)
   const [disclaimerVisible, setDisclaimerVisible] = useState(true)
   const [activePage, setActivePage] = useState<'home' | 'register'>(() =>
-    typeof window !== 'undefined' && window.location.pathname === '/register' ? 'register' : 'home',
+    typeof window !== 'undefined' && normalizePathname(window.location.pathname) === '/register' ? 'register' : 'home',
   )
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null)
 
@@ -1870,8 +1877,9 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setPathname(window.location.pathname)
-      setActivePage(window.location.pathname === '/register' ? 'register' : 'home')
+      const currentPath = normalizePathname(window.location.pathname)
+      setPathname(currentPath)
+      setActivePage(currentPath === '/register' ? 'register' : 'home')
     }
 
     window.addEventListener('popstate', handlePopState)
