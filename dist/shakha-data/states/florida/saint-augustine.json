@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Florida|Saint Augustine|Jagruthi",
+    "name": "Jagruthi",
+    "address": "Saint Augustine FL",
+    "state": "Florida",
+    "city": "Saint Augustine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=jagruthi45",
+    "day": "Weekly on Friday",
+    "time": "18:30pm to 20:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

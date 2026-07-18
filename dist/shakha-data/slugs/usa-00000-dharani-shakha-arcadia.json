@@ -1,0 +1,30 @@
+{
+  "id": "California|Arcadia|Dharani Shakha - Arcadia",
+  "name": "Dharani Shakha - Arcadia",
+  "address": "Arcadia CA",
+  "state": "California",
+  "city": "Arcadia",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Dharani",
+  "day": "Weekly on Sunday",
+  "time": "10:30am to 12:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

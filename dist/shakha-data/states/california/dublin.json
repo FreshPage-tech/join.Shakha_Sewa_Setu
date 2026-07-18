@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Dublin|Durga Shakha - Dublin",
+    "name": "Durga Shakha - Dublin",
+    "address": "Dublin CA",
+    "state": "California",
+    "city": "Dublin",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=durga-shakha-dublin",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

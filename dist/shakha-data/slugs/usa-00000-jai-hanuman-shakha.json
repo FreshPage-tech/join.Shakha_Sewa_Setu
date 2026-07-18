@@ -1,0 +1,30 @@
+{
+  "id": "New York|Selden|Jai Hanuman Shakha",
+  "name": "Jai Hanuman Shakha",
+  "address": "Selden NY",
+  "state": "New York",
+  "city": "Selden",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=jai-hanuman-shakha",
+  "day": "Every other Week on Sunday",
+  "time": "15:00pm to 16:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

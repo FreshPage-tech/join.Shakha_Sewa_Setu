@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Pennsylvania|Monroeville|Ayyappa Shakha",
+    "name": "Ayyappa Shakha",
+    "address": "Monroeville PA",
+    "state": "Pennsylvania",
+    "city": "Monroeville",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=ayyappa-shakha",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

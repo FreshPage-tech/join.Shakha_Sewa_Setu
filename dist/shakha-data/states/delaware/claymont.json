@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Delaware|Claymont|Shiva Shakti Shakha",
+    "name": "Shiva Shakti Shakha",
+    "address": "Claymont DE",
+    "state": "Delaware",
+    "city": "Claymont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=ShivaShaktiShakha",
+    "day": "Weekly on Saturday",
+    "time": "14:00pm to 15:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

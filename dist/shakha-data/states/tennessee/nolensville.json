@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Tennessee|Nolensville|Maitree",
+    "name": "Maitree",
+    "address": "Nolensville TN",
+    "state": "Tennessee",
+    "city": "Nolensville",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=maitree",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "id": "California|San Diego|Vivekananda Shakha - San Diego",
+  "name": "Vivekananda Shakha - San Diego",
+  "address": "San Diego CA",
+  "state": "California",
+  "city": "San Diego",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=vivekananda-shakha-san-diego",
+  "day": "Weekly on Saturday",
+  "time": "10:30am to 12:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

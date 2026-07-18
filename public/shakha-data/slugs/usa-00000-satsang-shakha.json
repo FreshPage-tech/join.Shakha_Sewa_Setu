@@ -1,0 +1,30 @@
+{
+  "id": "Massachusetts|Burlington|Satsang Shakha",
+  "name": "Satsang Shakha",
+  "address": "Burlington MA",
+  "state": "Massachusetts",
+  "city": "Burlington",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=satsang-shakha",
+  "day": "Weekly on Sunday",
+  "time": "16:30pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

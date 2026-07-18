@@ -1,0 +1,30 @@
+{
+  "id": "California|San Jose|Nayakidevi Shakha",
+  "name": "Nayakidevi Shakha",
+  "address": "San Jose CA",
+  "state": "California",
+  "city": "San Jose",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=nayakidevi-shakha",
+  "day": "Weekly on Sunday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

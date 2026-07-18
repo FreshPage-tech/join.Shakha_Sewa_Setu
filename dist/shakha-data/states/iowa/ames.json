@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Iowa|Ames|Ames Yuva Shakha",
+    "name": "Ames Yuva Shakha",
+    "address": "Ames IA",
+    "state": "Iowa",
+    "city": "Ames",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=ames-yuva-shakha",
+    "day": "Weekly on Friday",
+    "time": "18:00pm to 19:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

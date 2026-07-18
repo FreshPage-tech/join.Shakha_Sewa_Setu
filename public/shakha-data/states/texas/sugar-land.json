@@ -1,0 +1,122 @@
+[
+  {
+    "id": "Texas|Sugar Land|Ahilya",
+    "name": "Ahilya",
+    "address": "Sugar Land TX",
+    "state": "Texas",
+    "city": "Sugar Land",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Ahilya",
+    "day": "Weekly on Sunday",
+    "time": "09:15am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Sugar Land|Lakshmibai",
+    "name": "Lakshmibai",
+    "address": "Sugar Land TX",
+    "state": "Texas",
+    "city": "Sugar Land",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Lakshmibai",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Sugar Land|Madhav Shakha",
+    "name": "Madhav Shakha",
+    "address": "Sugar Land TX",
+    "state": "Texas",
+    "city": "Sugar Land",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=madhav-shakha14",
+    "day": "Weekly on Sunday",
+    "time": "09:00am to 10:45am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Sugar Land|Tanaji Shakha",
+    "name": "Tanaji Shakha",
+    "address": "Sugar Land TX",
+    "state": "Texas",
+    "city": "Sugar Land",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=tanaji-shakha",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 18:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

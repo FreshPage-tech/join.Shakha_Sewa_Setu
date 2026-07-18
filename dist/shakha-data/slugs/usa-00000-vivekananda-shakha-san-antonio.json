@@ -1,0 +1,30 @@
+{
+  "id": "Texas|San Antonio|Vivekananda Shakha (San Antonio)",
+  "name": "Vivekananda Shakha (San Antonio)",
+  "address": "San Antonio TX",
+  "state": "Texas",
+  "city": "San Antonio",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=vivekananda-shakha-san-antonio",
+  "day": "Weekly on Saturday",
+  "time": "09:00am to 10:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

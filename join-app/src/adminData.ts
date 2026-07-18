@@ -1,4 +1,5 @@
 import { SHAKHA_DATA, type ShakhaChapter } from './shakhaData'
+import { applyShakhaOverride } from './shakhaOverrides'
 
 export type ContactDetail = {
   name: string
@@ -56,7 +57,7 @@ export function getDefaultShakhaRecords(): ShakhaRecord[] {
   for (const [state, cityMap] of Object.entries(SHAKHA_DATA)) {
     for (const [city, shakhas] of Object.entries(cityMap)) {
       for (const shakha of shakhas) {
-        records.push({
+        records.push(applyShakhaOverride({
           id: `${state}|${city}|${shakha.name}`,
           name: shakha.name,
           address: shakha.address,
@@ -69,7 +70,7 @@ export function getDefaultShakhaRecords(): ShakhaRecord[] {
           day: shakha.day,
           time: shakha.time,
           contacts: createBlankContacts(),
-        })
+        }))
       }
     }
   }

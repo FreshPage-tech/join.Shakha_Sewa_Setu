@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Plano|Prerana (Plano)",
+  "name": "Prerana (Plano)",
+  "address": "Plano TX",
+  "state": "Texas",
+  "city": "Plano",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Prerana-plano",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 17:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

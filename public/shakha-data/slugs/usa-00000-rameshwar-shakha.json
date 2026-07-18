@@ -1,0 +1,30 @@
+{
+  "id": "Connecticut|Milford|Rameshwar Shakha",
+  "name": "Rameshwar Shakha",
+  "address": "Milford CT",
+  "state": "Connecticut",
+  "city": "Milford",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=RM",
+  "day": "Weekly on Sunday",
+  "time": "11:00am to 12:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

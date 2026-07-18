@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Pennsylvania|Lansdale|ShriRam Shakha",
+    "name": "ShriRam Shakha",
+    "address": "Lansdale PA",
+    "state": "Pennsylvania",
+    "city": "Lansdale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shriram-shakha",
+    "day": "Weekly on Saturday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

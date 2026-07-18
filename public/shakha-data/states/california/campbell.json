@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Campbell|Shivaji Shakha - Campbell",
+    "name": "Shivaji Shakha - Campbell",
+    "address": "Campbell CA",
+    "state": "California",
+    "city": "Campbell",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shivaji-shakha-campbell",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

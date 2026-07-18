@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Maharashtra|Mumbai|Test shakha",
+    "name": "Test shakha",
+    "address": "Mumbai",
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=usershakha",
+    "day": "Daily on Friday",
+    "time": "10:00am to 22:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

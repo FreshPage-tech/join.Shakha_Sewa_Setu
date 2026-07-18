@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Houston|Shaurya",
+  "name": "Shaurya",
+  "address": "Houston TX",
+  "state": "Texas",
+  "city": "Houston",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=yuva",
+  "day": "Weekly on Friday",
+  "time": "18:00pm to 19:15pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

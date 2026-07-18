@@ -1,0 +1,258 @@
+{
+  "Arizona": [
+    "Chandler",
+    "Glendale",
+    "Scottsdale"
+  ],
+  "Arkansas": [
+    "Bentonville"
+  ],
+  "California": [
+    "Arcadia",
+    "Brentwood",
+    "Burbank",
+    "Campbell",
+    "Cerritos",
+    "Chino",
+    "Cupertino",
+    "Dublin",
+    "Fairfield",
+    "Folsom",
+    "Fremont",
+    "Irvine",
+    "Lathrop",
+    "Milpitas",
+    "Oak Park",
+    "Orangevale",
+    "Pleasanton",
+    "Rancho Cordova",
+    "Rocklin",
+    "Roseville",
+    "Sacramento",
+    "San Diego",
+    "San Jose",
+    "San Ramon",
+    "Santa Clara",
+    "Saratoga",
+    "Sunnyvale",
+    "Temecula",
+    "Temple City",
+    "Tracy"
+  ],
+  "Colorado": [
+    "CO",
+    "Colorado Springs",
+    "Denver",
+    "Erie"
+  ],
+  "Connecticut": [
+    "Glastonbury",
+    "Milford",
+    "Newington",
+    "South Windsor",
+    "Wilton"
+  ],
+  "Delaware": [
+    "Claymont"
+  ],
+  "Florida": [
+    "Casselberry",
+    "Fort Lauderdale",
+    "Jacksonville",
+    "Orlando",
+    "Saint Augustine",
+    "Tampa"
+  ],
+  "Georgia": [
+    "Alpharetta",
+    "Atlanta",
+    "Augusta",
+    "Bloomingdale",
+    "Cumming",
+    "Dawsonville",
+    "Smyrna",
+    "Suwanee"
+  ],
+  "Illinois": [
+    "Aurora",
+    "Bartlett",
+    "Bensenville",
+    "Bloomington",
+    "Buffalo Grove",
+    "Chicago",
+    "Naperville",
+    "Normal",
+    "Peoria",
+    "Schaumburg",
+    "Urbana"
+  ],
+  "Indiana": [
+    "Bloomington",
+    "Carmel",
+    "Columbus",
+    "Fishers",
+    "Greenwood",
+    "West Lafayette"
+  ],
+  "Iowa": [
+    "Ames",
+    "North Liberty"
+  ],
+  "Kansas": [
+    "Overland Park"
+  ],
+  "Kentucky": [
+    "Louisville"
+  ],
+  "Maryland": [
+    "Bethesda",
+    "Ellicott City",
+    "Frederick"
+  ],
+  "Massachusetts": [
+    "Billerica",
+    "Boylston",
+    "Burlington",
+    "Cambridge",
+    "North Attleboro"
+  ],
+  "Michigan": [
+    "Canton",
+    "Farmington",
+    "Novi",
+    "Troy"
+  ],
+  "Minnesota": [
+    "Minneapolis",
+    "MN",
+    "Rochester"
+  ],
+  "Missouri": [
+    "Saint Louis"
+  ],
+  "Nevada": [
+    "Las Vegas"
+  ],
+  "New Hampshire": [
+    "Nashua"
+  ],
+  "New Jersey": [
+    "Chesterfield",
+    "Cranbury",
+    "Edison",
+    "Holmdel",
+    "Jersey City",
+    "Kendall Park",
+    "Mahwah",
+    "Milltown",
+    "Parsippany",
+    "Somerset",
+    "Towaco"
+  ],
+  "New York": [
+    "Elmsford",
+    "Jamaica",
+    "New York",
+    "Selden",
+    "White Plains",
+    "Yorktown Heights"
+  ],
+  "North Carolina": [
+    "Apex",
+    "Cary",
+    "Charlotte",
+    "Fuquay Varina",
+    "Harrisburg",
+    "Matthews",
+    "Winston Salem"
+  ],
+  "Ohio": [
+    "Dayton",
+    "Dublin",
+    "Lewis Center",
+    "Mason",
+    "Reynoldsburg",
+    "Solon"
+  ],
+  "Oregon": [
+    "Hillsboro",
+    "Portland"
+  ],
+  "Pennsylvania": [
+    "Allentown",
+    "Audubon",
+    "Clarks Summit",
+    "Exton",
+    "Lansdale",
+    "Mc Donald",
+    "Monroeville",
+    "Philadelphia",
+    "Pittsburgh",
+    "Royersford",
+    "Sewickley",
+    "Wexford"
+  ],
+  "South Carolina": [
+    "Columbia"
+  ],
+  "Tennessee": [
+    "Memphis",
+    "Nolensville"
+  ],
+  "Texas": [
+    "Allen",
+    "Anna",
+    "Aubrey",
+    "Austin",
+    "Cedar Park",
+    "Cypress",
+    "Dallas",
+    "Flower Mound",
+    "Frisco",
+    "Fulshear",
+    "Houston",
+    "Irving",
+    "Katy",
+    "Keller",
+    "Mckinney",
+    "Pearland",
+    "Plano",
+    "Prosper",
+    "San Antonio",
+    "Sugar Land"
+  ],
+  "Utah": [
+    "South Jordan"
+  ],
+  "Virginia": [
+    "Alexandria",
+    "Ashburn",
+    "Chantilly",
+    "Falls Church",
+    "Herndon",
+    "Richmond",
+    "VA"
+  ],
+  "Washington": [
+    "Bothell",
+    "Issaquah",
+    "Kent",
+    "Maple Valley",
+    "Redmond",
+    "Seattle",
+    "West Richland"
+  ],
+  "Wisconsin": [
+    "Brookfield",
+    "Middleton",
+    "Sun Prairie"
+  ],
+  "British Columbia": [
+    "Any City",
+    "BC"
+  ],
+  "Maharashtra": [
+    "Mumbai",
+    "Nagpur"
+  ]
+}

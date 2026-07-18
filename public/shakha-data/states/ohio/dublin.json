@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Ohio|Dublin|Pratap Shakha, Dublin",
+    "name": "Pratap Shakha, Dublin",
+    "address": "Dublin OH",
+    "state": "Ohio",
+    "city": "Dublin",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=pratap-shakha-dublin",
+    "day": "Weekly on Friday",
+    "time": "18:30pm to 20:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

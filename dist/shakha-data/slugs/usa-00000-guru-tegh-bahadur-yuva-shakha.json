@@ -1,0 +1,30 @@
+{
+  "id": "British Columbia|Any City|Guru Tegh bahadur Yuva Shakha",
+  "name": "Guru Tegh bahadur Yuva Shakha",
+  "address": "Any City BC",
+  "state": "British Columbia",
+  "city": "Any City",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=guru-tegh-bahadur-yuva-shakha",
+  "day": "Weekly on Saturday",
+  "time": "17:30pm to 19:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Pennsylvania|Philadelphia|Kalam Shakha",
+    "name": "Kalam Shakha",
+    "address": "Philadelphia PA",
+    "state": "Pennsylvania",
+    "city": "Philadelphia",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kalam-shakha",
+    "day": "Weekly on Friday",
+    "time": "18:30pm to 20:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

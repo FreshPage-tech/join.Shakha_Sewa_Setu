@@ -1,0 +1,30 @@
+{
+  "id": "California|Brentwood|Rudra Shakha - Brentwood",
+  "name": "Rudra Shakha - Brentwood",
+  "address": "Brentwood CA",
+  "state": "California",
+  "city": "Brentwood",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Brenwood_Shakha",
+  "day": "Weekly on Sunday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

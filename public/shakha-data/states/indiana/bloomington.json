@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Indiana|Bloomington|Sudarshan Shakha (Bloomington, IN)",
+    "name": "Sudarshan Shakha (Bloomington, IN)",
+    "address": "Bloomington IN",
+    "state": "Indiana",
+    "city": "Bloomington",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=SudarshanShakha",
+    "day": "Weekly on Saturday",
+    "time": "13:00pm to 14:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

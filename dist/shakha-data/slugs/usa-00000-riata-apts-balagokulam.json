@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Austin|Riata Apts Balagokulam",
+  "name": "Riata Apts Balagokulam",
+  "address": "Austin TX",
+  "state": "Texas",
+  "city": "Austin",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=riata-apts-shaka",
+  "day": "Weekly on Friday",
+  "time": "18:00pm to 19:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

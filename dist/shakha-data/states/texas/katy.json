@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Texas|Katy|Kailash Shakha",
+    "name": "Kailash Shakha",
+    "address": "Katy TX",
+    "state": "Texas",
+    "city": "Katy",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kailash-shakha13",
+    "day": "Weekly on Sunday",
+    "time": "16:30pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Edison|Rani LakshmiBai",
+  "name": "Rani LakshmiBai",
+  "address": "Edison NJ",
+  "state": "New Jersey",
+  "city": "Edison",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=rani-lakshmibai",
+  "day": "Weekly on Friday",
+  "time": "19:30pm to 21:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

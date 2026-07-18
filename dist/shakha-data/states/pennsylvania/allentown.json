@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Pennsylvania|Allentown|Valmiki Shakha",
+    "name": "Valmiki Shakha",
+    "address": "Allentown PA",
+    "state": "Pennsylvania",
+    "city": "Allentown",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=valmiki-shakha-lehigh-valley-area",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

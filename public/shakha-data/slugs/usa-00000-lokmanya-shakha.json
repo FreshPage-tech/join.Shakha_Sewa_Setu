@@ -1,0 +1,30 @@
+{
+  "id": "South Carolina|Columbia|Lokmanya Shakha",
+  "name": "Lokmanya Shakha",
+  "address": "Columbia SC",
+  "state": "South Carolina",
+  "city": "Columbia",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=lokmanya-shakha",
+  "day": "Weekly on Sunday",
+  "time": "10:30am to 12:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

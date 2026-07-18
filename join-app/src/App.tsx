@@ -10,6 +10,7 @@ import {
   type ShakhaRecord,
 } from './adminData'
 import { listShakhaRecordsPublic, submitInterestedPerson } from './adminApi'
+import { getShareDescription, getShareMessage, getShareTitle } from './shakhaOverrides'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -53,18 +54,8 @@ const FAQS = [
 ]
 
 const DEFAULT_COUNTRY_SLUG = (import.meta.env.VITE_COUNTRY_SLUG ?? 'usa').toLowerCase()
-
-const SHARE_MESSAGE = `🚩 Join HSS Shakha - Build Yourself, Build Society
-
-Discover a weekly gathering that promotes physical fitness, leadership, Hindu values, discipline, and community service for individuals and families of all ages.
-
-🏃 Physical Fitness • 🧘 Yoga • 🤝 Brotherhood • 🌺 Culture • ❤️ Seva
-
-📍 Find an HSS Shakha near you and become part of a growing community.
-
-Strong Individuals • Strong Families • Strong Society
-
-👉 Find Your Nearest Shakha`
+const SITE_SHARE_IMAGE = '/social/site-banner.png'
+const SHAKHA_SHARE_IMAGE = '/social/shakha-banner.png'
 
 function slugify(value: string): string {
   return value
@@ -135,17 +126,13 @@ function ShakhaSharePage({
   onBack: () => void
 }) {
   const shareUrl = `${window.location.origin}${getShakhaRoute(record)}`
+  const shareMessage = getShareMessage(record)
 
   const copyShareText = async () => {
-    const details = [
-      `Shakha: ${record.name}`,
-      `Address: ${record.address}`,
-      `State: ${record.state}`,
-      `Zip: ${extractZip(record)}`,
-      `Map: ${record.mapLink || 'Please contact volunteer'}`,
-      `Link: ${shareUrl}`,
-    ].join('\n')
-    await navigator.clipboard.writeText(`${SHARE_MESSAGE}\n\n${details}`)
+    const details = [record.mapLink ? `Map: ${record.mapLink}` : '', `Shakha page: ${shareUrl}`]
+      .filter(Boolean)
+      .join('\n')
+    await navigator.clipboard.writeText(`${shareMessage}\n\n${details}`)
   }
 
   return (
@@ -171,7 +158,7 @@ function ShakhaSharePage({
 
             <div className="mt-6 rounded-xl border p-5" style={{ borderColor: 'rgba(212,83,26,0.25)', background: 'rgba(212,83,26,0.05)' }}>
               <p className="whitespace-pre-line text-sm sm:text-base leading-7" style={{ color: '#1e3761' }}>
-                {SHARE_MESSAGE}
+                {shareMessage}
               </p>
             </div>
 
@@ -216,12 +203,12 @@ function ShakhaSharePage({
               <h2 className="font-display text-xl font-semibold" style={{ color: '#132f5d' }}>Contact Details</h2>
               <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {record.contacts.map((contact, index) => (
-                  <div key={index} className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
+                  contact.name || contact.mobile || contact.email ? <div key={index} className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
                     <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Contact {index + 1}</p>
                     <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>Name: {contact.name || 'Not provided'}</p>
                     <p className="text-sm" style={{ color: '#1e3761' }}>Mobile: {contact.mobile || 'Not provided'}</p>
                     <p className="text-sm break-all" style={{ color: '#1e3761' }}>Email: {contact.email || 'Not provided'}</p>
-                  </div>
+                  </div> : null
                 ))}
               </div>
             </div>
@@ -1910,15 +1897,17 @@ export default function App() {
       setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join HSS Shakha')
       setMetaTagByProperty('og:description', 'Find your nearest HSS Shakha and register your interest.')
       setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
+      setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
       setMetaTagByName('twitter:title', 'Shakha Sewa Setu - Join HSS Shakha')
       setMetaTagByName('twitter:description', 'Find your nearest HSS Shakha and register your interest.')
+      setMetaTagByName('twitter:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       document.title = 'Shakha Sewa Setu - Join HSS Shakha'
       return
     }
 
-    const title = `${matchedShakha.name} | HSS Shakha`
-    const description = `${SHARE_MESSAGE}\n\n${matchedShakha.address} | ${matchedShakha.city}, ${matchedShakha.state}`
+    const title = getShareTitle(matchedShakha)
+    const description = getShareDescription(matchedShakha)
     const url = `${window.location.origin}${getShakhaRoute(matchedShakha)}`
 
     document.title = title
@@ -1926,9 +1915,11 @@ export default function App() {
     setMetaTagByProperty('og:title', title)
     setMetaTagByProperty('og:description', description)
     setMetaTagByProperty('og:url', url)
+    setMetaTagByProperty('og:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
     setMetaTagByName('twitter:card', 'summary_large_image')
     setMetaTagByName('twitter:title', title)
     setMetaTagByName('twitter:description', description)
+    setMetaTagByName('twitter:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
   }, [matchedShakha, pathname])
 
   useEffect(() => {

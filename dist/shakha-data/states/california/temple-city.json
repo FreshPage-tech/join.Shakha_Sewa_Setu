@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Temple City|Durga Shakha - Temple City",
+    "name": "Durga Shakha - Temple City",
+    "address": "Temple City CA",
+    "state": "California",
+    "city": "Temple City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=durga-shakha-temple-city",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

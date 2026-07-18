@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Ohio|Dayton|Pushpak Shakha, Dayton",
+    "name": "Pushpak Shakha, Dayton",
+    "address": "Dayton OH",
+    "state": "Ohio",
+    "city": "Dayton",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Pushpak-dayton",
+    "day": "Weekly on Saturday",
+    "time": "11:00am to 12:15pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

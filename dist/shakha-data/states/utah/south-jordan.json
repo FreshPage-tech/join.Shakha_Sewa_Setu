@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Utah|South Jordan|Salt Lake City",
+    "name": "Salt Lake City",
+    "address": "South Jordan UT",
+    "state": "Utah",
+    "city": "South Jordan",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=salt-lake-city",
+    "day": "Weekly on Sunday",
+    "time": "17:30pm to 19:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "New Jersey|Parsippany|Maa Bhavani Shakha",
+    "name": "Maa Bhavani Shakha",
+    "address": "Parsippany NJ",
+    "state": "New Jersey",
+    "city": "Parsippany",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Maabhavani",
+    "day": "Weekly on Saturday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Parsippany|Shakti Shakha - Kishore",
+    "name": "Shakti Shakha - Kishore",
+    "address": "Parsippany NJ",
+    "state": "New Jersey",
+    "city": "Parsippany",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=njmkishores",
+    "day": "Weekly on Sunday",
+    "time": "11:00am to 00:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Parsippany|Sri Krishna Shakha",
+    "name": "Sri Krishna Shakha",
+    "address": "Parsippany NJ",
+    "state": "New Jersey",
+    "city": "Parsippany",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sri-krishna-shakha17",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

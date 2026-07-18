@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Saratoga|Saratoga Prayatna Shakha",
+    "name": "Saratoga Prayatna Shakha",
+    "address": "Saratoga CA",
+    "state": "California",
+    "city": "Saratoga",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=saratoga-prayatna-shakha",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

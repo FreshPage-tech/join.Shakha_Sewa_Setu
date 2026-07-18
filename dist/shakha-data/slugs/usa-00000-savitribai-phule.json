@@ -1,0 +1,30 @@
+{
+  "id": "Washington|Maple Valley|Savitribai Phule",
+  "name": "Savitribai Phule",
+  "address": "Maple Valley WA",
+  "state": "Washington",
+  "city": "Maple Valley",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=savitri",
+  "day": "Weekly on Saturday",
+  "time": "17:30pm to 19:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

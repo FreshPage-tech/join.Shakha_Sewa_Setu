@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Georgia|Augusta|Agasthya Shakha",
+    "name": "Agasthya Shakha",
+    "address": "Augusta GA",
+    "state": "Georgia",
+    "city": "Augusta",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=bhavinisingh",
+    "day": "Weekly on Saturday",
+    "time": "10:30am to 12:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

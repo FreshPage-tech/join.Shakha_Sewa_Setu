@@ -1,15 +1,18 @@
-import { useState, useEffect, useMemo } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react'
 import familyImg from './imports/4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png'
 import sssLogo from './imports/SSS_logo.png'
 import type { ShakhaChapter } from './shakhaData'
-import AdminPanel from './AdminPanel'
 import {
-  buildShakhaDataMap,
-  getDefaultShakhaRecords,
-  normalizeShakhaRecords,
-  type ShakhaRecord,
-} from './adminData'
-import { listShakhaRecordsPublic, submitInterestedPerson } from './adminApi'
+  findPublicShakhaBySlug,
+  listPublicShakhaLocations,
+  listPublicShakhaRecordsByLocation,
+  submitInterestedPerson,
+} from './publicShakhaApi'
+import { getShareDescription, getShareMessage, getShareTitle } from './shakhaOverrides'
+import { buildShakhaDataMap } from './shakhaRuntime'
+import type { ShakhaLocationIndex, ShakhaRecord } from './shakhaTypes'
+
+const AdminPanel = lazy(() => import('./AdminPanel'))
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -53,18 +56,8 @@ const FAQS = [
 ]
 
 const DEFAULT_COUNTRY_SLUG = (import.meta.env.VITE_COUNTRY_SLUG ?? 'usa').toLowerCase()
-
-const SHARE_MESSAGE = `🚩 Join HSS Shakha - Build Yourself, Build Society
-
-Discover a weekly gathering that promotes physical fitness, leadership, Hindu values, discipline, and community service for individuals and families of all ages.
-
-🏃 Physical Fitness • 🧘 Yoga • 🤝 Brotherhood • 🌺 Culture • ❤️ Seva
-
-📍 Find an HSS Shakha near you and become part of a growing community.
-
-Strong Individuals • Strong Families • Strong Society
-
-👉 Find Your Nearest Shakha`
+const SITE_SHARE_IMAGE = '/social/site-banner.png'
+const SHAKHA_SHARE_IMAGE = '/social/shakha-banner.png'
 
 function slugify(value: string): string {
   return value
@@ -92,19 +85,6 @@ function getShakhaRoute(record: ShakhaRecord): string {
   const zip = extractZip(record)
   const name = slugify(record.name)
   return `/${country}-${zip}-${name}`
-}
-
-function findShakhaByPathname(records: ShakhaRecord[], pathname: string): ShakhaRecord | null {
-  if (!pathname.startsWith('/')) {
-    return null
-  }
-
-  const slug = pathname.slice(1).trim().toLowerCase()
-  if (!slug) {
-    return null
-  }
-
-  return records.find(record => getShakhaRoute(record).slice(1).toLowerCase() === slug) ?? null
 }
 
 function setMetaTagByName(name: string, content: string) {
@@ -135,17 +115,13 @@ function ShakhaSharePage({
   onBack: () => void
 }) {
   const shareUrl = `${window.location.origin}${getShakhaRoute(record)}`
+  const shareMessage = getShareMessage(record)
 
   const copyShareText = async () => {
-    const details = [
-      `Shakha: ${record.name}`,
-      `Address: ${record.address}`,
-      `State: ${record.state}`,
-      `Zip: ${extractZip(record)}`,
-      `Map: ${record.mapLink || 'Please contact volunteer'}`,
-      `Link: ${shareUrl}`,
-    ].join('\n')
-    await navigator.clipboard.writeText(`${SHARE_MESSAGE}\n\n${details}`)
+    const details = [record.mapLink ? `Map: ${record.mapLink}` : '', `Shakha page: ${shareUrl}`]
+      .filter(Boolean)
+      .join('\n')
+    await navigator.clipboard.writeText(`${shareMessage}\n\n${details}`)
   }
 
   return (
@@ -171,7 +147,7 @@ function ShakhaSharePage({
 
             <div className="mt-6 rounded-xl border p-5" style={{ borderColor: 'rgba(212,83,26,0.25)', background: 'rgba(212,83,26,0.05)' }}>
               <p className="whitespace-pre-line text-sm sm:text-base leading-7" style={{ color: '#1e3761' }}>
-                {SHARE_MESSAGE}
+                {shareMessage}
               </p>
             </div>
 
@@ -216,12 +192,14 @@ function ShakhaSharePage({
               <h2 className="font-display text-xl font-semibold" style={{ color: '#132f5d' }}>Contact Details</h2>
               <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {record.contacts.map((contact, index) => (
+                  contact.name || contact.mobile || contact.email ? (
                   <div key={index} className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
                     <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Contact {index + 1}</p>
                     <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>Name: {contact.name || 'Not provided'}</p>
                     <p className="text-sm" style={{ color: '#1e3761' }}>Mobile: {contact.mobile || 'Not provided'}</p>
                     <p className="text-sm break-all" style={{ color: '#1e3761' }}>Email: {contact.email || 'Not provided'}</p>
                   </div>
+                  ) : null
                 ))}
               </div>
             </div>
@@ -852,14 +830,14 @@ function WhoCanJoin() {
 
 function FindShakha({
   standalone = true,
-  shakhaDataMap,
-  usStates,
+  locationIndex,
   onOpenShakhaPage,
+  onSearchLocation,
 }: {
   standalone?: boolean
-  shakhaDataMap: Record<string, Record<string, ShakhaChapter[]>>
-  usStates: string[]
+  locationIndex: ShakhaLocationIndex
   onOpenShakhaPage: (chapter: ShakhaChapter) => void
+  onSearchLocation: (state: string, city: string) => Promise<ShakhaChapter[]>
 }) {
   const [mode, setMode] = useState<'dropdown' | 'zip'>('dropdown')
   const [state, setState] = useState('')
@@ -868,13 +846,20 @@ function FindShakha({
   const [radius, setRadius] = useState('10')
   const [results, setResults] = useState<ShakhaChapter[]>([])
   const [searched, setSearched] = useState(false)
+  const [searching, setSearching] = useState(false)
 
-  const cities = state ? Object.keys(shakhaDataMap[state] ?? {}) : []
+  const usStates = useMemo(() => Object.keys(locationIndex), [locationIndex])
+  const cities = state ? (locationIndex[state] ?? []) : []
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (mode === 'dropdown' && state && city) {
-      setResults(shakhaDataMap[state]?.[city] ?? [])
-      setSearched(true)
+      setSearching(true)
+      try {
+        setResults(await onSearchLocation(state, city))
+        setSearched(true)
+      } finally {
+        setSearching(false)
+      }
     } else if (mode === 'zip') {
       // Mock: show results for any valid-looking ZIP
       if (zip.length >= 5) {
@@ -1001,11 +986,11 @@ function FindShakha({
           )}
 
           <button
-            onClick={handleSearch}
+            onClick={() => void handleSearch()}
             className="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}
           >
-            Search Shakhas
+            {searching ? 'Searching...' : 'Search Shakhas'}
           </button>
         </div>
 
@@ -1104,14 +1089,14 @@ type FormData = {
 
 function RegisterForm({
   standalone = true,
-  shakhaDataMap,
-  usStates,
+  locationIndex,
   onRegister,
+  loadLocationShakhas,
 }: {
   standalone?: boolean
-  shakhaDataMap: Record<string, Record<string, ShakhaChapter[]>>
-  usStates: string[]
+  locationIndex: ShakhaLocationIndex
   onRegister: (data: FormData) => Promise<void>
+  loadLocationShakhas: (state: string, city: string) => Promise<ShakhaChapter[]>
 }) {
   const [form, setForm] = useState<FormData>({
     firstName: '', lastName: '', email: '', mobile: '',
@@ -1124,9 +1109,43 @@ function RegisterForm({
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
+  const [shakhas, setShakhas] = useState<ShakhaChapter[]>([])
+  const [loadingShakhas, setLoadingShakhas] = useState(false)
 
-  const cities = form.state ? Object.keys(shakhaDataMap[form.state] ?? {}) : []
-  const shakhas = form.state && form.city ? (shakhaDataMap[form.state]?.[form.city] ?? []) : []
+  const usStates = useMemo(() => Object.keys(locationIndex), [locationIndex])
+  const cities = form.state ? (locationIndex[form.state] ?? []) : []
+
+  useEffect(() => {
+    const shouldLoad = form.state && form.city && form.state !== 'other' && form.city !== 'other'
+    if (!shouldLoad) {
+      setShakhas([])
+      setLoadingShakhas(false)
+      return
+    }
+
+    let cancelled = false
+
+    const load = async () => {
+      setLoadingShakhas(true)
+
+      try {
+        const nextShakhas = await loadLocationShakhas(form.state, form.city)
+        if (!cancelled) {
+          setShakhas(nextShakhas)
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingShakhas(false)
+        }
+      }
+    }
+
+    void load()
+
+    return () => {
+      cancelled = true
+    }
+  }, [form.city, form.state, loadLocationShakhas])
 
   const set = (key: keyof FormData, val: string | boolean) =>
     setForm(prev => ({ ...prev, [key]: val }))
@@ -1395,6 +1414,8 @@ function RegisterForm({
                   ))}
                 </select>
               </div>
+            ) : loadingShakhas ? (
+              <p className="text-sm mb-4" style={{ color: '#5a6f9a' }}>Loading Shakhas for {form.city}, {form.state}...</p>
             ) : (
               <p className="text-sm mb-4" style={{ color: '#5a6f9a' }}>Select your state and city above to find nearby Shakhas.</p>
             )}
@@ -1558,13 +1579,13 @@ function FAQ({ standalone = true }: { standalone?: boolean }) {
 }
 
 function FindFaqSideBySide({
-  shakhaDataMap,
-  usStates,
+  locationIndex,
   onOpenShakhaPage,
+  onSearchLocation,
 }: {
-  shakhaDataMap: Record<string, Record<string, ShakhaChapter[]>>
-  usStates: string[]
+  locationIndex: ShakhaLocationIndex
   onOpenShakhaPage: (chapter: ShakhaChapter) => void
+  onSearchLocation: (state: string, city: string) => Promise<ShakhaChapter[]>
 }) {
   return (
     <section className="py-20 lg:py-24" style={{ background: '#FDF6ED' }}>
@@ -1586,9 +1607,9 @@ function FindFaqSideBySide({
           <div id="find" className="rounded-3xl p-6 sm:p-8 border bg-white" style={{ borderColor: '#eadfce' }}>
             <FindShakha
               standalone={false}
-              shakhaDataMap={shakhaDataMap}
-              usStates={usStates}
+              locationIndex={locationIndex}
               onOpenShakhaPage={onOpenShakhaPage}
+              onSearchLocation={onSearchLocation}
             />
           </div>
 
@@ -1842,21 +1863,58 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
 // ─── App ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [shakhaRecords, setShakhaRecords] = useState<ShakhaRecord[]>(() => getDefaultShakhaRecords())
+  const [locationIndex, setLocationIndex] = useState<ShakhaLocationIndex>({})
+  const [loadedLocationRecords, setLoadedLocationRecords] = useState<Record<string, ShakhaRecord[]>>({})
+  const [adminShakhaRecords, setAdminShakhaRecords] = useState<ShakhaRecord[]>([])
+  const [activeShakha, setActiveShakha] = useState<ShakhaRecord | null>(null)
   const [pathname, setPathname] = useState(() =>
     typeof window !== 'undefined' ? window.location.pathname : '/',
   )
-  const [loadingShakhas, setLoadingShakhas] = useState(true)
+  const [loadingLocationIndex, setLoadingLocationIndex] = useState(true)
+  const [loadingSharePage, setLoadingSharePage] = useState(false)
+  const [loadingAdminShakhas, setLoadingAdminShakhas] = useState(false)
   const [disclaimerVisible, setDisclaimerVisible] = useState(true)
   const [activePage, setActivePage] = useState<'home' | 'register'>(() =>
     typeof window !== 'undefined' && window.location.pathname === '/register' ? 'register' : 'home',
   )
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null)
 
-  const shakhaDataMap = useMemo(() => buildShakhaDataMap(shakhaRecords), [shakhaRecords])
-  const usStates = useMemo(() => Object.keys(shakhaDataMap), [shakhaDataMap])
-  const matchedShakha = useMemo(() => findShakhaByPathname(shakhaRecords, pathname), [shakhaRecords, pathname])
+  const publicShakhaRecords = useMemo(
+    () => Object.values(loadedLocationRecords).flat(),
+    [loadedLocationRecords],
+  )
   const isAdminPath = pathname === '/admin-join-app'
+  const isKnownPath = pathname === '/' || pathname === '/register' || isAdminPath
+  const isLoading = isAdminPath
+    ? loadingAdminShakhas
+    : loadingLocationIndex || loadingSharePage
+
+  const loadLocationRecords = useCallback(async (state: string, city: string) => {
+    const cacheKey = `${state}::${city}`
+    const cached = loadedLocationRecords[cacheKey]
+    if (cached) {
+      return cached
+    }
+
+    const records = await listPublicShakhaRecordsByLocation(state, city)
+    setLoadedLocationRecords(prev => {
+      if (prev[cacheKey]) {
+        return prev
+      }
+
+      return {
+        ...prev,
+        [cacheKey]: records,
+      }
+    })
+
+    return records
+  }, [loadedLocationRecords])
+
+  const searchLocation = useCallback(async (state: string, city: string) => {
+    const records = await loadLocationRecords(state, city)
+    return buildShakhaDataMap(records)[state]?.[city] ?? []
+  }, [loadLocationRecords])
 
   const navigateToPage = (page: 'home' | 'register') => {
     const targetPath = page === 'register' ? '/register' : '/'
@@ -1864,22 +1922,53 @@ export default function App() {
       window.history.pushState({}, '', targetPath)
     }
     setPathname(targetPath)
+    setActiveShakha(null)
     setActivePage(page)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   useEffect(() => {
-    const loadPublicShakhas = async () => {
+    const loadLocations = async () => {
       try {
-        const records = await listShakhaRecordsPublic()
-        setShakhaRecords(normalizeShakhaRecords(records))
+        setLocationIndex(await listPublicShakhaLocations())
       } finally {
-        setLoadingShakhas(false)
+        setLoadingLocationIndex(false)
       }
     }
 
-    void loadPublicShakhas()
+    void loadLocations()
   }, [])
+
+  useEffect(() => {
+    if (!isAdminPath) {
+      setLoadingAdminShakhas(false)
+      return
+    }
+
+    let cancelled = false
+
+    const loadAdminShakhas = async () => {
+      setLoadingAdminShakhas(true)
+
+      try {
+        const { listShakhaRecordsAdmin } = await import('./adminApi')
+        const records = await listShakhaRecordsAdmin()
+        if (!cancelled) {
+          setAdminShakhaRecords(records)
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingAdminShakhas(false)
+        }
+      }
+    }
+
+    void loadAdminShakhas()
+
+    return () => {
+      cancelled = true
+    }
+  }, [isAdminPath])
 
   useEffect(() => {
     const handlePopState = () => {
@@ -1892,44 +1981,79 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (loadingShakhas) {
+    if (isAdminPath || isKnownPath) {
+      setLoadingSharePage(false)
+      if (isKnownPath) {
+        setActiveShakha(null)
+      }
       return
     }
 
-    const knownPaths = new Set(['/', '/register', '/admin-join-app'])
-    if (!knownPaths.has(pathname) && !matchedShakha) {
-      window.history.replaceState({}, '', '/register')
-      setPathname('/register')
-      setActivePage('register')
+    let cancelled = false
+
+    const loadSharePage = async () => {
+      setLoadingSharePage(true)
+
+      try {
+        const record = await findPublicShakhaBySlug(pathname.slice(1).trim().toLowerCase())
+        if (cancelled) {
+          return
+        }
+
+        if (record) {
+          setActiveShakha(record)
+          return
+        }
+
+        window.history.replaceState({}, '', '/register')
+        setPathname('/register')
+        setActivePage('register')
+      } finally {
+        if (!cancelled) {
+          setLoadingSharePage(false)
+        }
+      }
     }
-  }, [loadingShakhas, matchedShakha, pathname])
+
+    void loadSharePage()
+
+    return () => {
+      cancelled = true
+    }
+  }, [isAdminPath, isKnownPath, pathname])
 
   useEffect(() => {
-    if (!matchedShakha) {
+    if (!activeShakha) {
       setMetaTagByName('description', 'Find and join the nearest HSS Shakha in your area. Register your interest and connect with local volunteers.')
       setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join HSS Shakha')
+      setMetaTagByProperty('og:type', 'website')
       setMetaTagByProperty('og:description', 'Find your nearest HSS Shakha and register your interest.')
       setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
+      setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
       setMetaTagByName('twitter:title', 'Shakha Sewa Setu - Join HSS Shakha')
       setMetaTagByName('twitter:description', 'Find your nearest HSS Shakha and register your interest.')
+      setMetaTagByName('twitter:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       document.title = 'Shakha Sewa Setu - Join HSS Shakha'
       return
     }
 
-    const title = `${matchedShakha.name} | HSS Shakha`
-    const description = `${SHARE_MESSAGE}\n\n${matchedShakha.address} | ${matchedShakha.city}, ${matchedShakha.state}`
-    const url = `${window.location.origin}${getShakhaRoute(matchedShakha)}`
+    const title = getShareTitle(activeShakha)
+    const description = getShareDescription(activeShakha)
+    const url = `${window.location.origin}${getShakhaRoute(activeShakha)}`
 
     document.title = title
     setMetaTagByName('description', description)
+    setMetaTagByProperty('og:type', 'website')
     setMetaTagByProperty('og:title', title)
     setMetaTagByProperty('og:description', description)
     setMetaTagByProperty('og:url', url)
+    setMetaTagByProperty('og:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
     setMetaTagByName('twitter:card', 'summary_large_image')
     setMetaTagByName('twitter:title', title)
     setMetaTagByName('twitter:description', description)
-  }, [matchedShakha, pathname])
+    setMetaTagByName('twitter:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
+  }, [activeShakha, pathname])
 
   useEffect(() => {
     if (activePage === 'home' && pendingScrollTarget) {
@@ -1984,13 +2108,14 @@ export default function App() {
     })
   }
 
-  const refreshShakhas = async () => {
-    const records = await listShakhaRecordsPublic()
-    setShakhaRecords(normalizeShakhaRecords(records))
-  }
+  const refreshShakhas = useCallback(async () => {
+    const { listShakhaRecordsAdmin } = await import('./adminApi')
+    const records = await listShakhaRecordsAdmin()
+    setAdminShakhaRecords(records)
+  }, [])
 
   const openShakhaPage = (chapter: ShakhaChapter) => {
-    const record = shakhaRecords.find(item => (
+    const record = publicShakhaRecords.find(item => (
       item.name === chapter.name &&
       item.city === chapter.city &&
       item.state === chapter.state
@@ -2003,15 +2128,26 @@ export default function App() {
 
     const targetPath = getShakhaRoute(record)
     window.history.pushState({}, '', targetPath)
+    setActiveShakha(record)
     setPathname(targetPath)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   if (isAdminPath) {
-    return <AdminPanel shakhaRecords={shakhaRecords} refreshShakhas={refreshShakhas} />
+    return (
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex items-center justify-center" style={{ background: '#FDF6ED' }}>
+            <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading admin panel...</p>
+          </div>
+        }
+      >
+        <AdminPanel shakhaRecords={adminShakhaRecords} refreshShakhas={refreshShakhas} />
+      </Suspense>
+    )
   }
 
-  if (loadingShakhas) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: '#FDF6ED' }}>
         <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Shakha data...</p>
@@ -2019,8 +2155,8 @@ export default function App() {
     )
   }
 
-  if (matchedShakha) {
-    return <ShakhaSharePage record={matchedShakha} onBack={() => navigateToPage('register')} />
+  if (activeShakha) {
+    return <ShakhaSharePage record={activeShakha} onBack={() => navigateToPage('register')} />
   }
 
   return (
@@ -2057,9 +2193,9 @@ export default function App() {
           <Benefits />
           <Timeline />
           <FindFaqSideBySide
-            shakhaDataMap={shakhaDataMap}
-            usStates={usStates}
+            locationIndex={locationIndex}
             onOpenShakhaPage={openShakhaPage}
+            onSearchLocation={searchLocation}
           />
           <WhoCanJoin />
           <Contact />
@@ -2090,9 +2226,9 @@ export default function App() {
                 <div className="rounded-[1.75rem] border p-5 sm:p-6 lg:p-7 bg-white/50" style={{ borderColor: '#eadfce' }}>
                   <RegisterForm
                     standalone={false}
-                    shakhaDataMap={shakhaDataMap}
-                    usStates={usStates}
+                    locationIndex={locationIndex}
                     onRegister={handleInterestRegister}
+                    loadLocationShakhas={searchLocation}
                   />
                 </div>
                 <aside className="rounded-[1.75rem] p-5 sm:p-6 lg:sticky lg:top-24" style={{ background: '#1B3A6B' }}>

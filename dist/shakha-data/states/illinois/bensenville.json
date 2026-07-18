@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Illinois|Bensenville|Pradnya Shakha - Bensenville",
+    "name": "Pradnya Shakha - Bensenville",
+    "address": "Bensenville IL",
+    "state": "Illinois",
+    "city": "Bensenville",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=pradnya-shakha-bensenville",
+    "day": "Monthly on Sunday",
+    "time": "15:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

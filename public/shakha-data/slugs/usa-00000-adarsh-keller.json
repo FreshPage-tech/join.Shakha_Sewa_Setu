@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Keller|Adarsh (Keller)",
+  "name": "Adarsh (Keller)",
+  "address": "Keller TX",
+  "state": "Texas",
+  "city": "Keller",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=adarsh-keller",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

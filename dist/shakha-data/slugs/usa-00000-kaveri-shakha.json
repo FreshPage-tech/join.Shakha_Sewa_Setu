@@ -1,0 +1,30 @@
+{
+  "id": "Pennsylvania|Royersford|Kaveri Shakha",
+  "name": "Kaveri Shakha",
+  "address": "Royersford PA",
+  "state": "Pennsylvania",
+  "city": "Royersford",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=KaveriShakha",
+  "day": "Weekly on Sunday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

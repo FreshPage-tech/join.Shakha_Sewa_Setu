@@ -1,0 +1,62 @@
+[
+  {
+    "id": "New York|White Plains|Gayatri Shakha",
+    "name": "Gayatri Shakha",
+    "address": "White Plains NY",
+    "state": "New York",
+    "city": "White Plains",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=gayatri-shakha41",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New York|White Plains|Shivaji Shakha",
+    "name": "Shivaji Shakha",
+    "address": "White Plains NY",
+    "state": "New York",
+    "city": "White Plains",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shivaji-shakha6",
+    "day": "Weekly on Friday",
+    "time": "19:15pm to 20:45pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

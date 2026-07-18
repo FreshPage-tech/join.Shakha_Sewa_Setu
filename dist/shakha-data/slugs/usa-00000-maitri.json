@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Mckinney|Maitri",
+  "name": "Maitri",
+  "address": "Mckinney TX",
+  "state": "Texas",
+  "city": "Mckinney",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=maitri-frisco",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 17:45pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "California|Irvine|Sanjeevani Shakha",
+  "name": "Sanjeevani Shakha",
+  "address": "Irvine CA",
+  "state": "California",
+  "city": "Irvine",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Sanjeevani",
+  "day": "Weekly on Saturday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

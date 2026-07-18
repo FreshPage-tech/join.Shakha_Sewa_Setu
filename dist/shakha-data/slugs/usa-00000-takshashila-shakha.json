@@ -1,0 +1,30 @@
+{
+  "id": "Oregon|Hillsboro|Takshashila Shakha",
+  "name": "Takshashila Shakha",
+  "address": "Hillsboro OR",
+  "state": "Oregon",
+  "city": "Hillsboro",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=TakshashilaShakha",
+  "day": "Weekly on Wednesday",
+  "time": "19:00pm to 20:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

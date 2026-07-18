@@ -1659,6 +1659,18 @@ export const SHAKHA_DATA: Record<string, Record<string, ShakhaChapter[]>> = {
         "detailUrl": "https://www.hssus.org/chapter-detail/?username=shakti-shakha19"
       }
     ],
+    "Holmdel": [
+      {
+        "name": "Sri Krishna Shakha",
+        "city": "Holmdel",
+        "state": "New Jersey",
+        "address": "44 Longstreet Rd, Holmdel, NJ 07733",
+        "day": "Every Thursday",
+        "time": "6:00 PM - 7:30 PM",
+        "timing": "Every Thursday from 6:00 PM - 7:30 PM",
+        "detailUrl": "https://maps.app.goo.gl/ECm8uDJhiMmXWuiV9?g_st=ic"
+      }
+    ],
     "Parsippany": [
       {
         "name": "Maa Bhavani Shakha",

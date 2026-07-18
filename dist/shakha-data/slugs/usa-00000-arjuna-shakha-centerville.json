@@ -1,0 +1,30 @@
+{
+  "id": "California|Fremont|Arjuna Shakha - Centerville",
+  "name": "Arjuna Shakha - Centerville",
+  "address": "Fremont CA",
+  "state": "California",
+  "city": "Fremont",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=arjuna-shakha-centerville",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 17:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "British Columbia|Any City|Bhairavi Shakha - BC",
+    "name": "Bhairavi Shakha - BC",
+    "address": "Any City BC",
+    "state": "British Columbia",
+    "city": "Any City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=bhairavi-shakha-bc",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "British Columbia|Any City|Guru Tegh bahadur Yuva Shakha",
+    "name": "Guru Tegh bahadur Yuva Shakha",
+    "address": "Any City BC",
+    "state": "British Columbia",
+    "city": "Any City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=guru-tegh-bahadur-yuva-shakha",
+    "day": "Weekly on Saturday",
+    "time": "17:30pm to 19:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "British Columbia|Any City|Madhav Shakha - BC",
+    "name": "Madhav Shakha - BC",
+    "address": "Any City BC",
+    "state": "British Columbia",
+    "city": "Any City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=madhav-shakha-bc",
+    "day": "Weekly on Friday",
+    "time": "09:00am to 10:15am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "British Columbia|Any City|UBC Hindu YUVA",
+    "name": "UBC Hindu YUVA",
+    "address": "Any City BC",
+    "state": "British Columbia",
+    "city": "Any City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=ubc-hindu-yuva",
+    "day": "Monthly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

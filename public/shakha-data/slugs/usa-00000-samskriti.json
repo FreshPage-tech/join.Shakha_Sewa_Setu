@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Aubrey|Samskriti",
+  "name": "Samskriti",
+  "address": "Aubrey TX",
+  "state": "Texas",
+  "city": "Aubrey",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Samskriti",
+  "day": "Weekly on Sunday",
+  "time": "16:30pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

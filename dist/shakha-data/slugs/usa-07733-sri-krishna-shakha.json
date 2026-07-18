@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Holmdel|Sri Krishna Shakha",
+  "name": "Sri Krishna Shakha",
+  "address": "44 Longstreet Rd, Holmdel, NJ 07733",
+  "state": "New Jersey",
+  "city": "Holmdel",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "07733",
+  "mapLink": "https://maps.app.goo.gl/ECm8uDJhiMmXWuiV9?g_st=ic",
+  "day": "Every Thursday",
+  "time": "6:00 PM - 7:30 PM",
+  "contacts": [
+    {
+      "name": "Utkarsh Patel",
+      "mobile": "+1 201-889-6610",
+      "email": ""
+    },
+    {
+      "name": "Sachin Apte",
+      "mobile": "+1 201-240-3896",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Edison|Sarvagna",
+  "name": "Sarvagna",
+  "address": "Edison NJ",
+  "state": "New Jersey",
+  "city": "Edison",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=sarvagna-shakha",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 17:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

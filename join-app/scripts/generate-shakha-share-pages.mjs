@@ -7,7 +7,11 @@ const __dirname = path.dirname(__filename)
 const projectRoot = path.resolve(__dirname, '..')
 const shakhaDataFile = path.join(projectRoot, 'src', 'shakhaData.ts')
 const publicDir = path.join(projectRoot, 'public')
+const socialDir = path.join(publicDir, 'social')
 const manifestFile = path.join(publicDir, '.generated-shakha-pages.json')
+const shakhaOverridesFile = path.join(projectRoot, 'src', 'shakhaOverrides.json')
+const siteBannerSource = path.join(projectRoot, 'src', 'imports', '4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png')
+const shakhaBannerSource = path.join(projectRoot, 'src', 'imports', 'DA8EA940-C9A9-4F9C-B405-14103451AAAD.PNG')
 
 const siteUrl = (process.env.SITE_URL ?? 'https://join.shakhasewasetu.com').replace(/\/$/, '')
 const countrySlug = slugify(process.env.COUNTRY_SLUG ?? 'usa') || 'usa'
@@ -23,6 +27,24 @@ Discover a weekly gathering that promotes physical fitness, leadership, Hindu va
 Strong Individuals • Strong Families • Strong Society
 
 👉 Find Your Nearest Shakha`
+
+function buildShakhaId(state, city, name) {
+  return `${String(state).trim()}|${String(city).trim()}|${String(name).trim()}`
+}
+
+async function readOverrides() {
+  try {
+    const raw = await fs.readFile(shakhaOverridesFile, 'utf8')
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+function getOverride(overrides, state, city, name) {
+  return overrides.find(override => override.id === buildShakhaId(state, city, name))
+}
 
 function slugify(value) {
   return String(value)
@@ -60,6 +82,7 @@ function buildRows(shakhaData) {
     for (const [city, shakhas] of Object.entries(cityMap)) {
       for (const shakha of shakhas) {
         rows.push({
+          id: buildShakhaId(state, city, shakha.name),
           state,
           city,
           name: shakha.name,
@@ -68,11 +91,40 @@ function buildRows(shakhaData) {
           time: shakha.time,
           timing: shakha.timing,
           detailUrl: shakha.detailUrl,
+          mapLink: shakha.detailUrl,
+          contacts: [],
         })
       }
     }
   }
   return rows
+}
+
+function buildStaticRecord(state, city, shakha, override) {
+  const baseRecord = {
+    id: `${state}|${city}|${shakha.name}`,
+    name: shakha.name,
+    address: shakha.address,
+    state,
+    city,
+    vibhag: '',
+    bhag: '',
+    zipCode: extractZip(shakha.address),
+    mapLink: shakha.detailUrl,
+    day: shakha.day,
+    time: shakha.time,
+    contacts: [
+      { name: '', mobile: '', email: '' },
+      { name: '', mobile: '', email: '' },
+      { name: '', mobile: '', email: '' },
+    ],
+  }
+
+  return {
+    ...baseRecord,
+    ...(override?.record ?? {}),
+    contacts: override?.record?.contacts ?? baseRecord.contacts,
+  }
 }
 
 function getUniqueSlug(baseSlug, usedSlugs) {
@@ -91,10 +143,13 @@ function getUniqueSlug(baseSlug, usedSlugs) {
   return unique
 }
 
-function buildPageHtml(row, slug) {
+function buildPageHtml(row, slug, override) {
   const url = `${siteUrl}/${slug}`
-  const title = `${row.name} | HSS Shakha`
-  const description = `${shareMessage} ${row.city}, ${row.state}.`
+  const title = override?.shareTitle || `${row.name} | Shakha Sewa Setu`
+  const description = override?.shareDescription || `${shareMessage} ${row.city}, ${row.state}.`
+  const pageMessage = override?.shareMessage || shareMessage
+  const image = `${siteUrl}/social/shakha-banner.png`
+  const contacts = (row.contacts ?? []).filter(contact => contact.name || contact.mobile || contact.email)
 
   return `<!doctype html>
 <html lang="en">
@@ -107,9 +162,11 @@ function buildPageHtml(row, slug) {
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:url" content="${escapeHtml(url)}" />
+    <meta property="og:image" content="${escapeHtml(image)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${escapeHtml(image)}" />
     <link rel="canonical" href="${escapeHtml(url)}" />
     <style>
       :root { --saffron: #d4531a; --navy: #1b3a6b; --ink: #0b1a32; --muted: #5a6f9a; --bg: #fdf6ed; }
@@ -142,7 +199,7 @@ function buildPageHtml(row, slug) {
         <h1>${escapeHtml(row.name)}</h1>
         <p class="sub">${escapeHtml(row.city)}, ${escapeHtml(row.state)}</p>
 
-        <div class="msg">${escapeHtml(shareMessage)}</div>
+        <div class="msg">${escapeHtml(pageMessage)}</div>
 
         <div class="grid">
           <div class="box">
@@ -155,9 +212,11 @@ function buildPageHtml(row, slug) {
           </div>
           <div class="box">
             <div class="label">More Details</div>
-            <div class="value">${row.detailUrl ? `<a href="${escapeHtml(row.detailUrl)}" target="_blank" rel="noreferrer">Open map/details</a>` : 'Not available'}</div>
+            <div class="value">${(row.detailUrl || row.mapLink) ? `<a href="${escapeHtml(row.detailUrl || row.mapLink)}" target="_blank" rel="noreferrer">Open map/details</a>` : 'Not available'}</div>
           </div>
         </div>
+
+        ${contacts.length > 0 ? `<div class="grid">${contacts.map((contact, index) => `<div class="box"><div class="label">Contact ${index + 1}</div><div class="value">${escapeHtml(contact.name || 'Not provided')}<br/>${escapeHtml(contact.mobile || 'Not provided')}</div></div>`).join('')}</div>` : ''}
 
         <p class="footer">This page is generated for sharing links in WhatsApp, email, and messages. For full portal experience, use <a href="${siteUrl}/register">${siteUrl}/register</a>.</p>
       </section>
@@ -165,6 +224,12 @@ function buildPageHtml(row, slug) {
   </body>
 </html>
 `
+}
+
+async function copySocialImages() {
+  await fs.mkdir(socialDir, { recursive: true })
+  await fs.copyFile(siteBannerSource, path.join(socialDir, 'site-banner.png'))
+  await fs.copyFile(shakhaBannerSource, path.join(socialDir, 'shakha-banner.png'))
 }
 
 async function readManifest() {
@@ -205,10 +270,12 @@ async function ensureFallbackPage() {
 
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
+  await copySocialImages()
 
   const source = await fs.readFile(shakhaDataFile, 'utf8')
   const data = parseShakhaData(source)
   const rows = buildRows(data)
+  const overrides = await readOverrides()
 
   const oldSlugs = await readManifest()
   await cleanOldPages(oldSlugs)
@@ -222,10 +289,12 @@ async function main() {
     const baseSlug = `${countrySlug}-${zip}-${nameSlug}`
     const slug = getUniqueSlug(baseSlug, usedSlugs)
     newSlugs.push(slug)
+    const override = getOverride(overrides, row.state, row.city, row.name)
+    const pageRow = buildStaticRecord(row.state, row.city, row, override)
 
     const pageDir = path.join(publicDir, slug)
     await fs.mkdir(pageDir, { recursive: true })
-    await fs.writeFile(path.join(pageDir, 'index.html'), buildPageHtml(row, slug), 'utf8')
+    await fs.writeFile(path.join(pageDir, 'index.html'), buildPageHtml(pageRow, slug, override), 'utf8')
   }
 
   await fs.writeFile(manifestFile, JSON.stringify({ generatedAt: new Date().toISOString(), slugs: newSlugs }, null, 2), 'utf8')

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Chino|Narasimha Shakha - Chino",
+    "name": "Narasimha Shakha - Chino",
+    "address": "Chino CA",
+    "state": "California",
+    "city": "Chino",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=narasimha-shakha-chino",
+    "day": "Weekly on Sunday",
+    "time": "10:30am to 12:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

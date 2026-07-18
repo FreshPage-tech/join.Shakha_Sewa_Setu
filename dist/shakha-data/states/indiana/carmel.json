@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Indiana|Carmel|Sadhana Shakha (Carmel, IN)",
+    "name": "Sadhana Shakha (Carmel, IN)",
+    "address": "Carmel IN",
+    "state": "Indiana",
+    "city": "Carmel",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sadhana-shakha-carmel-in",
+    "day": "Weekly on Sunday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

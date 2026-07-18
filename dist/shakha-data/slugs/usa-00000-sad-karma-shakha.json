@@ -1,0 +1,30 @@
+{
+  "id": "New York|Jamaica|Sad-Karma Shakha",
+  "name": "Sad-Karma Shakha",
+  "address": "Jamaica NY",
+  "state": "New York",
+  "city": "Jamaica",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=sad-karma-shakha",
+  "day": "Weekly on Monday",
+  "time": "18:30pm to 20:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "North Carolina|Fuquay Varina|Holly Springs Fuquay Varina",
+  "name": "Holly Springs Fuquay Varina",
+  "address": "Fuquay Varina NC",
+  "state": "North Carolina",
+  "city": "Fuquay Varina",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=hsfv",
+  "day": "Weekly on Sunday",
+  "time": "17:00pm to 18:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

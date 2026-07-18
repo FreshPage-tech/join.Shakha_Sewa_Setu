@@ -1,0 +1,32 @@
+[
+  {
+    "id": "New York|Yorktown Heights|Kuber Shakha",
+    "name": "Kuber Shakha",
+    "address": "Yorktown Heights NY",
+    "state": "New York",
+    "city": "Yorktown Heights",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kubershakha",
+    "day": "Weekly on Friday",
+    "time": "19:15pm to 20:45pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

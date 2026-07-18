@@ -1,0 +1,30 @@
+{
+  "id": "California|Roseville|Sri Ram (Roseville)",
+  "name": "Sri Ram (Roseville)",
+  "address": "Roseville CA",
+  "state": "California",
+  "city": "Roseville",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=sri-ram-roseville",
+  "day": "Weekly on Sunday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

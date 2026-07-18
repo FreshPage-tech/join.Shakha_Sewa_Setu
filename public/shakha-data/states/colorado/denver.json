@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Colorado|Denver|Vishwashanti Shakha",
+    "name": "Vishwashanti Shakha",
+    "address": "Denver CO",
+    "state": "Colorado",
+    "city": "Denver",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vishwashanti-shakha",
+    "day": "Weekly on Sunday",
+    "time": "16:30pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

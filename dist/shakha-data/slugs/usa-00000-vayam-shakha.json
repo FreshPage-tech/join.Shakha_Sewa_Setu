@@ -1,0 +1,30 @@
+{
+  "id": "Illinois|Chicago|Vayam Shakha",
+  "name": "Vayam Shakha",
+  "address": "Chicago IL",
+  "state": "Illinois",
+  "city": "Chicago",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=chicago-downtown-shakha",
+  "day": "Weekly on Sunday",
+  "time": "09:00am to 10:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

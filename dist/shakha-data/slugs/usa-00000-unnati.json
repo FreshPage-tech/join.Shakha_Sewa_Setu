@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Prosper|Unnati",
+  "name": "Unnati",
+  "address": "Prosper TX",
+  "state": "Texas",
+  "city": "Prosper",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Unnati",
+  "day": "Weekly on Sunday",
+  "time": "09:30am to 11:15am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

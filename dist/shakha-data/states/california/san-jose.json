@@ -1,0 +1,122 @@
+[
+  {
+    "id": "California|San Jose|Jijamata Shakha - Beryassa",
+    "name": "Jijamata Shakha - Beryassa",
+    "address": "San Jose CA",
+    "state": "California",
+    "city": "San Jose",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=jijamata-shakha-beryassa",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Jose|Nayakidevi Shakha",
+    "name": "Nayakidevi Shakha",
+    "address": "San Jose CA",
+    "state": "California",
+    "city": "San Jose",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=nayakidevi-shakha",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Jose|Rani Avantibai Shakha",
+    "name": "Rani Avantibai Shakha",
+    "address": "San Jose CA",
+    "state": "California",
+    "city": "San Jose",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=san-jose-kishore-shakha",
+    "day": "Weekly on Sunday",
+    "time": "11:15am to 12:45pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Jose|Rani Lakshmibai - San Jose Evergreen",
+    "name": "Rani Lakshmibai - San Jose Evergreen",
+    "address": "San Jose CA",
+    "state": "California",
+    "city": "San Jose",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=rani-lakshmibai-san-jose-evergreen",
+    "day": "Weekly on Sunday",
+    "time": "09:00am to 10:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "New York|Elmsford|Kishore Shakha",
+    "name": "Kishore Shakha",
+    "address": "Elmsford NY",
+    "state": "New York",
+    "city": "Elmsford",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kishore-shakha",
+    "day": "Every other Week on Sunday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "id": "Maharashtra|Nagpur|Test 1 Shakha",
+  "name": "Test 1 Shakha",
+  "address": "Nagpur",
+  "state": "Maharashtra",
+  "city": "Nagpur",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Test1Shakha",
+  "day": "Weekly on Thursday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

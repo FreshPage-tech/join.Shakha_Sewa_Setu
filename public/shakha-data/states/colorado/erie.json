@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Colorado|Erie|Shivaji Shakha - Broomfield",
+    "name": "Shivaji Shakha - Broomfield",
+    "address": "Erie CO",
+    "state": "Colorado",
+    "city": "Erie",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shivaji-shakha-broomfield",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:45am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

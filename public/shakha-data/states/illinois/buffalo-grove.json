@@ -1,0 +1,62 @@
+[
+  {
+    "id": "Illinois|Buffalo Grove|Anjaneya Kishore Shakha",
+    "name": "Anjaneya Kishore Shakha",
+    "address": "Buffalo Grove IL",
+    "state": "Illinois",
+    "city": "Buffalo Grove",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=KishoreBG",
+    "day": "Weekly on Friday",
+    "time": "19:30pm to 21:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Illinois|Buffalo Grove|Paanchajanya Shakha - Buffalo Grove",
+    "name": "Paanchajanya Shakha - Buffalo Grove",
+    "address": "Buffalo Grove IL",
+    "state": "Illinois",
+    "city": "Buffalo Grove",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=paanchajanya-shakha-buffalo-grove",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

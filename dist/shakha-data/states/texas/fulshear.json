@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Texas|Fulshear|Abhimanyu",
+    "name": "Abhimanyu",
+    "address": "Fulshear TX",
+    "state": "Texas",
+    "city": "Fulshear",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=abhimanyu",
+    "day": "Weekly on Sunday",
+    "time": "09:00am to 10:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

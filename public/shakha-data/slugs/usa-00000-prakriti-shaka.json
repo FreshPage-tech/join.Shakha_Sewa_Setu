@@ -1,0 +1,30 @@
+{
+  "id": "California|Tracy|Prakriti Shaka",
+  "name": "Prakriti Shaka",
+  "address": "Tracy CA",
+  "state": "California",
+  "city": "Tracy",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=prakriti-kishore-shaka",
+  "day": "Weekly on Sunday",
+  "time": "17:00pm to 19:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

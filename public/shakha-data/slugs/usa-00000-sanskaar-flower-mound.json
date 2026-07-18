@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Flower Mound|Sanskaar (Flower Mound)",
+  "name": "Sanskaar (Flower Mound)",
+  "address": "Flower Mound TX",
+  "state": "Texas",
+  "city": "Flower Mound",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=sanskaar-flower-mound",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

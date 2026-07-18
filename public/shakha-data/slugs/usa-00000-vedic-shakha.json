@@ -1,0 +1,30 @@
+{
+  "id": "North Carolina|Winston Salem|Vedic Shakha",
+  "name": "Vedic Shakha",
+  "address": "Winston Salem NC",
+  "state": "North Carolina",
+  "city": "Winston Salem",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=vedic-shakha",
+  "day": "Weekly on Sunday",
+  "time": "17:00pm to 06:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

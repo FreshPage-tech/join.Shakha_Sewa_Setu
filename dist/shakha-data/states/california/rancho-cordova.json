@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Rancho Cordova|Sri Hari ( Rancho Cordova)",
+    "name": "Sri Hari ( Rancho Cordova)",
+    "address": "Rancho Cordova CA",
+    "state": "California",
+    "city": "Rancho Cordova",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sri-hari-rancho-cordova",
+    "day": "Weekly on Sunday",
+    "time": "09:00am to 10:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Connecticut|South Windsor|Samartha Shakha",
+    "name": "Samartha Shakha",
+    "address": "South Windsor CT",
+    "state": "Connecticut",
+    "city": "South Windsor",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=samartha-shakha",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

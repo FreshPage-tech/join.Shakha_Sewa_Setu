@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Austin|Maharana Pratap Shakha",
+  "name": "Maharana Pratap Shakha",
+  "address": "Austin TX",
+  "state": "Texas",
+  "city": "Austin",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=maharana-pratap-shakha",
+  "day": "Weekly on Friday",
+  "time": "17:00pm to 18:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

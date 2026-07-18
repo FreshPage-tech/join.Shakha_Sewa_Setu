@@ -1,0 +1,30 @@
+{
+  "id": "Virginia|Richmond|Guru Govind Shakha",
+  "name": "Guru Govind Shakha",
+  "address": "Richmond VA",
+  "state": "Virginia",
+  "city": "Richmond",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Gurugovind",
+  "day": "Weekly on Friday",
+  "time": "19:00pm to 20:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

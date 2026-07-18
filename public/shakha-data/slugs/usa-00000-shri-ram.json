@@ -1,0 +1,30 @@
+{
+  "id": "California|Temecula|Shri Ram",
+  "name": "Shri Ram",
+  "address": "Temecula CA",
+  "state": "California",
+  "city": "Temecula",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=hsstemecula",
+  "day": "Weekly on Sunday",
+  "time": "10:30am to 12:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

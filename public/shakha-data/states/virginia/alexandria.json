@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Virginia|Alexandria|Yuva Shakha",
+    "name": "Yuva Shakha",
+    "address": "Alexandria VA",
+    "state": "Virginia",
+    "city": "Alexandria",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=yuva-shakha47",
+    "day": "Weekly on Wednesday",
+    "time": "19:30pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

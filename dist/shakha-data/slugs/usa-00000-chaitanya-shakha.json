@@ -1,0 +1,30 @@
+{
+  "id": "Maryland|Ellicott City|Chaitanya Shakha",
+  "name": "Chaitanya Shakha",
+  "address": "Ellicott City MD",
+  "state": "Maryland",
+  "city": "Ellicott City",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=chaitanya-shakha",
+  "day": "Weekly on Friday",
+  "time": "19:00pm to 20:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

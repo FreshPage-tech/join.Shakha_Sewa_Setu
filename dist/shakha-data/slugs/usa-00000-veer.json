@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Chesterfield|Veer",
+  "name": "Veer",
+  "address": "Chesterfield NJ",
+  "state": "New Jersey",
+  "city": "Chesterfield",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=kishore-shakha-south-jersey",
+  "day": "Every other Week on Saturday",
+  "time": "15:00pm to 16:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

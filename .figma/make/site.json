@@ -1,5 +1,9 @@
 {
+  "title": "Shakha Sewa Setu",
   "description": "Connect with your local Shakha through an informative platform that highlights its benefits, encourages registration, and helps find nearby gatherings.",
+  "openGraph": {
+    "image": "/social/site-banner.png"
+  },
   "robots": {
     "index": false
   },

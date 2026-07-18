@@ -1,0 +1,32 @@
+[
+  {
+    "id": "New Jersey|Jersey City|Vivekananda Shakha",
+    "name": "Vivekananda Shakha",
+    "address": "Jersey City NJ",
+    "state": "New Jersey",
+    "city": "Jersey City",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vivekananda-shakha24",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:15pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

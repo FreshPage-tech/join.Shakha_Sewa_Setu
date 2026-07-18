@@ -1,0 +1,152 @@
+[
+  {
+    "id": "New Jersey|Edison|Bhakti",
+    "name": "Bhakti",
+    "address": "Edison NJ",
+    "state": "New Jersey",
+    "city": "Edison",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=bhakti-shakha",
+    "day": "Weekly on Thursday",
+    "time": "18:45pm to 20:15pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Edison|Keshav",
+    "name": "Keshav",
+    "address": "Edison NJ",
+    "state": "New Jersey",
+    "city": "Edison",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=keshav-shakha32",
+    "day": "Weekly on Sunday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Edison|Mahadev",
+    "name": "Mahadev",
+    "address": "Edison NJ",
+    "state": "New Jersey",
+    "city": "Edison",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kishor-shakha-central-jersey",
+    "day": "Weekly on Sunday",
+    "time": "14:00pm to 15:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Edison|Rani LakshmiBai",
+    "name": "Rani LakshmiBai",
+    "address": "Edison NJ",
+    "state": "New Jersey",
+    "city": "Edison",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=rani-lakshmibai",
+    "day": "Weekly on Friday",
+    "time": "19:30pm to 21:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "New Jersey|Edison|Sarvagna",
+    "name": "Sarvagna",
+    "address": "Edison NJ",
+    "state": "New Jersey",
+    "city": "Edison",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sarvagna-shakha",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

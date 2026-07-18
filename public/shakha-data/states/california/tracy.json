@@ -1,0 +1,122 @@
+[
+  {
+    "id": "California|Tracy|BrahmaGiri Shakha",
+    "name": "BrahmaGiri Shakha",
+    "address": "Tracy CA",
+    "state": "California",
+    "city": "Tracy",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=brahmagiri-shakha",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Tracy|Gauri Shakha",
+    "name": "Gauri Shakha",
+    "address": "Tracy CA",
+    "state": "California",
+    "city": "Tracy",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=GauriShaka",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Tracy|Kailas Shakha - Mountain House",
+    "name": "Kailas Shakha - Mountain House",
+    "address": "Tracy CA",
+    "state": "California",
+    "city": "Tracy",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kailas-shakha-mountain-house",
+    "day": "Weekly on Sunday",
+    "time": "16:30pm to 18:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Tracy|Prakriti Shaka",
+    "name": "Prakriti Shaka",
+    "address": "Tracy CA",
+    "state": "California",
+    "city": "Tracy",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=prakriti-kishore-shaka",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 19:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

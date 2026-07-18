@@ -1,0 +1,30 @@
+{
+  "id": "Illinois|Urbana|UIUC Yuva Shakha",
+  "name": "UIUC Yuva Shakha",
+  "address": "Urbana IL",
+  "state": "Illinois",
+  "city": "Urbana",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=uiuc-yuva-shakha",
+  "day": "Weekly on Thursday",
+  "time": "18:30pm to 19:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Frisco|Pragathi",
+  "name": "Pragathi",
+  "address": "Frisco TX",
+  "state": "Texas",
+  "city": "Frisco",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=pragathi-shakha",
+  "day": "Weekly on Saturday",
+  "time": "17:00pm to 18:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

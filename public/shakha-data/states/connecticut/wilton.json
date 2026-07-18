@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Connecticut|Wilton|Vivekananda Shakha",
+    "name": "Vivekananda Shakha",
+    "address": "Wilton CT",
+    "state": "Connecticut",
+    "city": "Wilton",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vivekananda-shakha29",
+    "day": "Weekly on Sunday",
+    "time": "11:00am to 12:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

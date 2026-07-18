@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Florida|Fort Lauderdale|Sangam Shakha - Fort Lauderdale",
+    "name": "Sangam Shakha - Fort Lauderdale",
+    "address": "Fort Lauderdale FL",
+    "state": "Florida",
+    "city": "Fort Lauderdale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sangam-shakha-fort-lauderdale",
+    "day": "Every other Week on Sunday",
+    "time": "12:15pm to 13:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

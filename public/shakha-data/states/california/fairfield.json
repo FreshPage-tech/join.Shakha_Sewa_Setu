@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Fairfield|Sri Bhavani Shakha Fair Field",
+    "name": "Sri Bhavani Shakha Fair Field",
+    "address": "Fairfield CA",
+    "state": "California",
+    "city": "Fairfield",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=bhavani",
+    "day": "Weekly on Sunday",
+    "time": "09:00am to 10:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

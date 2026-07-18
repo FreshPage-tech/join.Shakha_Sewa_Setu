@@ -1,0 +1,30 @@
+{
+  "id": "Arizona|Scottsdale|Shivaji Shakha - Scottsdale",
+  "name": "Shivaji Shakha - Scottsdale",
+  "address": "Scottsdale AZ",
+  "state": "Arizona",
+  "city": "Scottsdale",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=shivaji-shakha-scottsdale",
+  "day": "Weekly on Friday",
+  "time": "18:30pm to 20:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

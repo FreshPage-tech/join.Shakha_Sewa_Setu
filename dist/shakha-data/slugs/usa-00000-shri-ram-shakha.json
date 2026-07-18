@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Towaco|Shri Ram Shakha",
+  "name": "Shri Ram Shakha",
+  "address": "Towaco NJ",
+  "state": "New Jersey",
+  "city": "Towaco",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=shriramshakha",
+  "day": "Weekly on Sunday",
+  "time": "18:00pm to 19:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

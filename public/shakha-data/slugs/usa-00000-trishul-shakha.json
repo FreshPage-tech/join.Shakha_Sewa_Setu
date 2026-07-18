@@ -1,0 +1,30 @@
+{
+  "id": "Washington|West Richland|Trishul Shakha",
+  "name": "Trishul Shakha",
+  "address": "West Richland WA",
+  "state": "Washington",
+  "city": "West Richland",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=tricities-shakha",
+  "day": "Weekly on Sunday",
+  "time": "10:30am to 12:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "North Carolina|Apex|Adi Shankaracharya Shakha",
+    "name": "Adi Shankaracharya Shakha",
+    "address": "Apex NC",
+    "state": "North Carolina",
+    "city": "Apex",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=adi-shankaracharya-shakha",
+    "day": "Weekly on Sunday",
+    "time": "10:30am to 12:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

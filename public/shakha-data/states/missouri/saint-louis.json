@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Missouri|Saint Louis|Chanakya",
+    "name": "Chanakya",
+    "address": "Saint Louis MO",
+    "state": "Missouri",
+    "city": "Saint Louis",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=chanakya43",
+    "day": "Weekly on Friday",
+    "time": "18:00pm to 19:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

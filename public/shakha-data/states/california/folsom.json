@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Folsom|Sri Krishna (Folsom)",
+    "name": "Sri Krishna (Folsom)",
+    "address": "Folsom CA",
+    "state": "California",
+    "city": "Folsom",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sri-krishna-folsom",
+    "day": "Weekly on Sunday",
+    "time": "10:30am to 12:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

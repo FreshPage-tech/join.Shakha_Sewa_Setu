@@ -1,0 +1,30 @@
+{
+  "id": "Illinois|Bloomington|Patanjali Shakha",
+  "name": "Patanjali Shakha",
+  "address": "Bloomington IL",
+  "state": "Illinois",
+  "city": "Bloomington",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=patanjali-shakha",
+  "day": "Weekly on Sunday",
+  "time": "08:00am to 09:00am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Burbank|Parashuram Shakha - Burbank",
+    "name": "Parashuram Shakha - Burbank",
+    "address": "Burbank CA",
+    "state": "California",
+    "city": "Burbank",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=parashuram-shakha-burbank",
+    "day": "Weekly on Saturday",
+    "time": "12:00pm to 13:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

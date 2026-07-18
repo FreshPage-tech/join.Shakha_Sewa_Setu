@@ -1,0 +1,30 @@
+{
+  "id": "California|Sunnyvale|Arjun Shakha - Sunnyvale",
+  "name": "Arjun Shakha - Sunnyvale",
+  "address": "Sunnyvale CA",
+  "state": "California",
+  "city": "Sunnyvale",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=arjun-shakha-sunnyvale",
+  "day": "Weekly on Sunday",
+  "time": "15:30pm to 17:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

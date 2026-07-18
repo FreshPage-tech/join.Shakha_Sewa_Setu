@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Virginia|VA|Kishor Shakha",
+    "name": "Kishor Shakha",
+    "address": "VA",
+    "state": "Virginia",
+    "city": "VA",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kishor-shakha",
+    "day": "Weekly on Sunday",
+    "time": "15:00pm to 16:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "California|Fremont|Arjuna Shakha - Centerville",
+    "name": "Arjuna Shakha - Centerville",
+    "address": "Fremont CA",
+    "state": "California",
+    "city": "Fremont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=arjuna-shakha-centerville",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Fremont|Arundhati Shakha -Ardenwood",
+    "name": "Arundhati Shakha -Ardenwood",
+    "address": "Fremont CA",
+    "state": "California",
+    "city": "Fremont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=arundhati-shakha-ardenwood",
+    "day": "Weekly on Sunday",
+    "time": "10:30am to 12:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Fremont|Keshav Shakha - Fremont",
+    "name": "Keshav Shakha - Fremont",
+    "address": "Fremont CA",
+    "state": "California",
+    "city": "Fremont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=keshav-shakha-fremont",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Fremont|Satchidananda Shakha - Irvington",
+    "name": "Satchidananda Shakha - Irvington",
+    "address": "Fremont CA",
+    "state": "California",
+    "city": "Fremont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Rupal",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 19:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Fremont|WarmSpring",
+    "name": "WarmSpring",
+    "address": "Fremont CA",
+    "state": "California",
+    "city": "Fremont",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Warmsprings",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 19:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

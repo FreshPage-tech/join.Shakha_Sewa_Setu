@@ -1,0 +1,32 @@
+[
+  {
+    "id": "New Jersey|Kendall Park|Pranavanand",
+    "name": "Pranavanand",
+    "address": "Kendall Park NJ",
+    "state": "New Jersey",
+    "city": "Kendall Park",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=pranavanand-shakha",
+    "day": "Weekly on Sunday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

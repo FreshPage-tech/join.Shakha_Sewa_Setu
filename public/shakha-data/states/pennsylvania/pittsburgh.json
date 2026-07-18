@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Pennsylvania|Pittsburgh|Arjun Shakha",
+    "name": "Arjun Shakha",
+    "address": "Pittsburgh PA",
+    "state": "Pennsylvania",
+    "city": "Pittsburgh",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=arjun-shakha18",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Texas|Allen|Prayag Shakha",
+    "name": "Prayag Shakha",
+    "address": "Allen TX",
+    "state": "Texas",
+    "city": "Allen",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=prayag-shakha",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:45am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

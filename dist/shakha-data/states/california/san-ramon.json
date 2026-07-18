@@ -1,0 +1,92 @@
+[
+  {
+    "id": "California|San Ramon|Ayodhya Shakha - San Ramon",
+    "name": "Ayodhya Shakha - San Ramon",
+    "address": "San Ramon CA",
+    "state": "California",
+    "city": "San Ramon",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=ayodhya-shakha-san-ramon",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Ramon|Chanakya Shakha - San Ramon",
+    "name": "Chanakya Shakha - San Ramon",
+    "address": "San Ramon CA",
+    "state": "California",
+    "city": "San Ramon",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=chanakya-shakha-san-ramon",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Ramon|Kailash Kishor Shakha (Contra Costa)",
+    "name": "Kailash Kishor Shakha (Contra Costa)",
+    "address": "San Ramon CA",
+    "state": "California",
+    "city": "San Ramon",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kailash-kishor-shakha-contra-costa",
+    "day": "Weekly on Sunday",
+    "time": "09:45am to 11:15am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

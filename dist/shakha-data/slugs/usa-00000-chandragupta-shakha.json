@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Austin|Chandragupta Shakha",
+  "name": "Chandragupta Shakha",
+  "address": "Austin TX",
+  "state": "Texas",
+  "city": "Austin",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=chandragupta_yuvashakha",
+  "day": "Weekly on Saturday",
+  "time": "16:30pm to 17:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

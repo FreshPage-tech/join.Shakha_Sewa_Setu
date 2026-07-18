@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Pearland|Meenakshi",
+  "name": "Meenakshi",
+  "address": "Pearland TX",
+  "state": "Texas",
+  "city": "Pearland",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=meenakshi",
+  "day": "Weekly on Sunday",
+  "time": "13:45pm to 15:45pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

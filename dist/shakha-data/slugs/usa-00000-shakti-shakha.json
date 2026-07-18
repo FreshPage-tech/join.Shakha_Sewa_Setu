@@ -1,0 +1,30 @@
+{
+  "id": "Massachusetts|North Attleboro|Shakti Shakha",
+  "name": "Shakti Shakha",
+  "address": "North Attleboro MA",
+  "state": "Massachusetts",
+  "city": "North Attleboro",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=shakti-shakha3",
+  "day": "Weekly on Sunday",
+  "time": "16:30pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

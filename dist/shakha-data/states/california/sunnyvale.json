@@ -1,0 +1,182 @@
+[
+  {
+    "id": "California|Sunnyvale|Arjun Shakha - Sunnyvale",
+    "name": "Arjun Shakha - Sunnyvale",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=arjun-shakha-sunnyvale",
+    "day": "Weekly on Sunday",
+    "time": "15:30pm to 17:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Sunnyvale|Baal Ganesh Shakha - Sunnyvale",
+    "name": "Baal Ganesh Shakha - Sunnyvale",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=baal-ganesh-shakha-sunnyvale",
+    "day": "Weekly on Saturday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Sunnyvale|Nachiketa Kishor Shaka - Santa Clara",
+    "name": "Nachiketa Kishor Shaka - Santa Clara",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=kishor-shaka",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Sunnyvale|Omkara Yuva Shakha - Sunnyvale",
+    "name": "Omkara Yuva Shakha - Sunnyvale",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=omkara-yuva-shakha-sunnyvale",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Sunnyvale|Samarth Shakha - Sunnyvale",
+    "name": "Samarth Shakha - Sunnyvale",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=samarth-shakha-sunnyvale",
+    "day": "Weekly on Sunday",
+    "time": "09:30am to 11:00am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Sunnyvale|Shaurya Yuva Shakha - Sunnyvale",
+    "name": "Shaurya Yuva Shakha - Sunnyvale",
+    "address": "Sunnyvale CA",
+    "state": "California",
+    "city": "Sunnyvale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shaurya-yuva-shakha-sunnyvale",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

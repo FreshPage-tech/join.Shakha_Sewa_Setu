@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Kansas|Overland Park|Parashuram Shakha",
+    "name": "Parashuram Shakha",
+    "address": "Overland Park KS",
+    "state": "Kansas",
+    "city": "Overland Park",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Kansas-City-Shakha",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "Texas|Irving|Anand (Irving)",
+    "name": "Anand (Irving)",
+    "address": "Irving TX",
+    "state": "Texas",
+    "city": "Irving",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=anand-irving",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Irving|Raudra",
+    "name": "Raudra",
+    "address": "Irving TX",
+    "state": "Texas",
+    "city": "Irving",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Raudra",
+    "day": "Weekly on Friday",
+    "time": "17:00pm to 17:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Irving|Vijay (Irving)",
+    "name": "Vijay (Irving)",
+    "address": "Irving TX",
+    "state": "Texas",
+    "city": "Irving",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vijay-irving",
+    "day": "Weekly on Sunday",
+    "time": "17:00pm to 18:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "Texas|Irving|Vikrant Kishore Shakha(Irving)",
+    "name": "Vikrant Kishore Shakha(Irving)",
+    "address": "Irving TX",
+    "state": "Texas",
+    "city": "Irving",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Vikrant",
+    "day": "Weekly on Sunday",
+    "time": "16:30pm to 18:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

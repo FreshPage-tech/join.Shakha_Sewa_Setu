@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Milltown|Shakti Shakha",
+  "name": "Shakti Shakha",
+  "address": "Milltown NJ",
+  "state": "New Jersey",
+  "city": "Milltown",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=shakti-shakha19",
+  "day": "Every other Week",
+  "time": "00:00am to 00:00am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

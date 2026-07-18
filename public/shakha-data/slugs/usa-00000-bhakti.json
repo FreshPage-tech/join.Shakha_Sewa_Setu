@@ -1,0 +1,30 @@
+{
+  "id": "New Jersey|Edison|Bhakti",
+  "name": "Bhakti",
+  "address": "Edison NJ",
+  "state": "New Jersey",
+  "city": "Edison",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=bhakti-shakha",
+  "day": "Weekly on Thursday",
+  "time": "18:45pm to 20:15pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

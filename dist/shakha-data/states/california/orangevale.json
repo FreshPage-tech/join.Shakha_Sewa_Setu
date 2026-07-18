@@ -1,0 +1,32 @@
+[
+  {
+    "id": "California|Orangevale|Sacramento Proudha Shakha",
+    "name": "Sacramento Proudha Shakha",
+    "address": "Orangevale CA",
+    "state": "California",
+    "city": "Orangevale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=sac_proudha",
+    "day": "Every other Week on Sunday",
+    "time": "09:30am to 10:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

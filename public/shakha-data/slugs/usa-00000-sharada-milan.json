@@ -1,0 +1,30 @@
+{
+  "id": "Michigan|Farmington|Sharada Milan",
+  "name": "Sharada Milan",
+  "address": "Farmington MI",
+  "state": "Michigan",
+  "city": "Farmington",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=sharadashakha",
+  "day": "Weekly on Friday",
+  "time": "18:30pm to 20:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

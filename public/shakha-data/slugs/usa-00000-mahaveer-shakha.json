@@ -1,0 +1,30 @@
+{
+  "id": "California|Lathrop|Mahaveer Shakha",
+  "name": "Mahaveer Shakha",
+  "address": "Lathrop CA",
+  "state": "California",
+  "city": "Lathrop",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Mahaveer",
+  "day": "Weekly on Sunday",
+  "time": "09:00am to 10:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

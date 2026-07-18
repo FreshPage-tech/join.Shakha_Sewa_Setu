@@ -1,0 +1,30 @@
+{
+  "id": "Massachusetts|Billerica|Azad shakha",
+  "name": "Azad shakha",
+  "address": "Billerica MA",
+  "state": "Massachusetts",
+  "city": "Billerica",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=azad-shakha",
+  "day": "Weekly on Sunday",
+  "time": "16:30pm to 18:00pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

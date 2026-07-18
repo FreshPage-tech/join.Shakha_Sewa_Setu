@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Colorado|Colorado Springs|Hanuman Shakha - Colorado Springs",
+    "name": "Hanuman Shakha - Colorado Springs",
+    "address": "Colorado Springs CO",
+    "state": "Colorado",
+    "city": "Colorado Springs",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=hanuman-shakha-colorado-springs",
+    "day": "Weekly on Sunday",
+    "time": "10:45am to 12:15pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

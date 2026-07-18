@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Texas|Cypress|Vayu Shakha (NHV)",
+    "name": "Vayu Shakha (NHV)",
+    "address": "Cypress TX",
+    "state": "Texas",
+    "city": "Cypress",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Vayu-shakha",
+    "day": "Weekly on Sunday",
+    "time": "09:30am to 11:15am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

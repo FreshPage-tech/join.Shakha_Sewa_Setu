@@ -1,0 +1,30 @@
+{
+  "id": "Virginia|Chantilly|Hanuman Shakha",
+  "name": "Hanuman Shakha",
+  "address": "Chantilly VA",
+  "state": "Virginia",
+  "city": "Chantilly",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=hanuman-shakha",
+  "day": "Weekly on Sunday",
+  "time": "16:00pm to 17:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

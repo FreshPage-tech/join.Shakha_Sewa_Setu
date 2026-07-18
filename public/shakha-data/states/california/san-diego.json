@@ -1,0 +1,92 @@
+[
+  {
+    "id": "California|San Diego|Nivedita Shakha - San Diego",
+    "name": "Nivedita Shakha - San Diego",
+    "address": "San Diego CA",
+    "state": "California",
+    "city": "San Diego",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=nivedita-shakha-san-diego",
+    "day": "Weekly on Saturday",
+    "time": "15:00pm to 16:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Diego|Shivaji Shakha - San Diego",
+    "name": "Shivaji Shakha - San Diego",
+    "address": "San Diego CA",
+    "state": "California",
+    "city": "San Diego",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=shivaji-shakha-san-diego",
+    "day": "Weekly on Friday",
+    "time": "18:30pm to 20:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|San Diego|Vivekananda Shakha - San Diego",
+    "name": "Vivekananda Shakha - San Diego",
+    "address": "San Diego CA",
+    "state": "California",
+    "city": "San Diego",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vivekananda-shakha-san-diego",
+    "day": "Weekly on Saturday",
+    "time": "10:30am to 12:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

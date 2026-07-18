@@ -3,7 +3,7 @@ import {
   type ContactDetail,
   type InterestedPersonRecord,
   type ShakhaRecord,
-} from './adminData'
+} from './shakhaTypes'
 import {
   checkIsAdmin,
   createShakha,
@@ -11,9 +11,10 @@ import {
   getSession,
   listInterestedPeople,
   listShakhaRecordsAdmin,
-  signInAdmin,
+  requestAdminOtp,
   signOutAdmin,
   updateShakha,
+  verifyAdminOtp,
 } from './adminApi'
 
 const emptyContact = (): ContactDetail => ({ name: '', mobile: '', email: '' })
@@ -273,12 +274,17 @@ export default function AdminPanel({
 }) {
   const [checkingSession, setCheckingSession] = useState(true)
   const [authed, setAuthed] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [countryCode, setCountryCode] = useState('+91')
+  const [mobile, setMobile] = useState('')
+  const [otp, setOtp] = useState('')
+  const [otpSent, setOtpSent] = useState(false)
+  const [authLoading, setAuthLoading] = useState(false)
   const [error, setError] = useState('')
   const [tab, setTab] = useState<'people' | 'shakhas'>('people')
   const [loadingPeople, setLoadingPeople] = useState(false)
   const [people, setPeople] = useState<InterestedPersonRecord[]>([])
+
+  const fullPhone = `${countryCode.trim()}${mobile.replace(/\D/g, '')}`
 
   const refreshPeople = async () => {
     setLoadingPeople(true)
@@ -320,24 +326,34 @@ export default function AdminPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const signIn = async (event: React.FormEvent) => {
+  const handleAuthSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setError('')
+    setAuthLoading(true)
     try {
-      await signInAdmin(email.trim(), password)
-      setAuthed(true)
-      await refreshAllAdminData()
+      if (!otpSent) {
+        await requestAdminOtp(fullPhone)
+        setOtpSent(true)
+      } else {
+        await verifyAdminOtp(fullPhone, otp)
+        setAuthed(true)
+        await refreshAllAdminData()
+      }
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Invalid admin login credentials'
+      const message = err instanceof Error ? err.message : 'Invalid OTP login'
       setError(message)
+    } finally {
+      setAuthLoading(false)
     }
   }
 
   const signOut = async () => {
     await signOutAdmin()
     setAuthed(false)
-    setEmail('')
-    setPassword('')
+    setCountryCode('+91')
+    setMobile('')
+    setOtp('')
+    setOtpSent(false)
     setTab('people')
     setPeople([])
   }
@@ -358,14 +374,19 @@ export default function AdminPanel({
         <div className="mx-auto max-w-md rounded-2xl border bg-white p-8" style={{ borderColor: '#eadfce' }}>
           <h1 className="font-display text-2xl font-bold" style={{ color: '#132f5d' }}>Admin Login</h1>
           <p className="mt-2 text-sm" style={{ color: '#5a6f9a' }}>
-            Access is protected by Supabase authentication and admin access policies.
+            Access is protected by Supabase phone OTP authentication and admin access policies.
           </p>
-          <form onSubmit={signIn} className="mt-6 space-y-3">
-            <input type="email" value={email} onChange={event => setEmail(event.target.value)} placeholder="Admin email" className="w-full rounded-lg border px-3 py-2.5 text-sm" style={{ borderColor: '#ddd6c8' }} required />
-            <input type="password" value={password} onChange={event => setPassword(event.target.value)} placeholder="Password" className="w-full rounded-lg border px-3 py-2.5 text-sm" style={{ borderColor: '#ddd6c8' }} required />
+          <form onSubmit={handleAuthSubmit} className="mt-6 space-y-3">
+            <div className="grid grid-cols-[100px_1fr] gap-2">
+              <input value={countryCode} onChange={event => setCountryCode(event.target.value)} placeholder="+91" className="w-full rounded-lg border px-3 py-2.5 text-sm" style={{ borderColor: '#ddd6c8' }} required />
+              <input value={mobile} onChange={event => setMobile(event.target.value)} placeholder="Mobile number" className="w-full rounded-lg border px-3 py-2.5 text-sm" style={{ borderColor: '#ddd6c8' }} required />
+            </div>
+            {otpSent && (
+              <input value={otp} onChange={event => setOtp(event.target.value)} placeholder="Enter OTP" className="w-full rounded-lg border px-3 py-2.5 text-sm" style={{ borderColor: '#ddd6c8' }} required />
+            )}
             {error && <p className="text-xs text-red-500">{error}</p>}
-            <button type="submit" className="w-full rounded-lg px-4 py-3 text-sm font-semibold text-white" style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}>
-              Sign in
+            <button type="submit" disabled={authLoading} className="w-full rounded-lg px-4 py-3 text-sm font-semibold text-white disabled:opacity-60" style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}>
+              {otpSent ? 'Verify OTP & Sign in' : 'Send OTP'}
             </button>
           </form>
         </div>

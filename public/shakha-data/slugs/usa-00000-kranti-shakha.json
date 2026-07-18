@@ -1,0 +1,30 @@
+{
+  "id": "Texas|Plano|Kranti Shakha",
+  "name": "Kranti Shakha",
+  "address": "Plano TX",
+  "state": "Texas",
+  "city": "Plano",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=Kranti",
+  "day": "Weekly on Sunday",
+  "time": "10:00am to 11:30am",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "California|Irvine|Bhagini Nivedita Shakha - Irvine",
+    "name": "Bhagini Nivedita Shakha - Irvine",
+    "address": "Irvine CA",
+    "state": "California",
+    "city": "Irvine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=bhagini-nivedita-shakha-irvine",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Irvine|Khudiram Bose Yuva Shakha",
+    "name": "Khudiram Bose Yuva Shakha",
+    "address": "Irvine CA",
+    "state": "California",
+    "city": "Irvine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=khudiram-bose-yuva-shakha",
+    "day": "Weekly on Friday",
+    "time": "19:00pm to 20:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Irvine|Krishnadev Raaya Shakha-Irvine",
+    "name": "Krishnadev Raaya Shakha-Irvine",
+    "address": "Irvine CA",
+    "state": "California",
+    "city": "Irvine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=krishnadev-raaya-shakha-irvine",
+    "day": "Weekly on Friday",
+    "time": "18:15pm to 19:45pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Irvine|Netaji Subhash Shakha - Irvine",
+    "name": "Netaji Subhash Shakha - Irvine",
+    "address": "Irvine CA",
+    "state": "California",
+    "city": "Irvine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=netaji-subhash-shakha-irvine",
+    "day": "Weekly on Sunday",
+    "time": "16:00pm to 18:00pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "id": "California|Irvine|Sanjeevani Shakha",
+    "name": "Sanjeevani Shakha",
+    "address": "Irvine CA",
+    "state": "California",
+    "city": "Irvine",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=Sanjeevani",
+    "day": "Weekly on Saturday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

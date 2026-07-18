@@ -1,7 +1,8 @@
 import type { Session } from '@supabase/supabase-js'
 import { SHAKHA_DATA } from './shakhaData'
-import { supabase } from './supabaseClient'
+import { hasSupabaseConfig, supabase } from './supabaseClient'
 import type { InterestedPersonRecord, ShakhaRecord } from './adminData'
+import { applyShakhaOverride } from './shakhaOverrides'
 
 type SupabaseShakhaRow = {
   id: string
@@ -49,12 +50,37 @@ type SupabaseInterestedRow = {
   comments: string | null
 }
 
+function getSupabaseConfigError(): string | null {
+  if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+    return 'Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env and restart the app.'
+  }
+
+  return null
+}
+
+function normalizePhone(phone: string): string {
+  const compact = phone.replace(/\s+/g, '')
+  if (!compact) {
+    return ''
+  }
+
+  if (compact.startsWith('+')) {
+    return compact
+  }
+
+  if (/^\d{10}$/.test(compact)) {
+    return `+91${compact}`
+  }
+
+  return `+${compact}`
+}
+
 function defaultSeedShakhas(): ShakhaRecord[] {
   const rows: ShakhaRecord[] = []
   for (const [state, cityMap] of Object.entries(SHAKHA_DATA)) {
     for (const [city, shakhas] of Object.entries(cityMap)) {
       for (const shakha of shakhas) {
-        rows.push({
+        rows.push(applyShakhaOverride({
           id: `${state}|${city}|${shakha.name}`,
           name: shakha.name,
           address: shakha.address,
@@ -71,7 +97,7 @@ function defaultSeedShakhas(): ShakhaRecord[] {
             { name: '', mobile: '', email: '' },
             { name: '', mobile: '', email: '' },
           ],
-        })
+        }))
       }
     }
   }
@@ -80,7 +106,7 @@ function defaultSeedShakhas(): ShakhaRecord[] {
 }
 
 function mapShakhaRow(row: SupabaseShakhaRow): ShakhaRecord {
-  return {
+  return applyShakhaOverride({
     id: row.id,
     name: row.name,
     address: row.address,
@@ -97,7 +123,7 @@ function mapShakhaRow(row: SupabaseShakhaRow): ShakhaRecord {
       { name: row.contact_2_name ?? '', mobile: row.contact_2_mobile ?? '', email: row.contact_2_email ?? '' },
       { name: row.contact_3_name ?? '', mobile: row.contact_3_mobile ?? '', email: row.contact_3_email ?? '' },
     ],
-  }
+  })
 }
 
 function toShakhaRow(record: Omit<ShakhaRecord, 'id'>) {
@@ -147,6 +173,28 @@ function mapInterestedRow(row: SupabaseInterestedRow): InterestedPersonRecord {
   }
 }
 
+async function checkAdminTable(tableName: 'admin_members' | 'admin_users', userId: string): Promise<boolean> {
+  const { data, error } = await supabase
+    .from(tableName)
+    .select('user_id')
+    .eq('user_id', userId)
+    .maybeSingle()
+
+  if (error) {
+    return false
+  }
+
+  return Boolean(data?.user_id)
+}
+
+async function checkIsAdminByUserId(userId: string): Promise<boolean> {
+  if (await checkAdminTable('admin_members', userId)) {
+    return true
+  }
+
+  return checkAdminTable('admin_users', userId)
+}
+
 export async function getSession(): Promise<Session | null> {
   const { data, error } = await supabase.auth.getSession()
   if (error) {
@@ -157,15 +205,98 @@ export async function getSession(): Promise<Session | null> {
 }
 
 export async function signInAdmin(email: string, password: string): Promise<void> {
-  const { error } = await supabase.auth.signInWithPassword({ email, password })
-  if (error) {
-    throw error
+  const configError = getSupabaseConfigError()
+  if (configError) {
+    throw new Error(configError)
   }
 
-  const isAdmin = await checkIsAdmin()
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+  if (error) {
+    if (error.message.toLowerCase().includes('invalid login credentials')) {
+      throw new Error('Invalid email or password for admin login')
+    }
+
+    throw new Error(error.message)
+  }
+
+  const userId = data.user?.id
+  if (!userId) {
+    await supabase.auth.signOut()
+    throw new Error('Login failed to create a valid session. Please try again.')
+  }
+
+  const isAdmin = await checkIsAdminByUserId(userId)
   if (!isAdmin) {
     await supabase.auth.signOut()
-    throw new Error('Authenticated user is not authorized as admin')
+    throw new Error('Login succeeded, but this account is not mapped as admin in Supabase (table: admin_users/admin_members). Run seed:admin for this email.')
+  }
+}
+
+export async function requestAdminOtp(phone: string): Promise<void> {
+  const configError = getSupabaseConfigError()
+  if (configError) {
+    throw new Error(configError)
+  }
+
+  const normalizedPhone = normalizePhone(phone)
+  if (!normalizedPhone) {
+    throw new Error('Please enter a valid phone number')
+  }
+
+  const { error } = await supabase.auth.signInWithOtp({
+    phone: normalizedPhone,
+    options: {
+      shouldCreateUser: true,
+    },
+  })
+
+  if (error) {
+    throw new Error(error.message)
+  }
+}
+
+export async function verifyAdminOtp(phone: string, otp: string): Promise<void> {
+  const configError = getSupabaseConfigError()
+  if (configError) {
+    throw new Error(configError)
+  }
+
+  const normalizedPhone = normalizePhone(phone)
+  const normalizedOtp = otp.trim()
+
+  if (!normalizedPhone) {
+    throw new Error('Please enter a valid phone number')
+  }
+
+  if (!normalizedOtp) {
+    throw new Error('Please enter the OTP')
+  }
+
+  const { data, error } = await supabase.auth.verifyOtp({
+    phone: normalizedPhone,
+    token: normalizedOtp,
+    type: 'sms',
+  })
+
+  if (error) {
+    const message = error.message.toLowerCase()
+    if (message.includes('expired') || message.includes('invalid')) {
+      throw new Error('OTP has expired or is invalid. Please click Send OTP again and enter the latest OTP from SMS (or configured test OTP).')
+    }
+
+    throw new Error(error.message)
+  }
+
+  const userId = data.user?.id
+  if (!userId) {
+    await supabase.auth.signOut()
+    throw new Error('OTP verified but no session user was returned. Please try again.')
+  }
+
+  const isAdmin = await checkIsAdminByUserId(userId)
+  if (!isAdmin) {
+    await supabase.auth.signOut()
+    throw new Error('Login succeeded, but this account is not mapped as admin in Supabase (table: admin_users/admin_members). Run seed:admin for this email.')
   }
 }
 
@@ -177,16 +308,13 @@ export async function signOutAdmin(): Promise<void> {
 }
 
 export async function checkIsAdmin(): Promise<boolean> {
-  const { data, error } = await supabase
-    .from('admin_users')
-    .select('user_id')
-    .limit(1)
-
-  if (error) {
+  const session = await getSession()
+  const userId = session?.user?.id
+  if (!userId) {
     return false
   }
 
-  return (data?.length ?? 0) > 0
+  return checkIsAdminByUserId(userId)
 }
 
 export async function listInterestedPeople(): Promise<InterestedPersonRecord[]> {
@@ -230,6 +358,10 @@ export async function submitInterestedPerson(
 }
 
 export async function listShakhaRecordsPublic(): Promise<ShakhaRecord[]> {
+  if (!hasSupabaseConfig) {
+    return defaultSeedShakhas()
+  }
+
   const { data, error } = await supabase
     .from('shakhas_admin')
     .select('*')

@@ -1,0 +1,30 @@
+{
+  "id": "Connecticut|Newington|Eklavya Shakha",
+  "name": "Eklavya Shakha",
+  "address": "Newington CT",
+  "state": "Connecticut",
+  "city": "Newington",
+  "vibhag": "",
+  "bhag": "",
+  "zipCode": "00000",
+  "mapLink": "https://www.hssus.org/chapter-detail/?username=eklavya-shakha",
+  "day": "Weekly on Sunday",
+  "time": "17:00pm to 18:30pm",
+  "contacts": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "name": "",
+      "mobile": "",
+      "email": ""
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Arizona|Glendale|Jija Mata Shakha - Phoenix",
+    "name": "Jija Mata Shakha - Phoenix",
+    "address": "Glendale AZ",
+    "state": "Arizona",
+    "city": "Glendale",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=jija-mata-shakha-phoenix",
+    "day": "Weekly on Friday",
+    "time": "18:00pm to 19:30pm",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]

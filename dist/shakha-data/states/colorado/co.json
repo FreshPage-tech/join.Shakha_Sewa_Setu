@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Colorado|CO|Vidyaranya Shakha - Aurora",
+    "name": "Vidyaranya Shakha - Aurora",
+    "address": "CO",
+    "state": "Colorado",
+    "city": "CO",
+    "vibhag": "",
+    "bhag": "",
+    "zipCode": "00000",
+    "mapLink": "https://www.hssus.org/chapter-detail/?username=vidyaranya-shakha-aurora",
+    "day": "Weekly on Sunday",
+    "time": "10:00am to 11:30am",
+    "contacts": [
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      },
+      {
+        "name": "",
+        "mobile": "",
+        "email": ""
+      }
+    ]
+  }
+]
