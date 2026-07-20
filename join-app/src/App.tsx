@@ -1784,155 +1784,224 @@ function LeaderBeePage() {
 
   const registrationUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
 
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.location.pathname !== '/register-leader-bee') {
+      return
+    }
+
+    if (window.location.hash !== '#leader-bee-register') {
+      window.history.replaceState({}, '', '/register-leader-bee#leader-bee-register')
+    }
+
+    requestAnimationFrame(() => {
+      const target = document.getElementById('leader-bee-register')
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    })
+  }, [])
+
   return (
     <div className="min-h-screen" style={{ background: '#FFF7ED', color: '#1F2937' }}>
-      <section
-        className="pt-16 pb-14 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20"
-        style={{
-          background: 'linear-gradient(135deg, #1E3A8A 0%, #1d4ed8 48%, #F97316 100%)',
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-orange-200 text-sm sm:text-base font-semibold tracking-wider uppercase">Leader-BEE</p>
-          <h1 className="mt-4 text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-            🐝 10 Weeks Leadership Workshop
-          </h1>
-          <p className="mt-5 text-orange-100 text-lg sm:text-xl font-semibold">Unleash the Leader Among You This Summer!</p>
-          <p className="mt-3 text-white text-base sm:text-lg">FREE Leadership Development Program</p>
-          <p className="mt-2 text-orange-100 text-base sm:text-lg font-semibold">For Students in Grade 4 – Grade 8</p>
-          <p className="mt-5 text-white/95 text-sm sm:text-base">Build Confidence • Leadership • Discipline • Teamwork</p>
-          <div className="mt-8">
-            <a
-              href="#leader-bee-register"
-              className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-              style={{ background: '#F97316' }}
-            >
-              Register Now
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 sm:py-16 lg:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
-            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Why Leader-BEE?</h2>
-            <p className="mt-4 text-sm sm:text-base leading-7">
-              Leader-BEE is a fun, interactive 10-week leadership journey where children develop essential life skills
-              through games, activities, teamwork, discussions, and practical experiences.
-            </p>
-            <p className="mt-4 text-sm sm:text-base leading-7">
-              The program also encourages active participation from parents to reinforce leadership values at home.
-            </p>
+      <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-4 pb-16">
+        <div className="rounded-[2rem] border overflow-hidden shadow-[0_16px_48px_rgba(30,58,138,0.12)]" style={{ background: '#fffdf9', borderColor: '#fde2c5' }}>
+          <div className="px-6 pt-5 pb-2 border-b" style={{ borderColor: '#f3ddc3' }}>
+            <div className="flex flex-wrap items-center justify-end gap-4 text-xs sm:text-sm font-semibold" style={{ color: '#1E3A8A' }}>
+              {['About', 'Program', 'Details', 'Benefits', 'Register'].map(item => (
+                <a key={item} href={item === 'Register' ? '#leader-bee-register' : '#leader-bee-program'} className="hover:opacity-80 transition-opacity">
+                  {item}
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
-            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Program Details</h2>
-            <div className="mt-5 space-y-5 text-sm sm:text-base leading-7">
-              <div>
-                <p className="font-semibold" style={{ color: '#1E3A8A' }}>📅 When</p>
-                <p>Starts July 30th</p>
-                <p>Every Thursday, 6:00 PM – 7:30 PM</p>
-                <p>Duration: 10 Weeks</p>
+          <div className="grid lg:grid-cols-[1.06fr_0.94fr] gap-6 p-6 sm:p-8 lg:p-10">
+            <div className="pt-2">
+              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: '#F97316' }}>Leader-BEE</p>
+              <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.95]" style={{ color: '#1E3A8A' }}>
+                LEADER-<span style={{ color: '#F97316' }}>BEE</span>
+              </h1>
+              <div className="inline-flex mt-4 rounded-md px-4 py-2 text-white text-lg sm:text-xl font-bold" style={{ background: '#1E3A8A' }}>
+                10 WEEKS WORKSHOP
               </div>
-              <div>
-                <p className="font-semibold" style={{ color: '#1E3A8A' }}>👨‍👩‍👧 Who Can Attend?</p>
-                <p>Students: Grade 4 – Grade 8</p>
-                <p>Parent: At least ONE parent must attend</p>
+              <p className="mt-6 text-3xl sm:text-4xl italic font-semibold leading-tight" style={{ color: '#1E3A8A' }}>
+                Unleash the <span style={{ color: '#F97316' }}>Leader</span>
+                <br />
+                among you this summer!
+              </p>
+
+              <div className="mt-6 inline-flex items-center gap-2 rounded-lg border px-3 py-2" style={{ borderColor: '#fde2c5', background: '#fff4ea' }}>
+                <span className="rounded-md px-2 py-1 text-xs font-extrabold text-white" style={{ background: '#F97316' }}>FREE</span>
+                <span className="text-sm sm:text-base font-semibold" style={{ color: '#1E3A8A' }}>Leadership Development Program</span>
               </div>
-              <div>
-                <p className="font-semibold" style={{ color: '#1E3A8A' }}>📍 Location</p>
-                <p>Holmdel Park or nearby location</p>
-                <p>Final location will be shared after registration</p>
+
+              <p className="mt-4 inline-block rounded-lg px-3 py-2 text-sm sm:text-base font-bold text-white" style={{ background: '#1E3A8A' }}>
+                For Students in <span style={{ color: '#FACC15' }}>Grade 4 – Grade 8</span>
+              </p>
+
+              <p className="mt-4 text-sm sm:text-base font-semibold" style={{ color: '#1E3A8A' }}>
+                Build Confidence • Leadership • Discipline • Teamwork
+              </p>
+
+              <a
+                href="#leader-bee-register"
+                className="mt-6 inline-flex items-center justify-center rounded-2xl px-8 py-3 text-lg font-extrabold text-white shadow-[0_14px_24px_rgba(249,115,22,0.35)] transition-transform hover:scale-[1.03]"
+                style={{ background: 'linear-gradient(120deg, #fb923c, #f97316)' }}
+              >
+                REGISTER NOW
+              </a>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 rounded-[2rem]" style={{ background: 'radial-gradient(circle at 65% 35%, rgba(249,115,22,0.95) 0%, rgba(249,115,22,0.82) 42%, rgba(249,115,22,0.15) 78%, rgba(249,115,22,0) 100%)' }} />
+              <div className="absolute top-4 right-4 z-20 rounded-xl px-4 py-3 text-white text-sm sm:text-base font-extrabold shadow-lg" style={{ background: '#1E3A8A' }}>
+                EVERY THURSDAY
+                <br />
+                <span className="font-bold text-orange-200">6:00 PM – 7:30 PM</span>
               </div>
+              <div className="absolute top-4 left-4 z-20 grid grid-cols-2 gap-2 text-[11px] sm:text-xs font-bold text-white/95">
+                {['Leadership', 'Teamwork', 'Goal Setting', 'Values'].map(item => (
+                  <span key={item} className="rounded-md px-2 py-1" style={{ background: 'rgba(30,58,138,0.8)' }}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <img src={familyImg} alt="Leader-BEE students" className="relative z-10 w-full h-full object-cover rounded-[2rem]" />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pb-14 sm:pb-16 lg:pb-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center" style={{ color: '#1E3A8A' }}>What Students Will Learn</h2>
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <section id="leader-bee-program" className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pb-6">
+        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold" style={{ color: '#1E3A8A' }}>PROGRAM DETAILS</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-2xl border p-5 text-center" style={{ borderColor: '#f5d7b8', background: '#ffffff' }}>
+              <div className="mx-auto w-14 h-14 rounded-full flex items-center justify-center text-2xl text-white" style={{ background: '#F97316' }}>📅</div>
+              <p className="mt-3 text-lg font-extrabold" style={{ color: '#F97316' }}>WHEN</p>
+              <p className="mt-2 text-base font-semibold" style={{ color: '#1E3A8A' }}>July 30th</p>
+              <p className="text-base font-semibold" style={{ color: '#1E3A8A' }}>to 10 Weeks</p>
+              <p className="mt-1 text-base font-semibold" style={{ color: '#1E3A8A' }}>Every Thursday</p>
+              <p className="text-base font-semibold" style={{ color: '#1E3A8A' }}>6:00 PM – 7:30 PM</p>
+            </div>
+
+            <div className="rounded-2xl border p-5 text-center" style={{ borderColor: '#f5d7b8', background: '#ffffff' }}>
+              <div className="mx-auto w-14 h-14 rounded-full flex items-center justify-center text-2xl text-white" style={{ background: '#1E3A8A' }}>👨‍👩‍👧</div>
+              <p className="mt-3 text-lg font-extrabold" style={{ color: '#1E3A8A' }}>WHO CAN ATTEND?</p>
+              <p className="mt-2 text-base font-semibold" style={{ color: '#1E3A8A' }}>Grade 4th to Grade 8th</p>
+              <p className="mt-2 text-xl font-black" style={{ color: '#F97316' }}>+ </p>
+              <p className="text-base font-bold" style={{ color: '#F97316' }}>At least ONE parent must attend</p>
+            </div>
+
+            <div className="rounded-2xl border p-5 text-center" style={{ borderColor: '#f5d7b8', background: '#ffffff' }}>
+              <div className="mx-auto w-14 h-14 rounded-full flex items-center justify-center text-2xl text-white" style={{ background: '#F97316' }}>📍</div>
+              <p className="mt-3 text-lg font-extrabold" style={{ color: '#F97316' }}>WHERE</p>
+              <p className="mt-2 text-[1.35rem] font-extrabold" style={{ color: '#1E3A8A' }}>Holmdel Park</p>
+              <p className="text-xl font-extrabold" style={{ color: '#1E3A8A' }}>or nearby location</p>
+              <p className="mt-2 text-base font-semibold" style={{ color: '#1E3A8A' }}>Final location will be shared after registration</p>
+            </div>
+
+            <div className="rounded-2xl border p-5 text-center" style={{ borderColor: '#f5d7b8', background: '#ffffff' }}>
+              <div className="mx-auto w-14 h-14 rounded-full flex items-center justify-center text-2xl text-white" style={{ background: '#1E3A8A' }}>🧑‍🤝‍🧑</div>
+              <p className="mt-3 text-lg font-extrabold" style={{ color: '#1E3A8A' }}>REMARKS</p>
+              <p className="mt-2 text-[1.12rem] font-bold leading-8" style={{ color: '#1E3A8A' }}>At least one parent must attend each session.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
+        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold" style={{ color: '#1E3A8A' }}>WHAT STUDENTS WILL LEARN</h2>
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
             {learnItems.map(item => (
-              <div
-                key={item.label}
-                className="rounded-xl border bg-white px-4 py-5 text-center"
-                style={{ borderColor: '#FDBA74' }}
-              >
-                <div className="text-2xl">{item.icon}</div>
-                <p className="mt-2 text-sm sm:text-base font-semibold">{item.label}</p>
+              <div key={item.label} className="text-center">
+                <div className="mx-auto w-14 h-14 rounded-full flex items-center justify-center text-2xl" style={{ background: '#fef0e2' }}>{item.icon}</div>
+                <p className="mt-2 text-sm font-bold leading-5" style={{ color: '#1E3A8A' }}>{item.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="pb-14 sm:pb-16 lg:pb-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
-            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Why Parents Should Join</h2>
-            <ul className="mt-5 space-y-3 text-sm sm:text-base leading-6">
+      <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+            <h2 className="text-3xl font-black" style={{ color: '#F97316' }}>WHY PARENTS SHOULD JOIN</h2>
+            <ul className="mt-4 space-y-3 text-lg font-semibold" style={{ color: '#1E3A8A' }}>
               {parentReasons.map(reason => (
-                <li key={reason}>✔ {reason}</li>
+                <li key={reason}>● {reason}</li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
-            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Workshop Highlights</h2>
-            <ul className="mt-5 grid sm:grid-cols-2 gap-y-3 gap-x-4 text-sm sm:text-base leading-6">
+          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+            <h2 className="text-3xl font-black" style={{ color: '#1E3A8A' }}>WORKSHOP HIGHLIGHTS</h2>
+            <ul className="mt-4 grid sm:grid-cols-2 gap-y-3 gap-x-4 text-lg font-semibold" style={{ color: '#1E3A8A' }}>
               {highlights.map(item => (
-                <li key={item}>✓ {item}</li>
+                <li key={item}>● {item}</li>
               ))}
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="leader-bee-register" className="pb-14 sm:pb-16 lg:pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl p-7 sm:p-10 text-center" style={{ background: '#FFFFFF', border: '2px solid #FDBA74' }}>
-            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Ready to Begin?</h2>
-            <p className="mt-3 text-base sm:text-lg font-semibold" style={{ color: '#F97316' }}>Registration is FREE</p>
-            <p className="mt-5 text-sm sm:text-base break-all">Registration Link: {registrationUrl}</p>
+      <section id="leader-bee-register" className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
+        <div className="rounded-3xl overflow-hidden border" style={{ borderColor: '#f3ddc3' }}>
+          <div className="grid md:grid-cols-[1fr_auto] gap-4 px-6 py-6" style={{ background: '#1E3A8A' }}>
+            <div>
+              <h2 className="text-4xl font-black text-white">READY TO BEGIN?</h2>
+              <p className="mt-1 text-3xl font-extrabold text-white">Registration is <span style={{ color: '#FACC15' }}>FREE</span></p>
+            </div>
             <a
               href={registrationUrl}
-              className="mt-7 inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
+              className="inline-flex items-center justify-center rounded-2xl px-10 py-4 text-3xl font-black text-white shadow-[0_10px_24px_rgba(249,115,22,0.4)]"
               style={{ background: '#F97316' }}
             >
-              Register for Leader-BEE
+              REGISTER NOW →
             </a>
           </div>
-        </div>
-      </section>
-
-      <section className="pb-14 sm:pb-16 lg:pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
-          <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Important Notes</h2>
-          <div className="mt-5 space-y-3 text-sm sm:text-base leading-6">
-            <p>📌 At least one parent must attend each session.</p>
-            <p>📌 Limited seats available.</p>
-            <p>📌 Registration required.</p>
+          <div className="px-6 py-4 text-lg font-bold break-all" style={{ background: '#fffdfa', color: '#1E3A8A' }}>
+            REGISTRATION LINK: <span style={{ color: '#F97316' }}>{registrationUrl}</span>
           </div>
         </div>
       </section>
 
-      <section className="pb-14 sm:pb-16 lg:pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl p-6 sm:p-8 text-center" style={{ background: '#1E3A8A' }}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Know a family with children in Grades 4–8?</h2>
-          <p className="mt-4 text-white/90 text-sm sm:text-base leading-7">
-            🙏 Please share this program with your friends, relatives, neighbors, and community.
-          </p>
-          <p className="mt-2 text-orange-200 text-sm sm:text-base">Together, let's nurture tomorrow's leaders.</p>
+      <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-8">
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+            <h2 className="text-3xl font-black text-center" style={{ color: '#1E3A8A' }}>IMPORTANT NOTES</h2>
+            <div className="mt-5 grid sm:grid-cols-3 gap-3 text-center">
+              <p className="text-lg font-bold" style={{ color: '#1E3A8A' }}>📌<br />At least one parent must attend each session.</p>
+              <p className="text-lg font-bold" style={{ color: '#1E3A8A' }}>📌<br />Limited seats available.</p>
+              <p className="text-lg font-bold" style={{ color: '#1E3A8A' }}>📌<br />Registration required.</p>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+            <h2 className="text-3xl font-black text-center" style={{ color: '#1E3A8A' }}>KNOW A FAMILY WITH CHILDREN IN GRADES 4–8?</h2>
+            <p className="mt-4 text-lg font-semibold text-center" style={{ color: '#1E3A8A' }}>
+              Please share this program with your friends, relatives, neighbors, and community.
+            </p>
+            <p className="mt-3 text-2xl font-black text-center" style={{ color: '#F97316' }}>Together, let's nurture tomorrow's leaders.</p>
+          </div>
         </div>
       </section>
 
-      <footer className="py-10" style={{ background: '#1F2937' }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-orange-200 text-sm">Hosted by</p>
-          <p className="mt-2 text-white text-lg sm:text-xl font-bold">Hindu Swayamsevak Sangh (HSS)</p>
-          <p className="mt-3 text-orange-100 text-sm sm:text-base">Sangathan • Sanskar • Seva • Samarpan</p>
+      <footer className="py-7" style={{ background: 'linear-gradient(120deg, #0c2e70, #102b5f 58%, #0a2452)' }}>
+        <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p className="text-orange-200 text-sm">Hosted by</p>
+            <p className="mt-1 text-white text-2xl font-black">Hindu Swayamsevak Sangh (HSS)</p>
+            <p className="mt-1 text-orange-200 text-sm font-semibold">SANGATHAN • SANSKAR • SEVA • SAMARPAN</p>
+          </div>
+          <div className="flex items-center gap-3">
+            {['f', 'ig', 'yt', 'www'].map(item => (
+              <span key={item} className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white" style={{ background: '#F97316' }}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </footer>
     </div>
