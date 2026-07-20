@@ -1,0 +1,16 @@
+{
+  "name": "LEADER-BEE Workshop",
+  "short_name": "LEADER-BEE",
+  "description": "LEADER-BEE 10 Weeks Workshop landing page",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFF8F1",
+  "theme_color": "#0F2D62",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

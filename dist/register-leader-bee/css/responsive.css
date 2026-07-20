@@ -1,0 +1,202 @@
+/* ------------------------------------------------------------------
+   LEADER-BEE Landing Page
+   Responsive Styles
+------------------------------------------------------------------ */
+
+@media (max-width: 1399px) {
+  .hero-card {
+    padding: 0.85rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hero-card {
+    padding: 1.6rem;
+  }
+
+  .register-cta {
+    padding: 1.3rem;
+  }
+
+  .btn-register-large {
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 6.2rem;
+  }
+
+  .brand-text {
+    font-size: 1.03rem;
+  }
+
+  .hero-card {
+    border-radius: 1.4rem;
+  }
+
+  .btn-hero {
+    font-size: 1.1rem;
+    padding: 0.72rem 1.35rem;
+  }
+
+  .build-text {
+    width: 100%;
+    font-size: 1.15rem;
+  }
+
+  .register-cta h2 {
+    font-size: 1.7rem;
+  }
+
+  .register-cta p {
+    font-size: 1.18rem;
+  }
+
+  .reg-link-label,
+  .reg-link {
+    font-size: 0.95rem;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-space {
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+
+  .hero-section {
+    padding-top: 5.6rem;
+  }
+
+  .hero-card,
+  .section-shell,
+  .content-card,
+  .info-card,
+  .register-cta {
+    border-radius: 1.1rem;
+  }
+
+  .hero-card {
+    padding: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .detail-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .check-list li {
+    font-size: 0.96rem;
+  }
+
+  .family-illustration {
+    max-height: 160px;
+  }
+
+  .workshop-illustration {
+    max-height: 150px;
+  }
+
+  .btn-register-large {
+    font-size: 1.05rem;
+    padding: 0.86rem 1rem;
+  }
+
+  .mini-note p {
+    font-size: 0.82rem;
+  }
+
+  .share-highlight {
+    font-size: 1.05rem;
+  }
+
+  .footer-shell h2 {
+    font-size: 1.15rem;
+  }
+
+  .footer-motto {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .container-xxl {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .logo-hss {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero-card {
+    padding: 1rem;
+  }
+
+  .hero-actions-bottom {
+    padding: 0.85rem 0.25rem 0.2rem;
+  }
+
+  .btn-hero {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .icon-wrap {
+    width: 58px;
+    height: 58px;
+    font-size: 1.45rem;
+  }
+
+  .skill-icon {
+    width: 54px;
+    height: 54px;
+    font-size: 1.2rem;
+  }
+
+  .skill-item p {
+    font-size: 0.82rem;
+  }
+
+  .register-cta {
+    padding: 1rem;
+  }
+
+  .register-cta h2 {
+    font-size: 1.34rem;
+  }
+
+  .register-cta p {
+    font-size: 1rem;
+  }
+
+  .btn-register-large {
+    width: 100%;
+  }
+
+  .social-links a {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container-xxl {
+    max-width: 1480px;
+  }
+}
