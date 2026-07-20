@@ -1784,23 +1784,6 @@ function LeaderBeePage() {
 
   const registrationUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || window.location.pathname !== '/register-leader-bee') {
-      return
-    }
-
-    if (window.location.hash !== '#leader-bee-register') {
-      window.history.replaceState({}, '', '/register-leader-bee#leader-bee-register')
-    }
-
-    requestAnimationFrame(() => {
-      const target = document.getElementById('leader-bee-register')
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    })
-  }, [])
-
   return (
     <div className="min-h-screen" style={{ background: '#FFF7ED', color: '#1F2937' }}>
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-4 pb-16">
