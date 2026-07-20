@@ -194,6 +194,8 @@ function buildPageHtml(row, slug, override) {
   const image = `${siteUrl}/social/shakha-banner.png`
   const contacts = row.contacts.filter(contact => contact.name || contact.mobile || contact.email)
 
+  const isSpecialShakha = slug === 'usa-07733-sri-krishna-shakha';
+
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -220,6 +222,10 @@ function buildPageHtml(row, slug, override) {
       .badge { background: rgba(212,83,26,0.14); color: var(--saffron); border: 1px solid rgba(212,83,26,0.34); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
       .cta { text-decoration: none; background: linear-gradient(135deg, #d4531a, #c2410c); color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 14px; }
       .card { background: #fffdf8; border: 1px solid #eadfce; border-radius: 18px; padding: 22px; }
+      .hero { display: flex; align-items: center; margin-bottom: 20px; }
+      .hero-letter { width: 60px; height: 60px; border-radius: 50%; background-color: var(--saffron); color: white; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: bold; margin-right: 15px; }
+      .hero-image { width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; }
+      .hero-text { font-size: 18px; color: var(--navy); }
       h1 { margin: 0 0 4px; font-size: 30px; line-height: 1.15; color: #132f5d; }
       .sub { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
       .msg { white-space: pre-line; background: rgba(212,83,26,0.06); border: 1px solid rgba(212,83,26,0.24); border-radius: 14px; padding: 16px; color: #1e3761; line-height: 1.7; }
@@ -239,6 +245,13 @@ function buildPageHtml(row, slug, override) {
       </div>
 
       <section class="card">
+        <div class="hero">
+          ${isSpecialShakha
+            ? `<img src="/assets/usa-07733-sri-krishna-shakha.png" alt="${escapeHtml(row.name)}" class="hero-image">`
+            : `<div class="hero-letter">${escapeHtml(row.name.charAt(0))}</div>`
+          }
+          <div class="hero-text">Found 1 Shakha near you &gt;&gt;</div>
+        </div>
         <h1>${escapeHtml(row.name)}</h1>
         <p class="sub">${escapeHtml(row.city)}, ${escapeHtml(row.state)}</p>
 
