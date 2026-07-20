@@ -66,6 +66,13 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+function normalizePathname(path: string): string {
+  if (!path || path === '/') {
+    return '/'
+  }
+  return path.endsWith('/') ? path.replace(/\/+$/, '') || '/' : path
+}
+
 function extractZip(record: ShakhaRecord): string {
   const fromZipField = (record.zipCode || '').trim().match(/\d{5}/)?.[0]
   if (fromZipField) {
@@ -1777,6 +1784,195 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
   )
 }
 
+function LeaderBeePage() {
+  const learnItems = [
+    { icon: '🏆', label: 'Leadership' },
+    { icon: '🤝', label: 'Teamwork' },
+    { icon: '🎯', label: 'Goal Setting' },
+    { icon: '🧠', label: 'Problem Solving' },
+    { icon: '💬', label: 'Communication' },
+    { icon: '❤️', label: 'Character Building' },
+    { icon: '🏃', label: 'Physical Fitness' },
+    { icon: '🧘', label: 'Yoga & Wellness' },
+    { icon: '🌺', label: 'Hindu Values' },
+  ]
+
+  const parentReasons = [
+    'Participate with your child',
+    'Learn leadership together',
+    'Strengthen family bonding',
+    'Encourage confidence',
+    'Support long-term growth',
+  ]
+
+  const highlights = [
+    'Fun Team Games',
+    'Public Speaking',
+    'Leadership Activities',
+    'Outdoor Challenges',
+    'Yoga',
+    'Value-Based Discussions',
+    'Creative Projects',
+    'Group Presentations',
+  ]
+
+  const registrationUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
+
+  return (
+    <div className="min-h-screen" style={{ background: '#FFF7ED', color: '#1F2937' }}>
+      <section
+        className="pt-16 pb-14 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20"
+        style={{
+          background: 'linear-gradient(135deg, #1E3A8A 0%, #1d4ed8 48%, #F97316 100%)',
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-orange-200 text-sm sm:text-base font-semibold tracking-wider uppercase">Leader-BEE</p>
+          <h1 className="mt-4 text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+            🐝 10 Weeks Leadership Workshop
+          </h1>
+          <p className="mt-5 text-orange-100 text-lg sm:text-xl font-semibold">Unleash the Leader Among You This Summer!</p>
+          <p className="mt-3 text-white text-base sm:text-lg">FREE Leadership Development Program</p>
+          <p className="mt-2 text-orange-100 text-base sm:text-lg font-semibold">For Students in Grade 4 – Grade 8</p>
+          <p className="mt-5 text-white/95 text-sm sm:text-base">Build Confidence • Leadership • Discipline • Teamwork</p>
+          <div className="mt-8">
+            <a
+              href="#leader-bee-register"
+              className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
+              style={{ background: '#F97316' }}
+            >
+              Register Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 sm:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 lg:grid-cols-2">
+          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
+            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Why Leader-BEE?</h2>
+            <p className="mt-4 text-sm sm:text-base leading-7">
+              Leader-BEE is a fun, interactive 10-week leadership journey where children develop essential life skills
+              through games, activities, teamwork, discussions, and practical experiences.
+            </p>
+            <p className="mt-4 text-sm sm:text-base leading-7">
+              The program also encourages active participation from parents to reinforce leadership values at home.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
+            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Program Details</h2>
+            <div className="mt-5 space-y-5 text-sm sm:text-base leading-7">
+              <div>
+                <p className="font-semibold" style={{ color: '#1E3A8A' }}>📅 When</p>
+                <p>Starts July 30th</p>
+                <p>Every Thursday, 6:00 PM – 7:30 PM</p>
+                <p>Duration: 10 Weeks</p>
+              </div>
+              <div>
+                <p className="font-semibold" style={{ color: '#1E3A8A' }}>👨‍👩‍👧 Who Can Attend?</p>
+                <p>Students: Grade 4 – Grade 8</p>
+                <p>Parent: At least ONE parent must attend</p>
+              </div>
+              <div>
+                <p className="font-semibold" style={{ color: '#1E3A8A' }}>📍 Location</p>
+                <p>Holmdel Park or nearby location</p>
+                <p>Final location will be shared after registration</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-14 sm:pb-16 lg:pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center" style={{ color: '#1E3A8A' }}>What Students Will Learn</h2>
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {learnItems.map(item => (
+              <div
+                key={item.label}
+                className="rounded-xl border bg-white px-4 py-5 text-center"
+                style={{ borderColor: '#FDBA74' }}
+              >
+                <div className="text-2xl">{item.icon}</div>
+                <p className="mt-2 text-sm sm:text-base font-semibold">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-14 sm:pb-16 lg:pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 lg:grid-cols-2">
+          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
+            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Why Parents Should Join</h2>
+            <ul className="mt-5 space-y-3 text-sm sm:text-base leading-6">
+              {parentReasons.map(reason => (
+                <li key={reason}>✔ {reason}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
+            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Workshop Highlights</h2>
+            <ul className="mt-5 grid sm:grid-cols-2 gap-y-3 gap-x-4 text-sm sm:text-base leading-6">
+              {highlights.map(item => (
+                <li key={item}>✓ {item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="leader-bee-register" className="pb-14 sm:pb-16 lg:pb-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl p-7 sm:p-10 text-center" style={{ background: '#FFFFFF', border: '2px solid #FDBA74' }}>
+            <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Ready to Begin?</h2>
+            <p className="mt-3 text-base sm:text-lg font-semibold" style={{ color: '#F97316' }}>Registration is FREE</p>
+            <p className="mt-5 text-sm sm:text-base break-all">Registration Link: {registrationUrl}</p>
+            <a
+              href={registrationUrl}
+              className="mt-7 inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
+              style={{ background: '#F97316' }}
+            >
+              Register for Leader-BEE
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-14 sm:pb-16 lg:pb-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl border bg-white p-6 sm:p-8" style={{ borderColor: '#FDBA74' }}>
+          <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: '#1E3A8A' }}>Important Notes</h2>
+          <div className="mt-5 space-y-3 text-sm sm:text-base leading-6">
+            <p>📌 At least one parent must attend each session.</p>
+            <p>📌 Limited seats available.</p>
+            <p>📌 Registration required.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-14 sm:pb-16 lg:pb-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl p-6 sm:p-8 text-center" style={{ background: '#1E3A8A' }}>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Know a family with children in Grades 4–8?</h2>
+          <p className="mt-4 text-white/90 text-sm sm:text-base leading-7">
+            🙏 Please share this program with your friends, relatives, neighbors, and community.
+          </p>
+          <p className="mt-2 text-orange-200 text-sm sm:text-base">Together, let's nurture tomorrow's leaders.</p>
+        </div>
+      </section>
+
+      <footer className="py-10" style={{ background: '#1F2937' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-orange-200 text-sm">Hosted by</p>
+          <p className="mt-2 text-white text-lg sm:text-xl font-bold">Hindu Swayamsevak Sangh (HSS)</p>
+          <p className="mt-3 text-orange-100 text-sm sm:text-base">Sangathan • Sanskar • Seva • Samarpan</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
 function Footer({ onNav }: { onNav: (id: string) => void }) {
   return (
     <footer style={{ background: '#071020' }}>
@@ -1868,15 +2064,26 @@ export default function App() {
   const [adminShakhaRecords, setAdminShakhaRecords] = useState<ShakhaRecord[]>([])
   const [activeShakha, setActiveShakha] = useState<ShakhaRecord | null>(null)
   const [pathname, setPathname] = useState(() =>
-    typeof window !== 'undefined' ? window.location.pathname : '/',
+    typeof window !== 'undefined' ? normalizePathname(window.location.pathname) : '/',
   )
   const [loadingLocationIndex, setLoadingLocationIndex] = useState(true)
   const [loadingSharePage, setLoadingSharePage] = useState(false)
   const [loadingAdminShakhas, setLoadingAdminShakhas] = useState(false)
   const [disclaimerVisible, setDisclaimerVisible] = useState(true)
-  const [activePage, setActivePage] = useState<'home' | 'register'>(() =>
-    typeof window !== 'undefined' && window.location.pathname === '/register' ? 'register' : 'home',
-  )
+  const [activePage, setActivePage] = useState<'home' | 'register' | 'leader-bee'>(() => {
+    if (typeof window === 'undefined') {
+      return 'home'
+    }
+
+    const currentPath = normalizePathname(window.location.pathname)
+    if (currentPath === '/register') {
+      return 'register'
+    }
+    if (currentPath === '/register-leader-bee') {
+      return 'leader-bee'
+    }
+    return 'home'
+  })
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null)
 
   const publicShakhaRecords = useMemo(
@@ -1884,7 +2091,8 @@ export default function App() {
     [loadedLocationRecords],
   )
   const isAdminPath = pathname === '/admin-join-app'
-  const isKnownPath = pathname === '/' || pathname === '/register' || isAdminPath
+  const isLeaderBeePath = pathname === '/register-leader-bee'
+  const isKnownPath = pathname === '/' || pathname === '/register' || isLeaderBeePath || isAdminPath
   const isLoading = isAdminPath
     ? loadingAdminShakhas
     : loadingLocationIndex || loadingSharePage
@@ -1916,8 +2124,8 @@ export default function App() {
     return buildShakhaDataMap(records)[state]?.[city] ?? []
   }, [loadLocationRecords])
 
-  const navigateToPage = (page: 'home' | 'register') => {
-    const targetPath = page === 'register' ? '/register' : '/'
+  const navigateToPage = (page: 'home' | 'register' | 'leader-bee') => {
+    const targetPath = page === 'register' ? '/register' : page === 'leader-bee' ? '/register-leader-bee' : '/'
     if (window.location.pathname !== targetPath) {
       window.history.pushState({}, '', targetPath)
     }
@@ -1972,8 +2180,15 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setPathname(window.location.pathname)
-      setActivePage(window.location.pathname === '/register' ? 'register' : 'home')
+      const currentPath = normalizePathname(window.location.pathname)
+      setPathname(currentPath)
+      if (currentPath === '/register') {
+        setActivePage('register')
+      } else if (currentPath === '/register-leader-bee') {
+        setActivePage('leader-bee')
+      } else {
+        setActivePage('home')
+      }
     }
 
     window.addEventListener('popstate', handlePopState)
@@ -2023,6 +2238,21 @@ export default function App() {
   }, [isAdminPath, isKnownPath, pathname])
 
   useEffect(() => {
+    if (isLeaderBeePath) {
+      setMetaTagByName('description', 'Leader-BEE is a free 10-week leadership workshop for Grade 4 to Grade 8 students with parent participation.')
+      setMetaTagByProperty('og:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
+      setMetaTagByProperty('og:type', 'website')
+      setMetaTagByProperty('og:description', 'Free summer leadership workshop for students in Grade 4 to Grade 8. Limited seats available.')
+      setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
+      setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
+      setMetaTagByName('twitter:card', 'summary_large_image')
+      setMetaTagByName('twitter:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
+      setMetaTagByName('twitter:description', 'Free leadership development program for Grade 4 to Grade 8 students with parent participation.')
+      setMetaTagByName('twitter:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
+      document.title = 'Leader-BEE | Join Shakha Sewa Setu'
+      return
+    }
+
     if (!activeShakha) {
       setMetaTagByName('description', 'Find and join the nearest HSS Shakha in your area. Register your interest and connect with local volunteers.')
       setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join HSS Shakha')
@@ -2053,7 +2283,7 @@ export default function App() {
     setMetaTagByName('twitter:title', title)
     setMetaTagByName('twitter:description', description)
     setMetaTagByName('twitter:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
-  }, [activeShakha, pathname])
+  }, [activeShakha, isLeaderBeePath, pathname])
 
   useEffect(() => {
     if (activePage === 'home' && pendingScrollTarget) {
@@ -2157,6 +2387,10 @@ export default function App() {
 
   if (activeShakha) {
     return <ShakhaSharePage record={activeShakha} onBack={() => navigateToPage('register')} />
+  }
+
+  if (activePage === 'leader-bee') {
+    return <LeaderBeePage />
   }
 
   return (
