@@ -20,7 +20,7 @@
   --color-navy-800: #0b1a32;
   --color-navy-900: #071020;
 
-  --color-cream: #FDF6ED;
+  --color-cream: #ffffff;
   --color-cream-dark: #F5E8D4;
   --color-gold: #C8940A;
 }
@@ -34,15 +34,14 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 15px;
 }
 
 body {
   font-family: var(--font-body);
-  background:
-    radial-gradient(circle at 0% 0%, #fff9f2 0%, rgba(255, 249, 242, 0) 38%),
-    radial-gradient(circle at 100% 0%, #fff3e8 0%, rgba(255, 243, 232, 0) 30%),
-    var(--color-cream);
+  background: #ffffff;
   color: var(--color-navy-800);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

@@ -1,6 +1,4 @@
 import { useState, useEffect, useMemo } from 'react'
-import familyImg from './imports/4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png'
-import sssLogo from './imports/SSS_logo.png'
 import type { ShakhaChapter } from './shakhaData'
 import AdminPanel from './AdminPanel'
 import {
@@ -54,8 +52,16 @@ const FAQS = [
 ]
 
 const DEFAULT_COUNTRY_SLUG = (import.meta.env.VITE_COUNTRY_SLUG ?? 'usa').toLowerCase()
+const FAMILY_IMAGE = '/assets/4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png'
+const SSS_LOGO_IMAGE = '/assets/SSS_logo.png'
 const SITE_SHARE_IMAGE = '/social/site-banner.png'
 const SHAKHA_SHARE_IMAGE = '/social/shakha-banner.png'
+const LEADER_BEE_HERO_IMAGE = '/assets/leader-bee_hero.png'
+const LEADER_BEE_CONTACTS: RegistrationContact[] = [
+  { name: 'Utkarsh Patel', phone: '+1 201-889-6610' },
+  { name: 'Sachin Apte', phone: '+1 201-240-3896' },
+  { name: 'Raghu Ji', phone: '+1 732-744-4562' },
+]
 
 function slugify(value: string): string {
   return value
@@ -143,7 +149,7 @@ function ShakhaSharePage({
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#FDF6ED' }}>
+    <div className="min-h-screen" style={{ background: '#ffffff' }}>
       <section className="pt-24 pb-8 lg:pt-28">
         <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
           <button
@@ -155,7 +161,7 @@ function ShakhaSharePage({
             <span>Back to Register</span>
           </button>
 
-          <div className="rounded-2xl border p-6 lg:p-8" style={{ background: '#fffdf8', borderColor: '#eadfce' }}>
+          <div className="rounded-2xl border p-6 lg:p-8" style={{ background: '#ffffff', borderColor: '#eadfce' }}>
             <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#132f5d' }}>
               {record.name}
             </h1>
@@ -267,11 +273,11 @@ function Navbar({ onNav, disclaimerVisible }: { onNav: (id: string) => void; dis
         top: disclaimerVisible ? '40px' : '0',
         background: isDesktop
           ? scrolled
-            ? 'linear-gradient(90deg, rgba(255,246,237,0.99) 0%, rgba(255,246,237,0.84) 36%, rgba(255,246,237,0.42) 58%, rgba(255,246,237,0.14) 76%, rgba(255,246,237,0) 100%)'
-            : 'linear-gradient(90deg, rgba(255,246,237,0.95) 0%, rgba(255,246,237,0.72) 34%, rgba(255,246,237,0.28) 56%, rgba(255,246,237,0.08) 74%, rgba(255,246,237,0) 100%)'
+            ? 'linear-gradient(90deg, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.84) 36%, rgba(255,255,255,0.42) 58%, rgba(255,255,255,0.14) 76%, rgba(255,255,255,0) 100%)'
+            : 'linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 34%, rgba(255,255,255,0.28) 56%, rgba(255,255,255,0.08) 74%, rgba(255,255,255,0) 100%)'
           : scrolled
-            ? 'rgba(255, 246, 237, 0.96)'
-            : 'rgba(255, 246, 237, 0.86)',
+            ? 'rgba(255, 255, 255, 0.96)'
+            : 'rgba(255, 255, 255, 0.86)',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         boxShadow: scrolled ? '0 10px 35px rgba(11,26,50,0.1)' : 'none',
       }}
@@ -281,7 +287,7 @@ function Navbar({ onNav, disclaimerVisible }: { onNav: (id: string) => void; dis
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src={sssLogo}
+              src={SSS_LOGO_IMAGE}
               alt="Shakha Sewa Setu logo"
               className="w-10 h-10 rounded-full object-cover flex-shrink-0"
               style={{ boxShadow: '0 0 0 2px rgba(27,58,107,0.15)' }}
@@ -336,7 +342,7 @@ function Navbar({ onNav, disclaimerVisible }: { onNav: (id: string) => void; dis
       {open && (
         <div
           className="lg:hidden border-t border-white/10 py-4 px-4"
-          style={{ background: 'rgba(255, 246, 237, 0.98)' }}
+          style={{ background: 'rgba(255, 255, 255, 0.98)' }}
         >
           {links.map(l => (
             <button
@@ -366,7 +372,7 @@ function Hero({ onNav }: { onNav: (id: string) => void }) {
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background image */}
       <img
-        src={familyImg}
+        src={FAMILY_IMAGE}
         alt="Families playing games at Shakha with the Bhagwa Dhwaj"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
@@ -517,7 +523,7 @@ function About() {
       id="about"
       className="relative z-20 -mt-20 lg:-mt-28 pt-16 lg:pt-20 pb-16 lg:pb-[4.5rem]"
       style={{
-        background: 'linear-gradient(to bottom, rgba(253,246,237,0) 0%, rgba(253,246,237,0.01) 24%, rgba(253,246,237,0.2) 46%, rgba(253,246,237,0.62) 70%, #FDF6ED 88%, #FDF6ED 100%)',
+        background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.01) 24%, rgba(255,255,255,0.2) 46%, rgba(255,255,255,0.62) 70%, #ffffff 88%, #ffffff 100%)',
       }}
     >
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
@@ -545,7 +551,7 @@ function About() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {cards.map(card => (
-                <div key={card.title} className="rounded-2xl border px-3 py-4 lg:py-5 text-center flex flex-col items-center min-h-[220px] lg:min-h-[238px]" style={{ background: '#fffdf8', borderColor: '#ece2d3' }}>
+                <div key={card.title} className="rounded-2xl border px-3 py-4 lg:py-5 text-center flex flex-col items-center min-h-[220px] lg:min-h-[238px]" style={{ background: '#ffffff', borderColor: '#ece2d3' }}>
                   <div className="mb-3" style={{ color: '#132f5d' }}>{renderGlyph(card.icon)}</div>
                   <h3 className="font-semibold text-[1.05rem] lg:text-[1.12rem] mb-2 leading-6 min-h-[3rem] flex items-center justify-center" style={{ color: '#D4531A' }}>{card.title}</h3>
                   <p className="text-[13px] leading-[1.62] max-w-[10.5rem] mx-auto" style={{ color: '#24406d' }}>{card.desc}</p>
@@ -654,7 +660,7 @@ function Benefits() {
   }
 
   return (
-    <section id="benefits" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="benefits" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-10 lg:mb-12">
           <div className="flex items-center justify-center gap-4 mb-2">
@@ -761,7 +767,7 @@ function Timeline() {
   }
 
   return (
-    <section id="timeline" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="timeline" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-10 lg:mb-12">
           <div className="flex items-center justify-center gap-4 mb-2">
@@ -802,42 +808,57 @@ function Timeline() {
 
 function WhoCanJoin() {
   return (
-    <section id="who" className="py-20 lg:py-24" style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0b1a32 100%)' }}>
-      <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4 text-center">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <div className="h-px w-8" style={{ background: '#D4531A' }} />
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#fb923c' }}>
-            Who Can Join?
-          </span>
-          <div className="h-px w-8" style={{ background: '#D4531A' }} />
-        </div>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-          Everyone is Welcome
-        </h2>
-        <p className="text-white/60 text-base max-w-lg mx-auto mb-12">
-          Shakha is for all ages and backgrounds. No prior experience, no requirements — just an open heart and willingness to grow.
-        </p>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
-          {WHO_CAN_JOIN.map((w, i) => (
-            <div
-              key={i}
-              className="p-5 rounded-2xl text-center transition-all hover:-translate-y-1"
-              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-            >
-              <div className="text-3xl mb-3">{w.icon}</div>
-              <div className="font-semibold text-white text-sm mb-1">{w.group}</div>
-              <div className="text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>{w.age}</div>
+    <section id="who" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
+      <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
+        <div className="grid gap-6 sm:grid-cols-[0.88fr_1.12fr] items-stretch">
+          <div className="rounded-[1.75rem] border p-6 sm:p-7 lg:p-8" style={{ background: '#ffffff', borderColor: '#e9e1d5' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px w-8" style={{ background: '#D4531A' }} />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: '#D4531A' }}>
+                Who Can Join
+              </span>
             </div>
-          ))}
-        </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold" style={{ color: '#132f5d' }}>
+              Everyone is Welcome
+            </h2>
+            <p className="mt-3 text-sm sm:text-[0.95rem] leading-6 max-w-md" style={{ color: '#5a6f9a' }}>
+              Shakha is open to all ages and backgrounds. No prior experience is needed - just a willingness to learn and grow.
+            </p>
 
-        <div
-          className="inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm font-medium"
-          style={{ background: 'rgba(212,83,26,0.18)', border: '1px solid rgba(212,83,26,0.35)', color: '#fb923c' }}
-        >
-          <span>✓</span>
-          <span>No prior experience needed · Open to all · Free to join · No membership required</span>
+            <div className="mt-5 space-y-3">
+              {[
+                'No prior experience needed',
+                'Open to all age groups',
+                'Free to join',
+                'No membership required',
+              ].map(item => (
+                <div key={item} className="flex items-center gap-2 text-sm" style={{ color: '#304a78' }}>
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold text-white" style={{ background: '#D4531A' }}>✓</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[1.75rem] border p-6 sm:p-7 lg:p-8" style={{ background: '#ffffff', borderColor: '#e9e1d5' }}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {WHO_CAN_JOIN.map((w, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border p-4 sm:p-5 text-center transition-all hover:-translate-y-0.5"
+                  style={{ background: '#ffffff', borderColor: '#ece2d3' }}
+                >
+                  <div className="text-2xl mb-2">{w.icon}</div>
+                  <div className="font-semibold text-[0.88rem] sm:text-sm mb-1 leading-5" style={{ color: '#132f5d' }}>
+                    {w.group}
+                  </div>
+                  <div className="text-[11px] sm:text-xs leading-5" style={{ color: '#6f7f9e' }}>
+                    {w.age}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1082,7 +1103,7 @@ function FindShakha({
   }
 
   return (
-    <section id="find" className="py-20 lg:py-28" style={{ background: '#FDF6ED' }}>
+    <section id="find" className="py-20 lg:py-28" style={{ background: '#ffffff' }}>
       {content}
     </section>
   )
@@ -1096,16 +1117,35 @@ type FormData = {
   preferredDay: string; comments: string;
 }
 
+type RegistrationContact = {
+  name: string
+  phone: string
+}
+
 function RegisterForm({
   standalone = true,
   shakhaDataMap,
   usStates,
   onRegister,
+  title = 'Register Your Interest',
+  description = 'Fill in your details and our local volunteers will connect you with the nearest HSS Shakha.',
+  infoNote = 'Our local volunteers will contact you and help connect you with the nearest HSS Shakha. Your information is kept private and used only for this purpose.',
+  submitLabel = 'Register My Interest 🙏',
+  successHeading,
+  successMessage,
+  successContacts = [],
 }: {
   standalone?: boolean
   shakhaDataMap: Record<string, Record<string, ShakhaChapter[]>>
   usStates: string[]
   onRegister: (data: FormData) => Promise<void>
+  title?: string
+  description?: string
+  infoNote?: string
+  submitLabel?: string
+  successHeading?: string
+  successMessage?: string
+  successContacts?: RegistrationContact[]
 }) {
   const [form, setForm] = useState<FormData>({
     firstName: '', lastName: '', email: '', mobile: '',
@@ -1167,16 +1207,18 @@ function RegisterForm({
     `w-full ${standalone ? 'px-4 py-3 rounded-xl text-sm' : 'px-3.5 py-2.5 rounded-lg text-[13px]'} border outline-none transition-all ${errors[field] ? 'border-red-400' : 'focus:border-orange-400'}`
 
   const inputStyle = { borderColor: '#ddd6c8', color: '#0b1a32' }
+  const resolvedSuccessHeading = successHeading ?? `Jai Hind! Thank You, ${form.firstName}!`
+  const resolvedSuccessMessage = successMessage ?? 'Your interest has been registered. Our local volunteers will contact you shortly and help connect you with the nearest HSS Shakha. We look forward to welcoming you to our community!'
 
   if (submitted) {
     const submittedContent = (
       <div className={standalone ? 'max-w-2xl mx-auto px-4 text-center' : 'text-center'}>
           <div className="text-6xl mb-6">🙏</div>
           <h2 className="font-display text-3xl font-bold mb-4" style={{ color: '#132f5d' }}>
-            Jai Hind! Thank You, {form.firstName}!
+            {resolvedSuccessHeading}
           </h2>
           <p className="text-base mb-6 leading-relaxed" style={{ color: '#2f4671' }}>
-            Your interest has been registered. Our local volunteers will contact you shortly and help connect you with the nearest HSS Shakha. We look forward to welcoming you to our community!
+            {resolvedSuccessMessage}
           </p>
           <div
             className="inline-block px-6 py-3 rounded-full text-sm font-medium"
@@ -1184,6 +1226,26 @@ function RegisterForm({
           >
             Confirmation will be sent to: {form.email}
           </div>
+          {successContacts.length > 0 && (
+            <div className="mt-6 text-left rounded-2xl p-5" style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
+              <p className="text-sm font-semibold mb-3 text-center" style={{ color: '#132f5d' }}>
+                Need help sooner? You can also reach out directly:
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {successContacts.map(contact => (
+                  <a
+                    key={contact.phone}
+                    href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`}
+                    className="rounded-xl px-4 py-3 text-center transition-colors"
+                    style={{ background: '#ffffff', border: '1px solid #f3ddc3', color: '#1E3A8A' }}
+                  >
+                    <div className="text-sm font-bold">{contact.name}</div>
+                    <div className="mt-1 text-sm">{contact.phone}</div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
           <button
             onClick={() => { setSubmitted(false); setForm(prev => ({ ...prev, firstName: '' })) }}
             className="block mx-auto mt-6 text-sm underline transition-colors"
@@ -1199,7 +1261,7 @@ function RegisterForm({
     }
 
     return (
-      <section id="register" className="py-20 lg:py-24" style={{ background: '#FDF6ED' }}>
+      <section id="register" className="py-20 lg:py-24" style={{ background: '#ffffff' }}>
         {submittedContent}
       </section>
     )
@@ -1221,16 +1283,16 @@ function RegisterForm({
             <div className="h-px w-8" style={{ background: '#D4531A' }} />
           </div>
           <h2 className={`font-display font-bold ${standalone ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-[2rem]'}`} style={{ color: '#132f5d' }}>
-            Register Your Interest
+            {title}
           </h2>
           <p className={`mt-3 max-w-lg mx-auto ${standalone ? 'text-base' : 'text-sm leading-6'}`} style={{ color: '#5a6f9a' }}>
-            Fill in your details and our local volunteers will connect you with the nearest HSS Shakha.
+            {description}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className={standalone ? 'space-y-8' : 'space-y-5'}>
           {/* Personal Details */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>01</span> Personal Details
             </h3>
@@ -1283,7 +1345,7 @@ function RegisterForm({
           </div>
 
           {/* Location */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>02</span> Location
             </h3>
@@ -1332,7 +1394,7 @@ function RegisterForm({
           </div>
 
           {/* Interests */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>03</span> Interested In
             </h3>
@@ -1369,7 +1431,7 @@ function RegisterForm({
           </div>
 
           {/* Nearest Shakha */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>04</span> Find Nearest Shakha
             </h3>
@@ -1436,7 +1498,7 @@ function RegisterForm({
           </div>
 
           {/* Comments */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>05</span> Additional Comments
             </h3>
@@ -1457,7 +1519,7 @@ function RegisterForm({
           >
             <span className="text-lg flex-shrink-0">ℹ️</span>
             <p className={`${standalone ? 'text-sm' : 'text-[13px]'} leading-relaxed`} style={{ color: '#2f4671' }}>
-              Our local volunteers will contact you and help connect you with the nearest HSS Shakha. Your information is kept private and used only for this purpose.
+              {infoNote}
             </p>
           </div>
 
@@ -1471,7 +1533,7 @@ function RegisterForm({
             className={`w-full ${standalone ? 'py-4 rounded-xl text-base' : 'py-3.5 rounded-lg text-sm'} font-semibold text-white transition-all hover:scale-[1.01] hover:shadow-xl`}
             style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}
           >
-            {submitting ? 'Submitting...' : 'Register My Interest 🙏'}
+            {submitting ? 'Submitting...' : submitLabel}
           </button>
         </form>
       </div>
@@ -1482,7 +1544,7 @@ function RegisterForm({
   }
 
   return (
-    <section id="register" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="register" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       {formContent}
     </section>
   )
@@ -1545,7 +1607,7 @@ function FAQ({ standalone = true }: { standalone?: boolean }) {
   }
 
   return (
-    <section id="faq" className="py-20 lg:py-28" style={{ background: '#FDF6ED' }}>
+    <section id="faq" className="py-20 lg:py-28" style={{ background: '#ffffff' }}>
       {content}
     </section>
   )
@@ -1561,7 +1623,7 @@ function FindFaqSideBySide({
   onOpenShakhaPage: (chapter: ShakhaChapter) => void
 }) {
   return (
-    <section className="py-20 lg:py-24" style={{ background: '#FDF6ED' }}>
+    <section className="py-20 lg:py-24" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -1595,162 +1657,15 @@ function FindFaqSideBySide({
   )
 }
 
-function Contact({ standalone = true }: { standalone?: boolean }) {
-  const contactMethods = [
-    { icon: '📧', label: 'Email', value: 'info@hssus.org', sub: 'Replies within 24 hours' },
-    { icon: '📞', label: 'Phone', value: '+1 (800) HSS-USA0', sub: 'Mon–Sat, 9am–6pm ET' },
-    { icon: '🌐', label: 'Website', value: 'www.hssus.org', sub: 'National portal and updates' },
-  ]
-
-  const socialLinks = [
-    { icon: '📘', name: 'Facebook', handle: '/HSSUSA' },
-    { icon: '📷', name: 'Instagram', handle: '@hss_usa' },
-    { icon: '🐦', name: 'Twitter / X', handle: '@HSSUSA' },
-    { icon: '▶️', name: 'YouTube', handle: 'HSS USA' },
-  ]
-
-  if (!standalone) {
-    return (
-      <div>
-        <div className="mb-6">
-          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ background: 'rgba(212,83,26,0.16)', color: '#fb923c' }}>
-            Need Help?
-          </div>
-          <h2 className="mt-4 font-display text-[1.9rem] leading-tight font-bold text-white">
-            Get in Touch
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-white/68">
-            Reach our volunteer team directly while you fill out the form. We can help you find the right Shakha, timing, or family program.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-2 mb-5">
-          {['Quick reply', 'Family friendly', 'Volunteer led'].map(item => (
-            <div
-              key={item}
-              className="rounded-xl px-2.5 py-2 text-center text-[11px] font-medium"
-              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.78)' }}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-
-        <div className="space-y-3 mb-5">
-          {contactMethods.map(method => (
-            <div
-              key={method.label}
-              className="rounded-2xl p-4"
-              style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(255,255,255,0.12)' }}
-            >
-              <div className="flex items-start gap-3">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                  style={{ background: 'rgba(212,83,26,0.18)' }}
-                >
-                  {method.icon}
-                </div>
-                <div className="min-w-0">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-1" style={{ color: '#fb923c' }}>
-                    {method.label}
-                  </div>
-                  <div className="text-sm font-semibold text-white break-all">{method.value}</div>
-                  <div className="text-xs mt-1 text-white/48">{method.sub}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-2.5 mb-5">
-          {socialLinks.map(link => (
-            <div
-              key={link.name}
-              className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium"
-              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.74)' }}
-            >
-              <span>{link.icon}</span>
-              <span>{link.handle}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          <a
-            href="mailto:info@hssus.org"
-            className="rounded-xl px-4 py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)', color: '#fff' }}
-          >
-            Email Team
-          </a>
-          <a
-            href="https://www.hssus.org"
-            className="rounded-xl px-4 py-3 text-center text-sm font-semibold border"
-            style={{ borderColor: 'rgba(255,255,255,0.16)', color: '#fff' }}
-          >
-            Visit Website
-          </a>
-        </div>
-      </div>
-    )
-  }
-
-  const content = (
-      <div className={standalone ? 'max-w-[82rem] mx-auto px-2 sm:px-3 lg:px-4' : ''}>
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
-            Get in Touch
-          </h2>
-          <p className="text-white/60 text-base">
-            Reach out to our national team — we're here to guide you.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-3 gap-6 mb-12">
-          {contactMethods.map(c => (
-            <div
-              key={c.label}
-              className="rounded-2xl p-6 text-center"
-              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
-            >
-              <div className="text-3xl mb-3">{c.icon}</div>
-              <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#fb923c' }}>
-                {c.label}
-              </div>
-              <div className="font-semibold text-white text-sm mb-1">{c.value}</div>
-              <div className="text-xs text-white/45">{c.sub}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Social media */}
-        <div className="flex flex-wrap justify-center gap-4">
-          {socialLinks.map(s => (
-            <div
-              key={s.name}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium"
-              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.75)' }}
-            >
-              <span>{s.icon}</span>
-              <span>{s.handle}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-  )
-
-  if (!standalone) {
-    return content
-  }
-
-  return (
-    <section id="contact" className="py-20 lg:py-24" style={{ background: '#1B3A6B' }}>
-      {content}
-    </section>
-  )
-}
-
-function LeaderBeePage() {
+function LeaderBeePage({
+  shakhaDataMap,
+  usStates,
+  onRegister,
+}: {
+  shakhaDataMap: Record<string, Record<string, ShakhaChapter[]>>
+  usStates: string[]
+  onRegister: (data: FormData) => Promise<void>
+}) {
   const learnItems = [
     { icon: '🏆', label: 'Leadership' },
     { icon: '🤝', label: 'Teamwork' },
@@ -1782,10 +1697,8 @@ function LeaderBeePage() {
     'Group Presentations',
   ]
 
-  const registrationUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
-
   return (
-    <div className="min-h-screen" style={{ background: '#FFF7ED', color: '#1F2937' }}>
+    <div className="min-h-screen" style={{ background: '#ffffff', color: '#1F2937' }}>
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-4 pb-16">
         <div className="rounded-[2rem] border overflow-hidden shadow-[0_16px_48px_rgba(30,58,138,0.12)]" style={{ background: '#fffdf9', borderColor: '#fde2c5' }}>
           <div className="px-6 pt-5 pb-2 border-b" style={{ borderColor: '#f3ddc3' }}>
@@ -1813,7 +1726,7 @@ function LeaderBeePage() {
                 among you this summer!
               </p>
 
-              <div className="mt-6 inline-flex items-center gap-2 rounded-lg border px-3 py-2" style={{ borderColor: '#fde2c5', background: '#fff4ea' }}>
+              <div className="mt-6 inline-flex items-center gap-2 rounded-lg border px-3 py-2" style={{ borderColor: '#fde2c5', background: '#ffffff' }}>
                 <span className="rounded-md px-2 py-1 text-xs font-extrabold text-white" style={{ background: '#F97316' }}>FREE</span>
                 <span className="text-sm sm:text-base font-semibold" style={{ color: '#1E3A8A' }}>Leadership Development Program</span>
               </div>
@@ -1849,14 +1762,14 @@ function LeaderBeePage() {
                   </span>
                 ))}
               </div>
-              <img src={familyImg} alt="Leader-BEE students" className="relative z-10 w-full h-full object-cover rounded-[2rem]" />
+              <img src={LEADER_BEE_HERO_IMAGE} alt="Leader-BEE students" className="relative z-10 w-full h-full object-cover rounded-[2rem]" />
             </div>
           </div>
         </div>
       </section>
 
       <section id="leader-bee-program" className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pb-6">
-        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
           <h2 className="text-center text-2xl sm:text-3xl font-extrabold" style={{ color: '#1E3A8A' }}>PROGRAM DETAILS</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-2xl border p-5 text-center" style={{ borderColor: '#f5d7b8', background: '#ffffff' }}>
@@ -1894,7 +1807,7 @@ function LeaderBeePage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
-        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+        <div className="rounded-3xl border p-5 sm:p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
           <h2 className="text-center text-2xl sm:text-3xl font-extrabold" style={{ color: '#1E3A8A' }}>WHAT STUDENTS WILL LEARN</h2>
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
             {learnItems.map(item => (
@@ -1909,7 +1822,7 @@ function LeaderBeePage() {
 
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
         <div className="grid gap-4 lg:grid-cols-2">
-          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <div className="rounded-3xl border p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
             <h2 className="text-3xl font-black" style={{ color: '#F97316' }}>WHY PARENTS SHOULD JOIN</h2>
             <ul className="mt-4 space-y-3 text-lg font-semibold" style={{ color: '#1E3A8A' }}>
               {parentReasons.map(reason => (
@@ -1918,7 +1831,7 @@ function LeaderBeePage() {
             </ul>
           </div>
 
-          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <div className="rounded-3xl border p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
             <h2 className="text-3xl font-black" style={{ color: '#1E3A8A' }}>WORKSHOP HIGHLIGHTS</h2>
             <ul className="mt-4 grid sm:grid-cols-2 gap-y-3 gap-x-4 text-lg font-semibold" style={{ color: '#1E3A8A' }}>
               {highlights.map(item => (
@@ -1930,29 +1843,59 @@ function LeaderBeePage() {
       </section>
 
       <section id="leader-bee-register" className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-6">
-        <div className="rounded-3xl overflow-hidden border" style={{ borderColor: '#f3ddc3' }}>
-          <div className="grid md:grid-cols-[1fr_auto] gap-4 px-6 py-6" style={{ background: '#1E3A8A' }}>
-            <div>
-              <h2 className="text-4xl font-black text-white">READY TO BEGIN?</h2>
-              <p className="mt-1 text-3xl font-extrabold text-white">Registration is <span style={{ color: '#FACC15' }}>FREE</span></p>
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(280px,0.78fr)] items-start">
+          <div className="rounded-3xl border p-5 sm:p-6 lg:p-7" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
+            <div className="mb-6 rounded-3xl px-6 py-6" style={{ background: '#1E3A8A' }}>
+              <h2 className="text-3xl sm:text-4xl font-black text-white">READY TO BEGIN?</h2>
+              <p className="mt-2 text-lg sm:text-xl font-extrabold text-white">
+                Registration is <span style={{ color: '#FACC15' }}>FREE</span>. Complete the form below to reserve your family&apos;s spot.
+              </p>
             </div>
-            <a
-              href={registrationUrl}
-              className="inline-flex items-center justify-center rounded-2xl px-10 py-4 text-3xl font-black text-white shadow-[0_10px_24px_rgba(249,115,22,0.4)]"
-              style={{ background: '#F97316' }}
-            >
-              REGISTER NOW →
-            </a>
+            <RegisterForm
+              standalone={false}
+              shakhaDataMap={shakhaDataMap}
+              usStates={usStates}
+              onRegister={onRegister}
+              title="Leader-BEE Registration"
+              description="Fill in your details on this page and our team will confirm your Leader-BEE registration."
+              infoNote="Your information will only be used for Leader-BEE coordination. An admin will review your submission and reach out within 48 hours."
+              submitLabel="Submit Leader-BEE Registration"
+              successHeading="Thank you for registering for Leader-BEE!"
+              successMessage="Your submission has been received. An admin will reach out to you in the next 48 hours with the next steps and final program details."
+              successContacts={LEADER_BEE_CONTACTS}
+            />
           </div>
-          <div className="px-6 py-4 text-lg font-bold break-all" style={{ background: '#fffdfa', color: '#1E3A8A' }}>
-            REGISTRATION LINK: <span style={{ color: '#F97316' }}>{registrationUrl}</span>
-          </div>
+
+          <aside className="rounded-3xl border p-6 lg:sticky lg:top-6" style={{ background: '#1E3A8A', borderColor: '#13316f' }}>
+            <h3 className="text-2xl font-black text-white">Need Help?</h3>
+            <p className="mt-3 text-sm leading-6" style={{ color: 'rgba(255,255,255,0.82)' }}>
+              If you have any questions about Leader-BEE, contact one of the coordinators below.
+            </p>
+            <div className="mt-5 space-y-3">
+              {LEADER_BEE_CONTACTS.map(contact => (
+                <a
+                  key={contact.phone}
+                  href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`}
+                  className="block rounded-2xl px-4 py-4"
+                  style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+                >
+                  <div className="text-base font-bold text-white">{contact.name}</div>
+                  <div className="mt-1 text-sm" style={{ color: '#FACC15' }}>{contact.phone}</div>
+                </a>
+              ))}
+            </div>
+            <div className="mt-5 rounded-2xl px-4 py-4" style={{ background: 'rgba(249,115,22,0.14)', border: '1px solid rgba(250,204,21,0.3)' }}>
+              <p className="text-sm font-semibold text-white">
+                A parent should attend each session. Final location details will be shared after confirmation.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-3 pb-8">
         <div className="grid gap-4 lg:grid-cols-2">
-          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <div className="rounded-3xl border p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
             <h2 className="text-3xl font-black text-center" style={{ color: '#1E3A8A' }}>IMPORTANT NOTES</h2>
             <div className="mt-5 grid sm:grid-cols-3 gap-3 text-center">
               <p className="text-lg font-bold" style={{ color: '#1E3A8A' }}>📌<br />At least one parent must attend each session.</p>
@@ -1961,7 +1904,7 @@ function LeaderBeePage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border p-6" style={{ background: '#fffdfa', borderColor: '#f3ddc3' }}>
+          <div className="rounded-3xl border p-6" style={{ background: '#ffffff', borderColor: '#f3ddc3' }}>
             <h2 className="text-3xl font-black text-center" style={{ color: '#1E3A8A' }}>KNOW A FAMILY WITH CHILDREN IN GRADES 4–8?</h2>
             <p className="mt-4 text-lg font-semibold text-center" style={{ color: '#1E3A8A' }}>
               Please share this program with your friends, relatives, neighbors, and community.
@@ -1995,11 +1938,11 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
   return (
     <footer style={{ background: '#071020' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4 py-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div className="grid gap-10 mb-10 items-start xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.8fr)_minmax(0,0.8fr)_minmax(0,2fr)]">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={sssLogo}
+                src={SSS_LOGO_IMAGE}
                 alt="Shakha Sewa Setu logo"
                 className="w-10 h-10 rounded-full object-cover flex-shrink-0"
               />
@@ -2049,11 +1992,34 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Resources</h4>
-            <div className="space-y-2 text-sm text-white/45">
-              {['News & Events', 'Publications', 'Volunteer', 'Donate', 'Contact Us'].map(r => (
-                <div key={r}>{r}</div>
-              ))}
+            <h4 className="text-white font-semibold text-sm mb-4">Contact Us</h4>
+            <div className="grid gap-4 sm:grid-cols-2 text-sm text-white/70 leading-relaxed items-stretch">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-[0_8px_24px_rgba(0,0,0,0.14)]">
+                <p className="font-semibold text-white mb-3">For India</p>
+                <div className="space-y-1.5 text-white/72">
+                  <p>Freshpage Technology Pvt Ltd</p>
+                  <p>403, Gravity Retail & Workspace, Nikol</p>
+                  <p>Ahmedabad - 382350</p>
+                </div>
+                <div className="mt-3 space-y-1.5 text-white/72">
+                  <p>Email: <a href="mailto:info@freshpage.in" className="text-orange-200 hover:text-white">info@freshpage.in</a></p>
+                  <p>Phone: <a href="tel:+919825311888" className="text-orange-200 hover:text-white">+91 9825311888</a></p>
+                  <p>WhatsApp: <a href="https://wa.me/919825311888" target="_blank" rel="noreferrer" className="text-orange-200 hover:text-white">wa.me/919825311888</a></p>
+                </div>
+              </div>
+
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-[0_8px_24px_rgba(0,0,0,0.14)]">
+                <p className="font-semibold text-white mb-3">For USA</p>
+                <div className="space-y-1.5 text-white/72">
+                  <p>Jhanvi Infotech LLC</p>
+                  <p>104 Brewster Circle</p>
+                  <p>Old Bridge NJ - 08857</p>
+                </div>
+                <div className="mt-3 space-y-1.5 text-white/72">
+                  <p>Phone: <a href="tel:+12018896610" className="text-orange-200 hover:text-white">+1 201-889-6610</a></p>
+                  <p>WhatsApp: <a href="https://wa.me/12018896610" target="_blank" rel="noreferrer" className="text-orange-200 hover:text-white">wa.me/12018896610</a></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2073,9 +2039,6 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
     </footer>
   )
 }
-
-// ─── App ─────────────────────────────────────────────────────────────────────
-
 export default function App() {
   const [shakhaRecords, setShakhaRecords] = useState<ShakhaRecord[]>(() => getDefaultShakhaRecords())
   const [pathname, setPathname] = useState(() =>
@@ -2083,6 +2046,7 @@ export default function App() {
   )
   const [loadingShakhas, setLoadingShakhas] = useState(true)
   const [disclaimerVisible, setDisclaimerVisible] = useState(true)
+  const [registerOption, setRegisterOption] = useState<'shakha' | 'leader-bee'>('shakha')
   const [activePage, setActivePage] = useState<'home' | 'register' | 'leader-bee'>(() => {
     if (typeof window === 'undefined') {
       return 'home'
@@ -2096,8 +2060,7 @@ export default function App() {
       return 'leader-bee'
     }
     return 'home'
-  },
-  )
+  })
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null)
 
   const shakhaDataMap = useMemo(() => buildShakhaDataMap(shakhaRecords), [shakhaRecords])
@@ -2145,6 +2108,12 @@ export default function App() {
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
+
+  useEffect(() => {
+    if (isLeaderBeePath) {
+      window.location.replace('/register-leader-bee.html')
+    }
+  }, [isLeaderBeePath])
 
   useEffect(() => {
     if (loadingShakhas) {
@@ -2284,9 +2253,13 @@ export default function App() {
     return <AdminPanel shakhaRecords={shakhaRecords} refreshShakhas={refreshShakhas} />
   }
 
+  if (isLeaderBeePath) {
+    return null
+  }
+
   if (loadingShakhas) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#FDF6ED' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#ffffff' }}>
         <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Shakha data...</p>
       </div>
     )
@@ -2297,11 +2270,28 @@ export default function App() {
   }
 
   if (activePage === 'leader-bee') {
-    return <LeaderBeePage />
+    return <LeaderBeePage shakhaDataMap={shakhaDataMap} usStates={usStates} onRegister={handleInterestRegister} />
   }
 
+  const registerOptionCards = [
+    {
+      key: 'shakha' as const,
+      eyebrow: 'Community',
+      title: 'Interested in Shakha',
+      description: 'Join a nearby HSS Shakha for family activities, values, yoga, seva, and local connections.',
+    },
+    {
+      key: 'leader-bee' as const,
+      eyebrow: 'Workshop',
+      title: 'Leader-BEE Registration',
+      description: 'Register for the 10-week leadership workshop for Grade 4 to Grade 8 students with parent participation.',
+    },
+  ]
+
+  const isLeaderBeeRegister = registerOption === 'leader-bee'
+
   return (
-    <div className="min-h-screen" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' }}>
+    <div className="min-h-screen" style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' }}>
       {/* Disclaimer sits above the fixed navbar */}
       <div className="fixed top-0 left-0 right-0 z-[60]">
         {disclaimerVisible && (
@@ -2339,11 +2329,10 @@ export default function App() {
             onOpenShakhaPage={openShakhaPage}
           />
           <WhoCanJoin />
-          <Contact />
         </>
       ) : (
         <>
-          <section className="pt-24 pb-6 lg:pt-28" style={{ background: '#FDF6ED' }}>
+          <section className="pt-24 pb-6 lg:pt-28" style={{ background: '#ffffff' }}>
             <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
               <button
                 onClick={() => scrollTo('home')}
@@ -2357,24 +2346,66 @@ export default function App() {
                 Register Your Interest
               </h1>
               <p className="mt-3 text-sm sm:text-base max-w-2xl leading-6" style={{ color: '#5a6f9a' }}>
-                Complete this form and local volunteers will connect you with the nearest HSS Shakha.
+                Choose what you want to register for, then complete the form on this page.
               </p>
             </div>
           </section>
-          <section id="register" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+          <section id="register" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
             <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
-              <div className="grid gap-6 xl:grid-cols-[minmax(0,1.65fr)_minmax(300px,0.9fr)] items-start">
+              <div className="grid gap-6">
                 <div className="rounded-[1.75rem] border p-5 sm:p-6 lg:p-7 bg-white/50" style={{ borderColor: '#eadfce' }}>
-                  <RegisterForm
-                    standalone={false}
-                    shakhaDataMap={shakhaDataMap}
-                    usStates={usStates}
-                    onRegister={handleInterestRegister}
-                  />
+                  <div className="mb-6 grid gap-3 md:grid-cols-2">
+                    {registerOptionCards.map(option => {
+                      const selected = option.key === registerOption
+                      return (
+                        <button
+                          key={option.key}
+                          type="button"
+                          onClick={() => setRegisterOption(option.key)}
+                          className="rounded-[1.35rem] border p-5 text-left transition-all"
+                          style={{
+                            background: selected ? '#ffffff' : '#ffffff',
+                            borderColor: selected ? '#D4531A' : '#eadfce',
+                            boxShadow: selected ? '0 14px 34px rgba(212,83,26,0.14)' : 'none',
+                          }}
+                        >
+                          <div className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: '#D4531A' }}>
+                            {option.eyebrow}
+                          </div>
+                          <div className="mt-2 text-xl font-display font-bold" style={{ color: '#132f5d' }}>
+                            {option.title}
+                          </div>
+                          <p className="mt-2 text-sm leading-6" style={{ color: '#5a6f9a' }}>
+                            {option.description}
+                          </p>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {isLeaderBeeRegister ? (
+                    <RegisterForm
+                      standalone={false}
+                      shakhaDataMap={shakhaDataMap}
+                      usStates={usStates}
+                      onRegister={handleInterestRegister}
+                      title="Leader-BEE Registration"
+                      description="Register for Leader-BEE on this page. Our team will confirm your workshop registration and share the next steps."
+                      infoNote="Your information will only be used for Leader-BEE coordination. An admin will review your submission and reach out within 48 hours."
+                      submitLabel="Submit Leader-BEE Registration"
+                      successHeading="Thank you for registering for Leader-BEE!"
+                      successMessage="Your submission has been received. An admin will reach out to you in the next 48 hours with the next steps and final program details."
+                      successContacts={LEADER_BEE_CONTACTS}
+                    />
+                  ) : (
+                    <RegisterForm
+                      standalone={false}
+                      shakhaDataMap={shakhaDataMap}
+                      usStates={usStates}
+                      onRegister={handleInterestRegister}
+                    />
+                  )}
                 </div>
-                <aside className="rounded-[1.75rem] p-5 sm:p-6 lg:sticky lg:top-24" style={{ background: '#1B3A6B' }}>
-                  <Contact standalone={false} />
-                </aside>
               </div>
             </div>
           </section>

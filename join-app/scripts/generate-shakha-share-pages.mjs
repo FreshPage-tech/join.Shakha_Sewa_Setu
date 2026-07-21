@@ -10,8 +10,8 @@ const publicDir = path.join(projectRoot, 'public')
 const socialDir = path.join(publicDir, 'social')
 const manifestFile = path.join(publicDir, '.generated-shakha-pages.json')
 const shakhaOverridesFile = path.join(projectRoot, 'src', 'shakhaOverrides.json')
-const siteBannerSource = path.join(projectRoot, 'src', 'imports', '4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png')
-const shakhaBannerSource = path.join(projectRoot, 'src', 'imports', 'DA8EA940-C9A9-4F9C-B405-14103451AAAD.PNG')
+const siteBannerSource = path.join(projectRoot, 'public', 'assets', '4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png')
+const shakhaBannerSource = path.join(projectRoot, 'public', 'assets', 'DA8EA940-C9A9-4F9C-B405-14103451AAAD.PNG')
 
 const siteUrl = (process.env.SITE_URL ?? 'https://join.shakhasewasetu.com').replace(/\/$/, '')
 const countrySlug = slugify(process.env.COUNTRY_SLUG ?? 'usa') || 'usa'

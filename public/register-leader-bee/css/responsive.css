@@ -14,18 +14,40 @@
     padding: 1.6rem;
   }
 
-  .register-cta {
-    padding: 1.3rem;
-  }
-
   .btn-register-large {
     font-size: 1.18rem;
+  }
+
+  .leaderbee-page .registration-panel,
+  .leaderbee-page .help-band,
+  .leaderbee-page .share-band,
+  .leaderbee-page .success-panel {
+    padding-top: 0.85rem;
   }
 }
 
 @media (max-width: 991px) {
   .hero-section {
-    padding-top: 6.2rem;
+    padding-top: 5.1rem;
+  }
+
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-copy {
+    padding-right: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-copy p {
+    max-width: 42rem;
   }
 
   .brand-text {
@@ -54,6 +76,10 @@
     font-size: 1.18rem;
   }
 
+  .share-actions .btn-share {
+    min-width: 10rem;
+  }
+
   .reg-link-label,
   .reg-link {
     font-size: 0.95rem;
@@ -66,24 +92,32 @@
 
 @media (max-width: 767px) {
   .section-space {
-    padding-top: 1.15rem;
+    padding-top: 1rem;
     padding-bottom: 1.15rem;
   }
 
   .hero-section {
-    padding-top: 5.6rem;
-  }
-
-  .hero-card,
-  .section-shell,
-  .content-card,
-  .info-card,
-  .register-cta {
-    border-radius: 1.1rem;
+    padding-top: 4.85rem;
   }
 
   .hero-card {
     padding: 1.2rem;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.75rem, 7vw, 2.35rem);
+  }
+
+  .hero-copy p {
+    font-size: 0.92rem;
+  }
+
+  .pill-row {
+    justify-content: center;
+  }
+
+  .hero-image {
+    min-height: 290px;
   }
 
   .section-title {
@@ -109,6 +143,18 @@
   .btn-register-large {
     font-size: 1.05rem;
     padding: 0.86rem 1rem;
+  }
+
+  .share-actions,
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .share-actions .btn-share,
+  .form-actions .btn-register-large,
+  .form-actions .btn-reset {
+    width: 100%;
+    justify-content: center;
   }
 
   .mini-note p {
@@ -143,6 +189,14 @@
     padding: 1rem;
   }
 
+  .hero-copy h1 {
+    font-size: clamp(1.55rem, 9vw, 2rem);
+  }
+
+  .hero-image {
+    min-height: 245px;
+  }
+
   .hero-actions-bottom {
     padding: 0.85rem 0.25rem 0.2rem;
   }
@@ -172,16 +226,30 @@
     padding: 1rem;
   }
 
-  .register-cta h2 {
-    font-size: 1.34rem;
-  }
-
-  .register-cta p {
-    font-size: 1rem;
-  }
-
   .btn-register-large {
     width: 100%;
+  }
+
+  .leaderbee-page .registration-panel,
+  .leaderbee-page .help-band,
+  .leaderbee-page .share-band,
+  .leaderbee-page .success-panel {
+    padding-top: 0.75rem;
+  }
+
+  .leaderbee-page .form-actions {
+    flex-direction: column;
+  }
+
+  .leaderbee-page .btn-reset,
+  .leaderbee-page .form-actions .btn-register-large,
+  .leaderbee-page .share-actions .btn-share {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .leaderbee-page .help-list-inline {
+    gap: 0.55rem;
   }
 
   .social-links a {

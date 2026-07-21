@@ -360,7 +360,7 @@ export default function AdminPanel({
 
   if (checkingSession) {
     return (
-      <div className="min-h-screen px-4 py-20" style={{ background: '#FDF6ED' }}>
+      <div className="min-h-screen px-4 py-20" style={{ background: '#ffffff' }}>
         <div className="mx-auto max-w-md rounded-2xl border bg-white p-8 text-center" style={{ borderColor: '#eadfce' }}>
           <p className="text-sm" style={{ color: '#5a6f9a' }}>Checking admin session...</p>
         </div>
@@ -370,7 +370,7 @@ export default function AdminPanel({
 
   if (!authed) {
     return (
-      <div className="min-h-screen px-4 py-20" style={{ background: '#FDF6ED' }}>
+      <div className="min-h-screen px-4 py-20" style={{ background: '#ffffff' }}>
         <div className="mx-auto max-w-md rounded-2xl border bg-white p-8" style={{ borderColor: '#eadfce' }}>
           <h1 className="font-display text-2xl font-bold" style={{ color: '#132f5d' }}>Admin Login</h1>
           <p className="mt-2 text-sm" style={{ color: '#5a6f9a' }}>
@@ -395,7 +395,7 @@ export default function AdminPanel({
   }
 
   return (
-    <div className="min-h-screen px-4 py-10" style={{ background: '#FDF6ED' }}>
+    <div className="min-h-screen px-4 py-10" style={{ background: '#ffffff' }}>
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>

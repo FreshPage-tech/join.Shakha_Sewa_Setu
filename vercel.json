@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/register-leader-bee",
+      "destination": "/register-leader-bee.html"
+    },
+    {
       "source": "/admin-join-app",
       "destination": "/index.html"
     },
