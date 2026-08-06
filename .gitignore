@@ -2,3 +2,6 @@
 .env*
 node_modules
 join-app/node_modules
+
+# macOS
+.DS_Store
