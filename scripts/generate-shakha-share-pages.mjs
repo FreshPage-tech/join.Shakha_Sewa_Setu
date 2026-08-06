@@ -194,7 +194,8 @@ function buildPageHtml(row, slug, override) {
   const image = `${siteUrl}/assets/usa-07733-sri-krishna-shakha.png`
   const contacts = row.contacts.filter(contact => contact.name || contact.mobile || contact.email)
 
-  const isSpecialShakha = slug === 'usa-07733-sri-krishna-shakha';
+  const isSpecialShakha = slug === 'usa-07733-sri-krishna-shakha'
+  const profileImage = isSpecialShakha ? '/assets/usa_07733.png' : ''
 
   return `<!doctype html>
 <html lang="en">
@@ -214,27 +215,47 @@ function buildPageHtml(row, slug, override) {
     <meta name="twitter:image" content="${escapeHtml(image)}" />
     <link rel="canonical" href="${escapeHtml(url)}" />
     <style>
-      :root { --saffron: #d4531a; --navy: #1b3a6b; --ink: #0b1a32; --muted: #5a6f9a; --bg: #fdf6ed; }
+      :root { --saffron: #d4531a; --saffron-dark: #c2410c; --navy: #1b3a6b; --ink: #132f5d; --muted: #5a6f9a; --bg: #ffffff; }
       * { box-sizing: border-box; }
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); }
-      .wrap { max-width: 980px; margin: 0 auto; padding: 24px 14px 40px; }
-      .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+      .wrap { max-width: 1480px; margin: 0 auto; padding: 18px 12px 40px; }
+      .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
       .badge { background: rgba(212,83,26,0.14); color: var(--saffron); border: 1px solid rgba(212,83,26,0.34); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
       .cta { text-decoration: none; background: linear-gradient(135deg, #d4531a, #c2410c); color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 14px; }
-      .card { background: #fffdf8; border: 1px solid #eadfce; border-radius: 18px; padding: 22px; }
-      .hero { display: flex; align-items: center; margin-bottom: 20px; }
-      .hero-letter { width: 60px; height: 60px; border-radius: 50%; background-color: var(--saffron); color: white; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: bold; margin-right: 15px; }
-      .hero-image { width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; }
-      .hero-text { font-size: 18px; color: var(--navy); }
-      h1 { margin: 0 0 4px; font-size: 30px; line-height: 1.15; color: #132f5d; }
-      .sub { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
-      .msg { white-space: pre-line; background: rgba(212,83,26,0.06); border: 1px solid rgba(212,83,26,0.24); border-radius: 14px; padding: 16px; color: #1e3761; line-height: 1.7; }
-      .grid { margin-top: 16px; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); gap: 10px; }
-      .box { border: 1px solid #ede5d8; border-radius: 12px; padding: 12px; background: #fff; }
+      .shell { border: 1px solid #e7e9ee; border-radius: 18px; overflow: hidden; background: #fff; }
+      .hero-banner { position: relative; background: #fff; border-bottom: 1px solid #eef1f6; }
+      .hero-banner img { display: block; width: 100%; max-height: 540px; object-fit: cover; }
+      .hero-head { padding: 0 18px 16px; }
+      .hero-row { margin-top: -64px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; }
+      .profile-wrap { display: flex; align-items: flex-end; gap: 14px; }
+      .profile-pic { width: 120px; height: 120px; border-radius: 999px; border: 4px solid #fff; background: #fff; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 700; color: #fff; background-image: linear-gradient(135deg, #D4531A, #c2410c); }
+      .profile-pic img { width: 100%; height: 100%; object-fit: cover; }
+      h1 { margin: 0; font-size: 40px; line-height: 1.1; color: #132f5d; }
+      .sub { color: var(--muted); margin: 8px 0 0; font-size: 15px; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .action { text-decoration: none; border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 700; }
+      .action-primary { color: #fff; background: linear-gradient(135deg, #D4531A, #c2410c); }
+      .action-secondary { color: #1B3A6B; border: 1px solid #1B3A6B; }
+      .content { padding: 16px; }
+      .layout { display: grid; gap: 14px; grid-template-columns: 1fr; }
+      .panel { border: 1px solid #eceff4; border-radius: 14px; background: #fff; padding: 14px; }
+      .panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px solid #f1f4f8; padding-bottom: 10px; }
+      h2 { margin: 0; font-size: 24px; color: #132f5d; }
+      .msg { margin-top: 12px; white-space: pre-line; color: #1e3761; line-height: 1.7; font-size: 15px; }
+      .grid { margin-top: 10px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+      .box { border: 1px solid #eceff4; border-radius: 12px; padding: 12px; background: #fff; }
       .label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #6a7da3; font-weight: 700; }
       .value { margin-top: 4px; font-size: 14px; color: #1e3761; line-height: 1.5; }
+      .contact-grid { margin-top: 10px; display: grid; gap: 10px; grid-template-columns: 1fr; }
       .footer { margin-top: 16px; color: #7082a8; font-size: 12px; }
-      @media (min-width: 780px) { .grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+      @media (min-width: 780px) {
+        .grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      }
+      @media (min-width: 1024px) {
+        .layout { grid-template-columns: 1.45fr 1fr; }
+        .content { padding: 18px; }
+        .contact-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      }
     </style>
   </head>
   <body>
@@ -244,37 +265,61 @@ function buildPageHtml(row, slug, override) {
         <a class="cta" href="${siteUrl}/register">Register Interest</a>
       </div>
 
-      <section class="card">
-        <div class="hero">
-          ${isSpecialShakha
-            ? `<img src="/assets/usa-07733-sri-krishna-shakha.png" alt="${escapeHtml(row.name)}" class="hero-image">`
-            : `<div class="hero-letter">${escapeHtml(row.name.charAt(0))}</div>`
-          }
-          <div class="hero-text">Found 1 Shakha near you &gt;&gt;</div>
-        </div>
-        <h1>${escapeHtml(row.name)}</h1>
-        <p class="sub">${escapeHtml(row.city)}, ${escapeHtml(row.state)}</p>
+      <section class="shell">
+        <div class="hero-banner">
+          <img src="/assets/usa-07733-sri-krishna-shakha.png" alt="${escapeHtml(row.name)} banner" />
+          <div class="hero-head">
+            <div class="hero-row">
+              <div class="profile-wrap">
+                <div class="profile-pic">
+                  ${profileImage ? `<img src="${profileImage}" alt="${escapeHtml(row.name)} profile" />` : escapeHtml(row.name.charAt(0))}
+                </div>
+                <div>
+                  <h1>${escapeHtml(row.name)}</h1>
+                  <p class="sub">${escapeHtml(row.state)} &gt;&gt; ${escapeHtml(row.city)} &gt;&gt; ${escapeHtml(row.name)}</p>
+                </div>
+              </div>
 
-        <div class="msg">${escapeHtml(pageMessage)}</div>
-
-        <div class="grid">
-          <div class="box">
-            <div class="label">Address</div>
-            <div class="value">${escapeHtml(row.address || 'Not available')}</div>
-          </div>
-          <div class="box">
-            <div class="label">Day & Time</div>
-            <div class="value">${escapeHtml(row.day || 'Weekly')}<br/>${escapeHtml(row.time || 'Please contact volunteer')}</div>
-          </div>
-          <div class="box">
-            <div class="label">More Details</div>
-            <div class="value">${(row.detailUrl || row.mapLink) ? `<a href="${escapeHtml(row.detailUrl || row.mapLink)}" target="_blank" rel="noreferrer">Open map/details</a>` : 'Not available'}</div>
+              <div class="actions">
+                <a class="action action-primary" href="${siteUrl}/register">Register Interest</a>
+                ${(row.detailUrl || row.mapLink)
+                  ? `<a class="action action-secondary" href="${escapeHtml(row.detailUrl || row.mapLink)}" target="_blank" rel="noreferrer">Open Map Link</a>`
+                  : ''}
+              </div>
+            </div>
           </div>
         </div>
 
-        ${contacts.length > 0 ? `<div class="grid">${contacts.map((contact, index) => `<div class="box"><div class="label">Contact ${index + 1}</div><div class="value">${escapeHtml(contact.name || 'Not provided')}<br/>${escapeHtml(contact.mobile || 'Not provided')}</div></div>`).join('')}</div>` : ''}
+        <div class="content">
+          <div class="layout">
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Shakha Announcement</h2>
+                <span class="badge">Community Update</span>
+              </div>
+              <div class="msg">${escapeHtml(pageMessage)}</div>
+            </div>
 
-        <p class="footer">This page is generated for sharing links in WhatsApp, email, and messages. For full portal experience, use <a href="${siteUrl}/register">${siteUrl}/register</a>.</p>
+            <div>
+              <div class="box">
+                <div class="label">Address</div>
+                <div class="value">${escapeHtml(row.address || 'Not available')}</div>
+              </div>
+              <div class="box">
+                <div class="label">Schedule</div>
+                <div class="value">${escapeHtml(row.day || 'Weekly')}<br/>${escapeHtml(row.time || 'Please contact volunteer')}</div>
+              </div>
+              <div class="box">
+                <div class="label">More Details</div>
+                <div class="value">${(row.detailUrl || row.mapLink) ? `<a href="${escapeHtml(row.detailUrl || row.mapLink)}" target="_blank" rel="noreferrer">Open map/details</a>` : 'Not available'}</div>
+              </div>
+            </div>
+          </div>
+
+          ${contacts.length > 0 ? `<div class="contact-grid">${contacts.map((contact, index) => `<div class="box"><div class="label">Contact ${index + 1}</div><div class="value">${escapeHtml(contact.name || 'Not provided')}<br/>${escapeHtml(contact.mobile || 'Not provided')}</div></div>`).join('')}</div>` : ''}
+
+          <p class="footer">This page is generated for sharing links in WhatsApp, email, and messages. For full portal experience, use <a href="${siteUrl}/register">${siteUrl}/register</a>.</p>
+        </div>
       </section>
     </main>
   </body>
