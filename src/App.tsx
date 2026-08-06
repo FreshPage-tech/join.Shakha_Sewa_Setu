@@ -622,11 +622,11 @@ function About() {
       id="about"
       className="relative z-20 -mt-20 lg:-mt-28 pt-16 lg:pt-20 pb-16 lg:pb-[4.5rem]"
       style={{
-        background: 'linear-gradient(to bottom, rgba(253,246,237,0) 0%, rgba(253,246,237,0.01) 24%, rgba(253,246,237,0.2) 46%, rgba(253,246,237,0.62) 70%, #FDF6ED 88%, #FDF6ED 100%)',
+        background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 42%, rgba(255,255,255,0.78) 70%, #ffffff 100%)',
       }}
     >
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
-        <div className="rounded-2xl border p-4 sm:p-5 lg:p-6" style={{ background: 'rgba(255, 251, 245, 0.95)', borderColor: '#eadfce', boxShadow: '0 4px 14px rgba(11,26,50,0.04)' }}>
+        <div className="rounded-2xl border p-4 sm:p-5 lg:p-6" style={{ background: '#ffffff', borderColor: '#eadfce', boxShadow: '0 4px 14px rgba(11,26,50,0.04)' }}>
           <div className="grid lg:grid-cols-[1.38fr_2.1fr] gap-4 lg:gap-4 items-stretch">
             <div className="pr-0 lg:pr-2">
               <h2 className="font-display text-[2.2rem] sm:text-[2.4rem] lg:text-[2.65rem] font-bold leading-tight mb-2" style={{ color: '#132f5d' }}>What is Shakha?</h2>
@@ -650,7 +650,7 @@ function About() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {cards.map(card => (
-                <div key={card.title} className="rounded-2xl border px-3 py-4 lg:py-5 text-center flex flex-col items-center min-h-[220px] lg:min-h-[238px]" style={{ background: '#fffdf8', borderColor: '#ece2d3' }}>
+                <div key={card.title} className="rounded-2xl border px-3 py-4 lg:py-5 text-center flex flex-col items-center min-h-[220px] lg:min-h-[238px]" style={{ background: '#ffffff', borderColor: '#ece2d3' }}>
                   <div className="mb-3" style={{ color: '#132f5d' }}>{renderGlyph(card.icon)}</div>
                   <h3 className="font-semibold text-[1.05rem] lg:text-[1.12rem] mb-2 leading-6 min-h-[3rem] flex items-center justify-center" style={{ color: '#D4531A' }}>{card.title}</h3>
                   <p className="text-[13px] leading-[1.62] max-w-[10.5rem] mx-auto" style={{ color: '#24406d' }}>{card.desc}</p>
@@ -759,7 +759,7 @@ function Benefits() {
   }
 
   return (
-    <section id="benefits" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="benefits" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-10 lg:mb-12">
           <div className="flex items-center justify-center gap-4 mb-2">
@@ -866,7 +866,7 @@ function Timeline() {
   }
 
   return (
-    <section id="timeline" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="timeline" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-10 lg:mb-12">
           <div className="flex items-center justify-center gap-4 mb-2">
@@ -1194,7 +1194,7 @@ function FindShakha({
   }
 
   return (
-    <section id="find" className="py-20 lg:py-28" style={{ background: '#FDF6ED' }}>
+    <section id="find" className="py-20 lg:py-28" style={{ background: '#ffffff' }}>
       {content}
     </section>
   )
@@ -1345,7 +1345,7 @@ function RegisterForm({
     }
 
     return (
-      <section id="register" className="py-20 lg:py-24" style={{ background: '#FDF6ED' }}>
+      <section id="register" className="py-20 lg:py-24" style={{ background: '#ffffff' }}>
         {submittedContent}
       </section>
     )
@@ -1376,7 +1376,7 @@ function RegisterForm({
 
         <form onSubmit={handleSubmit} className={standalone ? 'space-y-8' : 'space-y-5'}>
           {/* Personal Details */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>01</span> Personal Details
             </h3>
@@ -1429,7 +1429,7 @@ function RegisterForm({
           </div>
 
           {/* Location */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>02</span> Location
             </h3>
@@ -1478,7 +1478,7 @@ function RegisterForm({
           </div>
 
           {/* Interests */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>03</span> Interested In
             </h3>
@@ -1515,7 +1515,7 @@ function RegisterForm({
           </div>
 
           {/* Nearest Shakha */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>04</span> Find Nearest Shakha
             </h3>
@@ -1584,7 +1584,7 @@ function RegisterForm({
           </div>
 
           {/* Comments */}
-          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#fffdf8', border: '1px solid #eadfce' }}>
+          <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
               <span style={{ color: '#D4531A' }}>05</span> Additional Comments
             </h3>
@@ -1630,7 +1630,7 @@ function RegisterForm({
   }
 
   return (
-    <section id="register" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+    <section id="register" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
       {formContent}
     </section>
   )
@@ -1693,7 +1693,7 @@ function FAQ({ standalone = true }: { standalone?: boolean }) {
   }
 
   return (
-    <section id="faq" className="py-20 lg:py-28" style={{ background: '#FDF6ED' }}>
+    <section id="faq" className="py-20 lg:py-28" style={{ background: '#ffffff' }}>
       {content}
     </section>
   )
@@ -1709,7 +1709,7 @@ function FindFaqSideBySide({
   onSearchLocation: (state: string, city: string) => Promise<ShakhaChapter[]>
 }) {
   return (
-    <section className="py-20 lg:py-24" style={{ background: '#FDF6ED' }}>
+    <section className="py-20 lg:py-24" style={{ background: '#ffffff' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -2533,7 +2533,7 @@ export default function App() {
     return (
       <Suspense
         fallback={
-          <div className="min-h-screen flex items-center justify-center" style={{ background: '#FDF6ED' }}>
+          <div className="min-h-screen flex items-center justify-center" style={{ background: '#ffffff' }}>
             <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading admin panel...</p>
           </div>
         }
@@ -2545,7 +2545,7 @@ export default function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#FDF6ED' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#ffffff' }}>
         <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Shakha data...</p>
       </div>
     )
@@ -2602,7 +2602,7 @@ export default function App() {
         </>
       ) : (
         <>
-          <section className="pt-24 pb-6 lg:pt-28" style={{ background: '#FDF6ED' }}>
+          <section className="pt-24 pb-6 lg:pt-28" style={{ background: '#ffffff' }}>
             <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
               <button
                 onClick={() => scrollTo('home')}
@@ -2620,7 +2620,7 @@ export default function App() {
               </p>
             </div>
           </section>
-          <section id="register" className="py-16 lg:py-20" style={{ background: '#FDF6ED' }}>
+          <section id="register" className="py-16 lg:py-20" style={{ background: '#ffffff' }}>
             <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
               <div className="grid gap-6 xl:grid-cols-[minmax(0,1.65fr)_minmax(300px,0.9fr)] items-start">
                 <div className="rounded-[1.75rem] border p-5 sm:p-6 lg:p-7 bg-white/50" style={{ borderColor: '#eadfce' }}>
