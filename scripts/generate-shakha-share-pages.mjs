@@ -191,7 +191,7 @@ function buildPageHtml(row, slug, override) {
   const title = override?.shareTitle || `${row.name} | Shakha Sewa Setu`
   const description = override?.shareDescription || `${shareMessage} ${row.city}, ${row.state}.`
   const pageMessage = override?.shareMessage || shareMessage
-  const image = `${siteUrl}/social/shakha-banner.png`
+  const image = `${siteUrl}/assets/usa-07733-sri-krishna-shakha.png`
   const contacts = row.contacts.filter(contact => contact.name || contact.mobile || contact.email)
 
   const isSpecialShakha = slug === 'usa-07733-sri-krishna-shakha';

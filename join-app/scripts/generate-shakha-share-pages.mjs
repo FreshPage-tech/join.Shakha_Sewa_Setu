@@ -148,10 +148,10 @@ function buildPageHtml(row, slug, override) {
   const title = override?.shareTitle || `${row.name} | Shakha Sewa Setu`
   const description = override?.shareDescription || `${shareMessage} ${row.city}, ${row.state}.`
   const pageMessage = override?.shareMessage || shareMessage
-  const image = override?.shareImage || `${siteUrl}/social/shakha-banner.png`
+  const image = override?.shareImage || `${siteUrl}/assets/usa-07733-sri-krishna-shakha.png`
   const imageType = override?.shareImageType || 'image/png'
-  const imageWidth = override?.shareImageWidth || '1200'
-  const imageHeight = override?.shareImageHeight || '630'
+  const imageWidth = override?.shareImageWidth || '1536'
+  const imageHeight = override?.shareImageHeight || '1024'
   const contacts = (row.contacts ?? []).filter(contact => contact.name || contact.mobile || contact.email)
 
   return `<!doctype html>

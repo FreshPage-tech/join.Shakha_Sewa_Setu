@@ -57,7 +57,9 @@ const FAQS = [
 
 const DEFAULT_COUNTRY_SLUG = (import.meta.env.VITE_COUNTRY_SLUG ?? 'usa').toLowerCase()
 const SITE_SHARE_IMAGE = '/social/site-banner.png'
-const SHAKHA_SHARE_IMAGE = '/social/shakha-banner.png'
+const SHAKHA_PAGE_BANNER_IMAGE = '/assets/usa-07733-sri-krishna-shakha.png'
+const SHAKHA_PROFILE_IMAGE = '/assets/usa_07733.png'
+const SHAKHA_SHARE_IMAGE = SHAKHA_PAGE_BANNER_IMAGE
 
 function slugify(value: string): string {
   return value
@@ -114,6 +116,25 @@ function setMetaTagByProperty(property: string, content: string) {
   tag.setAttribute('content', content)
 }
 
+function getWhatsAppPhone(value: string): string | null {
+  const cleaned = value.replace(/[^\d+]/g, '')
+  if (!cleaned) {
+    return null
+  }
+
+  if (cleaned.startsWith('+')) {
+    const digits = cleaned.slice(1).replace(/\D/g, '')
+    return digits.length >= 8 ? digits : null
+  }
+
+  const digitsOnly = cleaned.replace(/\D/g, '')
+  return digitsOnly.length >= 8 ? digitsOnly : null
+}
+
+function buildWhatsAppLink(phone: string, message: string): string {
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+}
+
 function ShakhaSharePage({
   record,
   onBack,
@@ -123,6 +144,24 @@ function ShakhaSharePage({
 }) {
   const shareUrl = `${window.location.origin}${getShakhaRoute(record)}`
   const shareMessage = getShareMessage(record)
+  const announcementLines = shareMessage
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean)
+  const contactEntries = record.contacts.filter(contact => contact.name || contact.mobile || contact.email)
+  const stateName = record.state?.trim() || 'State'
+  const cityName = record.city?.trim() || 'City'
+  const whatsappMessage = `Namaste, I'm interested to join ${record.name} Shakha.`
+  const whatsappTargets = record.contacts
+    .map(contact => {
+      const phone = getWhatsAppPhone(contact.mobile || '')
+      return {
+        name: contact.name?.trim() || 'Shakha Volunteer',
+        phone,
+      }
+    })
+    .filter(target => Boolean(target.phone))
+    .slice(0, 2)
 
   const copyShareText = async () => {
     const details = [record.mapLink ? `Map: ${record.mapLink}` : '', `Shakha page: ${shareUrl}`]
@@ -132,9 +171,9 @@ function ShakhaSharePage({
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#FDF6ED' }}>
-      <section className="pt-24 pb-8 lg:pt-28">
-        <div className="max-w-[86rem] mx-auto px-2 sm:px-3 lg:px-4">
+    <div className="min-h-screen" style={{ background: '#ffffff' }}>
+      <section className="pt-24 pb-10 lg:pt-28">
+        <div className="mx-auto w-full max-w-[92rem] px-2 sm:px-3 lg:px-4">
           <button
             onClick={onBack}
             className="mb-5 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
@@ -144,70 +183,145 @@ function ShakhaSharePage({
             <span>Back to Register</span>
           </button>
 
-          <div className="rounded-2xl border p-6 lg:p-8" style={{ background: '#fffdf8', borderColor: '#eadfce' }}>
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#132f5d' }}>
-              {record.name}
-            </h1>
-            <p className="text-sm sm:text-base" style={{ color: '#5a6f9a' }}>
-              {record.city}, {record.state}
-            </p>
-
-            <div className="mt-6 rounded-xl border p-5" style={{ borderColor: 'rgba(212,83,26,0.25)', background: 'rgba(212,83,26,0.05)' }}>
-              <p className="whitespace-pre-line text-sm sm:text-base leading-7" style={{ color: '#1e3761' }}>
-                {shareMessage}
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <button
-                onClick={() => void copyShareText()}
-                className="rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
-                style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}
-              >
-                Copy Share Message
-              </button>
-              <a
-                href={record.mapLink || '#'}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-lg border px-4 py-2.5 text-sm font-semibold"
-                style={{ borderColor: '#1B3A6B', color: '#1B3A6B', pointerEvents: record.mapLink ? 'auto' : 'none', opacity: record.mapLink ? 1 : 0.5 }}
-              >
-                Open Map Link
-              </a>
-            </div>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Address</p>
-                <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>{record.address || 'Not available'}</p>
+          <div className="overflow-hidden rounded-2xl border" style={{ background: '#ffffff', borderColor: '#e7e9ee' }}>
+            <div className="overflow-hidden border-b" style={{ borderColor: '#eef1f6', background: '#ffffff' }}>
+              <div className="relative bg-white flex items-center justify-center px-2 py-2 lg:py-3">
+                <img src={SHAKHA_PAGE_BANNER_IMAGE} alt="Shakha banner" className="block w-full h-auto lg:w-auto lg:max-h-[540px]" />
               </div>
-              <div className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Schedule</p>
-                <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>{record.day || 'Weekly'}</p>
-                <p className="text-sm" style={{ color: '#1e3761' }}>{record.time || 'Please contact volunteer'}</p>
-              </div>
-              <div className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Classification</p>
-                <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>Vibhag: {record.vibhag || 'Not set'}</p>
-                <p className="text-sm" style={{ color: '#1e3761' }}>Bhag: {record.bhag || 'Not set'}</p>
-                <p className="text-sm" style={{ color: '#1e3761' }}>Zip: {extractZip(record)}</p>
-              </div>
-            </div>
 
-            <div className="mt-8">
-              <h2 className="font-display text-xl font-semibold" style={{ color: '#132f5d' }}>Contact Details</h2>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {record.contacts.map((contact, index) => (
-                  contact.name || contact.mobile || contact.email ? (
-                  <div key={index} className="rounded-xl border p-4" style={{ borderColor: '#ede5d8' }}>
-                    <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Contact {index + 1}</p>
-                    <p className="mt-1 text-sm" style={{ color: '#1e3761' }}>Name: {contact.name || 'Not provided'}</p>
-                    <p className="text-sm" style={{ color: '#1e3761' }}>Mobile: {contact.mobile || 'Not provided'}</p>
-                    <p className="text-sm break-all" style={{ color: '#1e3761' }}>Email: {contact.email || 'Not provided'}</p>
+              <div className="relative px-4 pb-4 sm:px-6">
+                <div className="-mt-14 flex flex-col gap-4 sm:-mt-16 lg:flex-row lg:items-end lg:justify-between">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
+                    <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)] sm:h-36 sm:w-36">
+                      <img src={SHAKHA_PROFILE_IMAGE} alt="Shakha profile" className="h-full w-full object-cover" />
+                    </div>
+
+                    <div className="sm:pb-2">
+                      <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold" style={{ color: '#132f5d' }}>
+                        {record.name}
+                      </h1>
+                      <p className="mt-1 text-sm sm:text-base" style={{ color: '#5a6f9a' }}>
+                        {stateName} &gt;&gt; {cityName} &gt;&gt; {record.name}
+                      </p>
+                    </div>
                   </div>
-                  ) : null
-                ))}
+
+                  <div className="flex flex-wrap gap-2.5 lg:pb-2">
+                    {[0, 1].map(index => {
+                      const target = whatsappTargets[index]
+                      const isActive = Boolean(target?.phone)
+                      const label = target ? `WhatsApp ${index + 1}: ${target.name}` : `WhatsApp ${index + 1}`
+                      const href = target?.phone ? buildWhatsAppLink(target.phone, whatsappMessage) : '#'
+
+                      return (
+                        <a
+                          key={label}
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
+                          style={{
+                            background: isActive ? 'linear-gradient(135deg, #25d366, #128c7e)' : '#9ca3af',
+                            pointerEvents: isActive ? 'auto' : 'none',
+                            opacity: isActive ? 1 : 0.65,
+                          }}
+                        >
+                          {isActive ? label : `${label} (Not Available)`}
+                        </a>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 sm:p-5 lg:p-6">
+              <div className="mt-4 grid gap-4 lg:grid-cols-[1.45fr_1fr]">
+                <div className="rounded-2xl border p-4 sm:p-5" style={{ borderColor: '#eceff4', background: '#ffffff' }}>
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-3" style={{ borderColor: '#f1f4f8' }}>
+                    <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: '#132f5d' }}>
+                      Shakha Announcement
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => void copyShareText()}
+                        className="rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold text-white"
+                        style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}
+                      >
+                        Copy Share Message
+                      </button>
+                      <a
+                        href={record.mapLink || '#'}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-lg border px-4 py-2 text-xs sm:text-sm font-semibold"
+                        style={{ borderColor: '#1B3A6B', color: '#1B3A6B', pointerEvents: record.mapLink ? 'auto' : 'none', opacity: record.mapLink ? 1 : 0.5 }}
+                      >
+                        Open Map Link
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 space-y-2.5">
+                    {announcementLines.map((line, index) => (
+                      <p
+                        key={`${line}-${index}`}
+                        className="text-sm sm:text-[15px] leading-6"
+                        style={{ color: '#1e3761' }}
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="rounded-2xl border p-4" style={{ borderColor: '#eceff4', background: '#ffffff' }}>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Address</h3>
+                    <p className="mt-2 text-sm leading-6" style={{ color: '#1e3761' }}>{record.address || 'Not available'}</p>
+                  </div>
+
+                  <div className="rounded-2xl border p-4" style={{ borderColor: '#eceff4', background: '#ffffff' }}>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Schedule</h3>
+                    <p className="mt-2 text-sm" style={{ color: '#1e3761' }}>{record.day || 'Weekly'}</p>
+                    <p className="text-sm" style={{ color: '#1e3761' }}>{record.time || 'Please contact volunteer'}</p>
+                  </div>
+
+                  <div className="rounded-2xl border p-4" style={{ borderColor: '#eceff4', background: '#ffffff' }}>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Classification</h3>
+                    <p className="mt-2 text-sm" style={{ color: '#1e3761' }}>Vibhag: {record.vibhag || 'Not set'}</p>
+                    <p className="text-sm" style={{ color: '#1e3761' }}>Bhag: {record.bhag || 'Not set'}</p>
+                    <p className="text-sm" style={{ color: '#1e3761' }}>Zip: {extractZip(record)}</p>
+                  </div>
+
+                  <div className="rounded-2xl border p-4" style={{ borderColor: '#eceff4', background: '#ffffff' }}>
+                    <h3 className="font-display text-lg font-semibold" style={{ color: '#132f5d' }}>Contact Details</h3>
+                    <div className="mt-3 space-y-2.5">
+                      {contactEntries.map((contact, index) => {
+                        const phone = getWhatsAppPhone(contact.mobile || '')
+                        return (
+                          <div key={`${contact.name || 'contact'}-${index}`} className="rounded-xl border p-3" style={{ borderColor: '#f0f3f8' }}>
+                            <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#6a7da3' }}>Contact {index + 1}</p>
+                            <p className="mt-1 text-sm font-semibold" style={{ color: '#1e3761' }}>{contact.name || 'Not provided'}</p>
+                            <p className="text-sm" style={{ color: '#1e3761' }}>{contact.mobile || 'Not provided'}</p>
+                            <p className="text-xs break-all" style={{ color: '#6a7da3' }}>{contact.email || 'Not provided'}</p>
+                            {phone ? (
+                              <a
+                                href={buildWhatsAppLink(phone, whatsappMessage)}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mt-2 inline-flex rounded-md px-3 py-1.5 text-xs font-semibold text-white"
+                                style={{ background: 'linear-gradient(135deg, #25d366, #128c7e)' }}
+                              >
+                                Message on WhatsApp
+                              </a>
+                            ) : null}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
