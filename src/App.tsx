@@ -1744,6 +1744,12 @@ function FindFaqSideBySide({
 }
 
 function Contact({ standalone = true }: { standalone?: boolean }) {
+  const contactPhone = '+1 201-889-6610'
+  const contactPhoneHref = 'tel:+12018896610'
+  const contactWhatsAppHref = buildWhatsAppLink(
+    '12018896610',
+    "Namaste Utkarsh, I'm interested in learning more about Shakha Sewa Setu.",
+  )
   const contactMethods = [
     { icon: '📧', label: 'Email', value: 'info@hssus.org', sub: 'Replies within 24 hours' },
     { icon: '📞', label: 'Phone', value: '+1 (800) HSS-USA0', sub: 'Mon–Sat, 9am–6pm ET' },
@@ -1782,6 +1788,22 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
               {item}
             </div>
           ))}
+        </div>
+
+        <div className="mb-5 rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.14)' }}>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: '#fb923c' }}>Contact Details</div>
+          <div className="mt-2 text-base font-semibold text-white">Utkarsh Patel</div>
+          <a href={contactPhoneHref} className="mt-1 inline-block text-sm text-white/75 hover:text-white">{contactPhone}</a>
+          <a
+            href={contactWhatsAppHref}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            style={{ background: 'linear-gradient(135deg, #25d366, #128c7e)' }}
+          >
+            <span aria-hidden="true">💬</span>
+            Chat on WhatsApp
+          </a>
         </div>
 
         <div className="space-y-3 mb-5">
@@ -1852,6 +1874,24 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
           <p className="text-white/60 text-base">
             Reach out to our national team — we're here to guide you.
           </p>
+        </div>
+
+        <div className="mx-auto mb-8 max-w-lg rounded-2xl p-6 text-center" style={{ background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.13)' }}>
+          <div className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#fb923c' }}>Contact Details</div>
+          <div className="mt-2 text-xl font-semibold text-white">Utkarsh Patel</div>
+          <a href={contactPhoneHref} className="mt-1 inline-block text-sm text-white/70 hover:text-white">{contactPhone}</a>
+          <div>
+            <a
+              href={contactWhatsAppHref}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #25d366, #128c7e)' }}
+            >
+              <span aria-hidden="true">💬</span>
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-6 mb-12">
@@ -2005,7 +2045,7 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
   return (
     <footer style={{ background: '#071020' }}>
       <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4 py-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img
@@ -2064,6 +2104,26 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
               {['News & Events', 'Publications', 'Volunteer', 'Donate', 'Contact Us'].map(r => (
                 <div key={r}>{r}</div>
               ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-sm mb-4">Contact Details</h4>
+            <div className="space-y-3 text-sm">
+              <p className="font-semibold text-white">Utkarsh Patel</p>
+              <a href="tel:+12018896610" className="block text-white/55 transition-colors hover:text-white">
+                +1 201-889-6610
+              </a>
+              <a
+                href={buildWhatsAppLink('12018896610', "Namaste Utkarsh, I'm interested in learning more about Shakha Sewa Setu.")}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 font-semibold text-white transition-opacity hover:opacity-90"
+                style={{ background: 'linear-gradient(135deg, #25d366, #128c7e)' }}
+              >
+                <span aria-hidden="true">💬</span>
+                WhatsApp
+              </a>
             </div>
           </div>
         </div>
