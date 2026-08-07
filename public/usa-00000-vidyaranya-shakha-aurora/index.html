@@ -80,6 +80,16 @@ Strong Individuals • Strong Families • Strong Society
       .value { margin-top: 4px; font-size: 14px; color: #1e3761; line-height: 1.5; }
       .contact-grid { margin-top: 10px; display: grid; gap: 10px; grid-template-columns: 1fr; }
       .footer { margin-top: 16px; color: #7082a8; font-size: 12px; }
+      @media (max-width: 767px) {
+        .hero-head { padding: 10px 12px 12px; }
+        .hero-row { margin-top: 0; align-items: flex-start; }
+        .profile-wrap { width: 100%; align-items: flex-start; gap: 10px; }
+        .profile-pic { width: 64px; height: 64px; font-size: 28px; border-width: 3px; }
+        h1 { font-size: 22px; line-height: 1.2; overflow-wrap: anywhere; }
+        .sub { margin-top: 5px; font-size: 13px; }
+        .actions { width: 100%; }
+        .action { flex: 1 1 100%; }
+      }
       @media (min-width: 780px) {
         .hero-head { padding: 0 18px 16px; }
         .hero-row { margin-top: -60px; gap: 14px; }
