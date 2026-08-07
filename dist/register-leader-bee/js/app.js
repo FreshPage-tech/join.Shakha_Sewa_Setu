@@ -255,8 +255,15 @@
 
   function setupSharing() {
     const pageUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
-    const message = '12-week leadership workshop from 13 September 2026, every Sunday 4:00 PM to 5:30 PM at The Dance Spot, Morganville. Registration fee: $10.'
-    const shareText = `Leader-BEE 12 Weeks Leadership Workshop\n\n${message}\n\n${pageUrl}`
+    const details = [
+      '• Grades: 4–8',
+      '• Starts: 13 September 2026',
+      '• Time: Every Sunday, 4:00 PM–5:30 PM',
+      '• Location: The Dance Spot, Morganville, NJ',
+      '• Registration: $10',
+      '• Parents: Free',
+    ].join('\n')
+    const shareText = `*LEADER-BEE – 12 Weeks Workshop*\n\n${details}\n\n${pageUrl}`
 
     if (shareButtons.copy) {
       shareButtons.copy.addEventListener('click', async () => {
