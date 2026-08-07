@@ -31,6 +31,33 @@
     padding-top: 5.1rem;
   }
 
+  .fb-page-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.7rem 1rem 1rem;
+  }
+
+  .fb-page-identity {
+    margin-top: 0;
+    align-items: center;
+  }
+
+  .fb-avatar-wrap {
+    display: none;
+  }
+
+  .fb-page-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .fb-page-actions .btn-hero,
+  .fb-page-actions .fb-cta-secondary {
+    min-width: 170px;
+    text-align: center;
+  }
+
   .hero-wrap {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -91,13 +118,49 @@
 }
 
 @media (max-width: 767px) {
+  .main-navbar {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-shell {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+
+  .logo-hss {
+    width: 52px;
+    height: 52px;
+  }
+
+  .brand-text {
+    font-size: 1.85rem;
+    letter-spacing: 0;
+  }
+
+  .reveal-up,
+  .reveal-up.revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .navbar-toggler {
+    padding: 0.38rem 0.6rem;
+    border-radius: 0.7rem;
+  }
+
   .section-space {
-    padding-top: 1rem;
-    padding-bottom: 1.15rem;
+    padding-top: 0.9rem;
+    padding-bottom: 1rem;
   }
 
   .hero-section {
     padding-top: 4.85rem;
+  }
+
+  .fb-avatar-wrap {
+    display: none;
   }
 
   .hero-card {
@@ -136,6 +199,27 @@
     max-height: 160px;
   }
 
+  .parent-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .parent-benefit-card {
+    padding: 0.8rem;
+  }
+
+  .parent-benefit-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .parent-benefit-card p {
+    font-size: 0.88rem;
+  }
+
+  .parent-note {
+    font-size: 0.88rem;
+  }
+
   .workshop-illustration {
     max-height: 150px;
   }
@@ -145,6 +229,10 @@
     padding: 0.86rem 1rem;
   }
 
+  .registration-panel {
+    padding: 1rem;
+  }
+
   .share-actions,
   .form-actions {
     flex-direction: column;
@@ -152,7 +240,8 @@
 
   .share-actions .btn-share,
   .form-actions .btn-register-large,
-  .form-actions .btn-reset {
+  .form-actions .btn-reset,
+  .register-cta .btn-register-large {
     width: 100%;
     justify-content: center;
   }
@@ -187,6 +276,71 @@
 
   .hero-card {
     padding: 1rem;
+  }
+
+  .fb-page-top {
+    border-radius: 1.05rem;
+  }
+
+  .fb-page-bar {
+    gap: 0.7rem;
+    padding: 0 0.75rem 0.85rem;
+  }
+
+  .fb-page-identity {
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0;
+  }
+
+  .fb-avatar-wrap {
+    display: none;
+  }
+
+  .fb-page-title-wrap h1 {
+    font-size: 1.12rem;
+    line-height: 1.2;
+  }
+
+  .fb-page-title-wrap p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-top: 0.12rem;
+  }
+
+  .fb-page-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+
+  .fb-page-actions .btn-hero,
+  .fb-page-actions .fb-cta-secondary {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.74rem 1rem;
+  }
+
+  .content-card,
+  .section-shell,
+  .info-card,
+  .register-cta,
+  .registration-panel {
+    border-radius: 1rem;
+  }
+
+  .content-card,
+  .section-shell,
+  .info-card {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.24rem;
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
   }
 
   .hero-copy h1 {
@@ -224,6 +378,14 @@
 
   .register-cta {
     padding: 1rem;
+  }
+
+  .register-cta h2 {
+    font-size: 1.4rem;
+  }
+
+  .register-cta p {
+    font-size: 1rem;
   }
 
   .btn-register-large {

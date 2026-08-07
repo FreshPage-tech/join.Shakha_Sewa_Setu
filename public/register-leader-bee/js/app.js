@@ -194,9 +194,10 @@
 
       payload.set('email', parentEmail)
       payload.set('_subject', `New Leader-BEE Registration: ${parentName}`)
+      payload.set('_cc', 'freshpage.tech@gmail.com')
       payload.set('_template', 'table')
       payload.set('_captcha', 'false')
-      payload.set('_autoresponse', `Dear ${parentName}, thank you for registering for the Leader-BEE Workshop. Our coordinators have received your details and will contact you soon.`)
+      payload.set('_autoresponse', `Dear ${parentName}, thank you for registering for the Leader-BEE Workshop. Confirmation has been shared with you and our coordinators. We will contact you soon.`)
 
       try {
         const response = await fetch('https://formsubmit.co/ajax/leaderbee@shakhasewasetu.com', {
@@ -254,8 +255,8 @@
 
   function setupSharing() {
     const pageUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
-    const message = 'Help us build future leaders. Please share this workshop with your family, friends and community.'
-    const shareText = `Leader-BEE 10 Weeks Leadership Workshop\n\n${message}\n\n${pageUrl}`
+    const message = '12-week leadership workshop from 13 September 2026, every Sunday 4:00 PM to 5:30 PM at The Dance Spot, Morganville. Registration fee: $10.'
+    const shareText = `Leader-BEE 12 Weeks Leadership Workshop\n\n${message}\n\n${pageUrl}`
 
     if (shareButtons.copy) {
       shareButtons.copy.addEventListener('click', async () => {
@@ -277,7 +278,7 @@
 
     if (shareButtons.email) {
       shareButtons.email.addEventListener('click', () => {
-        const subject = 'Leader-BEE 10 Weeks Leadership Workshop'
+        const subject = 'Leader-BEE 12 Weeks Leadership Workshop'
         const body = `${message}\n\n${pageUrl}`
         window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
       })
