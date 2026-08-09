@@ -431,6 +431,54 @@
   }
 }
 
+@media (max-width: 767px) {
+  .leaderbee-page .success-band .panel-title {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  .leaderbee-page .payment-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .leaderbee-page .payment-copy h3 {
+    font-size: 1.3rem;
+  }
+
+  .leaderbee-page .zelle-qr-wrap {
+    width: min(100%, 220px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .leaderbee-page .success-intro {
+    font-size: 0.88rem;
+  }
+
+  .leaderbee-page .payment-card {
+    margin-inline: -0.2rem;
+    padding: 0.8rem;
+  }
+
+  .leaderbee-page .payment-option {
+    gap: 0.6rem;
+    padding: 0.65rem;
+    font-size: 0.84rem;
+  }
+
+  .leaderbee-page .payment-note {
+    font-size: 0.78rem;
+  }
+
+  .leaderbee-page .zelle-qr-wrap {
+    width: min(100%, 200px);
+  }
+}
+
 @media (min-width: 1600px) {
   .container-xxl {
     max-width: 1480px;

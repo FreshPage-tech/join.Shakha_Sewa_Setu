@@ -412,10 +412,42 @@
             </form>
 
             <div class="success-band d-none mt-4" id="leaderBeeSuccess">
-              <p class="label">Success</p>
-              <h2 class="panel-title">Thank you for registering!</h2>
-              <p>Your registration is submitted successfully. Confirmation emails have been sent.</p>
-              <button class="btn btn-register-large js-reset-registration" type="button">Register Another Family</button>
+              <div class="success-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
+              <p class="label">Registration received</p>
+              <h2 class="panel-title">🎉 Thank You for Registering!</h2>
+              <p class="success-intro">Thank you for registering your child for the Leader Bee program! We’re thrilled to have them join us.</p>
+
+              <div class="payment-card">
+                <div class="payment-copy">
+                  <p class="payment-eyebrow">Next step</p>
+                  <h3>Complete Your Registration</h3>
+                  <p>To finalize your enrollment, please submit your payment using one of the options below:</p>
+
+                  <div class="payment-options">
+                    <div class="payment-option">
+                      <span class="payment-option-icon" aria-hidden="true">Z</span>
+                      <p><strong>Zelle:</strong> Scan the QR code shown here or use <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
+                    </div>
+                    <div class="payment-option">
+                      <span class="payment-option-icon apple" aria-hidden="true"><i class="fa-brands fa-apple"></i></span>
+                      <p><strong>Apple Pay:</strong> Send payment directly to <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
+                    </div>
+                  </div>
+
+                  <div class="payment-note">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <p><strong>Note:</strong> Once payment is complete, please email or text us a quick screenshot or confirmation with your child’s name so we can update your registration status.</p>
+                  </div>
+                </div>
+
+                <figure class="zelle-qr-wrap">
+                  <img src="/register-leader-bee/assets/images/zelle-payment-qr.png" alt="Zelle payment QR code for Utkarshkumar Patel" />
+                  <figcaption>Scan to pay with Zelle</figcaption>
+                </figure>
+              </div>
+
+              <p class="success-contact">Questions? Email <a href="mailto:Leaderbee@shakhasewasetu.com">Leaderbee@shakhasewasetu.com</a> or call/text <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
+              <button class="btn btn-reset js-reset-registration" type="button">Register Another Family</button>
             </div>
           </div>
         </div>
