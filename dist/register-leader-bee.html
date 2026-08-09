@@ -355,9 +355,9 @@
                     <div class="invalid-feedback">Enter a valid email address.</div>
                   </div>
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="parentPhone" type="tel" name="parentPhone" placeholder=" " required />
+                    <input class="form-control" id="parentPhone" type="tel" name="parentPhone" placeholder=" " inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" required />
                     <label for="parentPhone">Parent Mobile Number *</label>
-                    <div class="invalid-feedback">Mobile number is required.</div>
+                    <div class="invalid-feedback">Enter a valid 10-digit mobile number using numbers only.</div>
                   </div>
                 </div>
 

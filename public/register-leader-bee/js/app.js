@@ -139,6 +139,11 @@
 
   function updateFieldState(field) {
     if (!field || field.disabled) return true
+
+    if (field.id === 'parentPhone') {
+      field.setCustomValidity(/^\d{10}$/.test(field.value) ? '' : 'Enter exactly 10 digits.')
+    }
+
     const isValid = field.checkValidity()
     field.classList.toggle('is-valid', isValid)
     field.classList.toggle('is-invalid', !isValid)
@@ -149,6 +154,12 @@
     if (!registrationForm) return
 
     const fields = registrationForm.querySelectorAll('input, select, textarea')
+    const parentPhone = registrationForm.querySelector('#parentPhone')
+
+    parentPhone?.addEventListener('input', () => {
+      parentPhone.value = parentPhone.value.replace(/\D/g, '').slice(0, 10)
+    })
+
     const validateAll = () => {
       let valid = true
       fields.forEach(field => {
