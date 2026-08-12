@@ -56,8 +56,8 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="/register-leader-bee/css/style.css" />
-    <link rel="stylesheet" href="/register-leader-bee/css/responsive.css" />
+    <link rel="stylesheet" href="/register-leader-bee/css/style.css?v=20260811-3" />
+    <link rel="stylesheet" href="/register-leader-bee/css/responsive.css?v=20260811-3" />
 
     <script type="application/ld+json">
       {
@@ -332,13 +332,17 @@
       <section class="section-space pt-0 d-none" id="registration-form-panel">
         <div class="container-xxl">
           <div class="registration-panel reveal-up">
-            <p class="label">Form</p>
+            <p class="label registration-eyebrow"><i class="fa-solid fa-shield-halved"></i> Secure registration</p>
             <h2 class="panel-title">Parent and Child Registration</h2>
-            <p class="form-support">Fill out the form below. On successful submission, confirmation emails are sent and a thank-you message is shown.</p>
+            <p class="form-support">Add one or more children, review the total, and complete payment securely with Stripe.</p>
 
             <form id="leaderBeeForm" class="needs-validation" novalidate>
-              <div class="row g-3">
-                <div class="col-lg-6">
+              <div class="registration-grid">
+              <section class="form-section-card parent-section" aria-labelledby="parentDetailsTitle">
+                <div class="form-section-heading">
+                  <span class="form-section-icon"><i class="fa-solid fa-user"></i></span>
+                  <div><h3 id="parentDetailsTitle">Parent details</h3><p>Registration and receipt contact</p></div>
+                </div>
                   <div class="form-floating mb-3">
                     <input class="form-control" id="parentFirstName" name="parentFirstName" placeholder=" " required />
                     <label for="parentFirstName">Parent First Name *</label>
@@ -359,40 +363,37 @@
                     <label for="parentPhone">Parent Mobile Number *</label>
                     <div class="invalid-feedback">Enter a valid 10-digit mobile number using numbers only.</div>
                   </div>
-                </div>
+              </section>
 
-                <div class="col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input class="form-control" id="childName" name="childName" placeholder=" " required />
-                    <label for="childName">Child Name *</label>
-                    <div class="invalid-feedback">Child name is required.</div>
+              <section class="form-section-card children-section" aria-labelledby="childrenDetailsTitle">
+                  <div class="children-heading">
+                    <div>
+                      <h3 id="childrenDetailsTitle"><span class="form-section-icon"><i class="fa-solid fa-children"></i></span> Children</h3>
+                      <p>$10 per child · total updates automatically</p>
+                    </div>
+                    <button class="btn btn-add-child" id="addChildButton" type="button"><i class="fa-solid fa-plus"></i> Add another child</button>
                   </div>
-                  <div class="form-floating mb-3">
-                    <select class="form-select" id="grade" name="grade" required>
-                      <option value="" selected disabled>Select grade</option>
-                      <option>Grade 4</option>
-                      <option>Grade 5</option>
-                      <option>Grade 6</option>
-                      <option>Grade 7</option>
-                      <option>Grade 8</option>
-                    </select>
-                    <label for="grade">Child Grade *</label>
-                    <div class="invalid-feedback">Please choose a grade.</div>
+                  <div id="childrenList" aria-live="polite"></div>
+                  <div class="row g-2 location-row">
+                    <div class="col-sm-6">
+                      <div class="form-floating">
+                        <input class="form-control" id="city" name="city" placeholder=" " required />
+                        <label for="city">City *</label>
+                        <div class="invalid-feedback">City is required.</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-floating">
+                        <input class="form-control" id="state" name="state" placeholder=" " required />
+                        <label for="state">State *</label>
+                        <div class="invalid-feedback">State is required.</div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-floating mb-3">
-                    <input class="form-control" id="city" name="city" placeholder=" " required />
-                    <label for="city">City *</label>
-                    <div class="invalid-feedback">City is required.</div>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input class="form-control" id="state" name="state" placeholder=" " required />
-                    <label for="state">State *</label>
-                    <div class="invalid-feedback">State is required.</div>
-                  </div>
-                </div>
+              </section>
               </div>
 
-              <div class="form-floating mb-3">
+              <div class="form-floating mb-3 notes-field">
                 <textarea class="form-control" id="note" name="note" placeholder=" " style="height: 120px"></textarea>
                 <label for="note">Additional Notes</label>
               </div>
@@ -405,45 +406,46 @@
 
               <input type="text" name="_honeypot" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" />
 
+              <input type="hidden" id="childCount" name="childCount" value="1" />
+              <input type="hidden" id="registrationTotal" name="registrationTotal" value="$10.00" />
+
+              <aside class="checkout-summary" aria-label="Registration total">
+                <div>
+                  <span class="checkout-label">Order summary</span>
+                  <strong><span id="summaryChildCount">1 child</span> × $10.00</strong>
+                </div>
+                <div class="checkout-total">
+                  <span>Total</span>
+                  <strong id="registrationTotalDisplay">$10.00</strong>
+                </div>
+              </aside>
+
               <div class="form-actions">
-                <button class="btn btn-register-large" type="submit">Submit Registration</button>
+                <button class="btn btn-register-large btn-stripe-checkout" type="submit"><i class="fa-solid fa-lock"></i> Continue to payment · <span id="checkoutButtonAmount">$10.00</span></button>
                 <button class="btn btn-reset js-reset-registration" type="button">Reset Form</button>
               </div>
+              <p class="stripe-security"><i class="fa-brands fa-stripe"></i> Secure payment powered by Stripe</p>
             </form>
 
             <div class="success-band d-none mt-4" id="leaderBeeSuccess">
               <div class="success-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
               <p class="label">Registration received</p>
               <h2 class="panel-title">🎉 Thank You for Registering!</h2>
-              <p class="success-intro">Thank you for registering your child for the Leader Bee program! We’re thrilled to have them join us.</p>
+              <p class="success-intro">Thank you for registering your children for the Leader Bee program! We’re thrilled to have them join us.</p>
 
               <div class="payment-card">
                 <div class="payment-copy">
                   <p class="payment-eyebrow">Next step</p>
                   <h3>Complete Your Registration</h3>
-                  <p>To finalize your enrollment, please submit your payment using one of the options below:</p>
+                  <p>Your registration details were received. Continue to Stripe to securely pay <strong id="successPaymentTotal">$10.00</strong>.</p>
 
-                  <div class="payment-options">
-                    <div class="payment-option">
-                      <span class="payment-option-icon" aria-hidden="true">Z</span>
-                      <p><strong>Zelle:</strong> Scan the QR code shown here or use <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
-                    </div>
-                    <div class="payment-option">
-                      <span class="payment-option-icon apple" aria-hidden="true"><i class="fa-brands fa-apple"></i></span>
-                      <p><strong>Apple Pay:</strong> Send payment directly to <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
-                    </div>
-                  </div>
+                  <button class="btn btn-register-large btn-stripe-checkout" id="stripePaymentButton" type="button"><i class="fa-solid fa-lock"></i> Pay with Stripe</button>
 
                   <div class="payment-note">
                     <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-                    <p><strong>Note:</strong> Once payment is complete, please email or text us a quick screenshot or confirmation with your child’s name so we can update your registration status.</p>
+                    <p>Stripe accepts major credit and debit cards. Your registration is confirmed after payment is completed.</p>
                   </div>
                 </div>
-
-                <figure class="zelle-qr-wrap">
-                  <img src="/register-leader-bee/assets/images/zelle-payment-qr.png" alt="Zelle payment QR code for Utkarshkumar Patel" />
-                  <figcaption>Scan to pay with Zelle</figcaption>
-                </figure>
               </div>
 
               <p class="success-contact">Questions? Email <a href="mailto:Leaderbee@shakhasewasetu.com">Leaderbee@shakhasewasetu.com</a> or call/text <a href="tel:+12018896610">+1 201-889-6610</a>.</p>
@@ -524,6 +526,7 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script src="/register-leader-bee/js/app.js" defer></script>
+    <script src="/register-leader-bee/js/config.js?v=20260811-4"></script>
+    <script src="/register-leader-bee/js/app.js?v=20260811-4" defer></script>
   </body>
 </html>

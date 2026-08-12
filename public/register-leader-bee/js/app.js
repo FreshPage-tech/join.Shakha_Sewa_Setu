@@ -14,6 +14,19 @@
   const registrationForm = document.getElementById('leaderBeeForm')
   const successPanel = document.getElementById('leaderBeeSuccess')
   const resetButtons = document.querySelectorAll('.js-reset-registration')
+  const childrenList = document.getElementById('childrenList')
+  const addChildButton = document.getElementById('addChildButton')
+  const childCountInput = document.getElementById('childCount')
+  const registrationTotalInput = document.getElementById('registrationTotal')
+  const summaryChildCount = document.getElementById('summaryChildCount')
+  const registrationTotalDisplay = document.getElementById('registrationTotalDisplay')
+  const successPaymentTotal = document.getElementById('successPaymentTotal')
+  const checkoutButtonAmount = document.getElementById('checkoutButtonAmount')
+  const stripePaymentButton = document.getElementById('stripePaymentButton')
+  const PRICE_PER_CHILD = 10
+  const DEFAULT_CHECKOUT_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/create-leader-bee-checkout'
+  let childSequence = 0
+  let lastCheckoutPayload = null
   const shareButtons = {
     whatsapp: document.querySelector('.js-share-whatsapp'),
     facebook: document.querySelector('.js-share-facebook'),
@@ -137,6 +150,41 @@
     })
   }
 
+  function setupPaymentReturn() {
+    const paymentStatus = new URLSearchParams(window.location.search).get('payment')
+    if (!paymentStatus || !registrationPanel || !registrationForm) return
+
+    registrationPanel.classList.remove('d-none')
+    if (paymentStatus === 'success' && successPanel) {
+      sessionStorage.removeItem('leaderBeeCheckout')
+      registrationForm.classList.add('d-none')
+      successPanel.classList.remove('d-none')
+      const title = successPanel.querySelector('.panel-title')
+      const intro = successPanel.querySelector('.success-intro')
+      const paymentCard = successPanel.querySelector('.payment-card')
+      if (title) title.textContent = 'Payment successful!'
+      if (intro) intro.textContent = 'Your children are registered for Leader-BEE. Stripe will email your payment receipt shortly.'
+      if (paymentCard) paymentCard.classList.add('d-none')
+    } else if (paymentStatus === 'cancelled' && successPanel) {
+      try {
+        lastCheckoutPayload = JSON.parse(sessionStorage.getItem('leaderBeeCheckout') || 'null')
+      } catch {
+        lastCheckoutPayload = null
+      }
+      registrationForm.classList.add('d-none')
+      successPanel.classList.remove('d-none')
+      const title = successPanel.querySelector('.panel-title')
+      const intro = successPanel.querySelector('.success-intro')
+      if (title) title.textContent = 'Payment not completed'
+      if (intro) intro.textContent = 'Your registration was saved. Use the secure payment button below whenever you are ready.'
+      const count = lastCheckoutPayload?.children?.length || 1
+      if (successPaymentTotal) successPaymentTotal.textContent = `$${(count * PRICE_PER_CHILD).toFixed(2)}`
+      if (!lastCheckoutPayload && stripePaymentButton) stripePaymentButton.disabled = true
+    }
+
+    window.setTimeout(() => registrationPanel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+  }
+
   function updateFieldState(field) {
     if (!field || field.disabled) return true
 
@@ -150,10 +198,123 @@
     return isValid
   }
 
+  function getCheckoutApiUrl() {
+    return window.LEADER_BEE_CONFIG?.checkoutApiUrl || DEFAULT_CHECKOUT_API_URL
+  }
+
+  function updateRegistrationTotal() {
+    const count = childrenList?.querySelectorAll('.child-entry').length || 1
+    const total = count * PRICE_PER_CHILD
+    const formattedTotal = `$${total.toFixed(2)}`
+    if (childCountInput) childCountInput.value = String(count)
+    if (registrationTotalInput) registrationTotalInput.value = formattedTotal
+    if (summaryChildCount) summaryChildCount.textContent = `${count} ${count === 1 ? 'child' : 'children'}`
+    if (registrationTotalDisplay) registrationTotalDisplay.textContent = formattedTotal
+    if (successPaymentTotal) successPaymentTotal.textContent = formattedTotal
+    if (checkoutButtonAmount) checkoutButtonAmount.textContent = formattedTotal
+  }
+
+  function createChildEntry() {
+    if (!childrenList) return
+    childSequence += 1
+    const entry = document.createElement('div')
+    entry.className = 'child-entry'
+    entry.dataset.childId = String(childSequence)
+    entry.innerHTML = `
+      <div class="child-entry-header">
+        <strong>Child <span class="child-number"></span></strong>
+        <button class="btn-remove-child" type="button" aria-label="Remove this child"><i class="fa-solid fa-trash-can"></i> Remove</button>
+      </div>
+      <div class="row g-2">
+        <div class="col-sm-7">
+          <div class="form-floating mb-2">
+            <input class="form-control child-name" id="childName${childSequence}" name="childName${childSequence}" placeholder=" " required />
+            <label for="childName${childSequence}">Child Name *</label>
+            <div class="invalid-feedback">Child name is required.</div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-floating mb-2">
+            <select class="form-select child-grade" id="grade${childSequence}" name="grade${childSequence}" required>
+              <option value="" selected disabled>Select grade</option>
+              <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+            </select>
+            <label for="grade${childSequence}">Grade *</label>
+            <div class="invalid-feedback">Choose a grade.</div>
+          </div>
+        </div>
+      </div>`
+
+    entry.querySelector('.btn-remove-child')?.addEventListener('click', () => {
+      entry.remove()
+      refreshChildEntries()
+    })
+    entry.querySelectorAll('input, select').forEach(field => {
+      field.addEventListener('input', () => updateFieldState(field))
+      field.addEventListener('change', () => updateFieldState(field))
+      field.addEventListener('blur', () => updateFieldState(field))
+    })
+    childrenList.appendChild(entry)
+    refreshChildEntries()
+  }
+
+  function refreshChildEntries() {
+    const entries = childrenList?.querySelectorAll('.child-entry') || []
+    entries.forEach((entry, index) => {
+      const number = entry.querySelector('.child-number')
+      const removeButton = entry.querySelector('.btn-remove-child')
+      if (number) number.textContent = String(index + 1)
+      if (removeButton) removeButton.hidden = entries.length === 1
+    })
+    updateRegistrationTotal()
+  }
+
+  function getChildren() {
+    return Array.from(childrenList?.querySelectorAll('.child-entry') || []).map(entry => ({
+      name: entry.querySelector('.child-name')?.value.trim() || '',
+      grade: entry.querySelector('.child-grade')?.value || '',
+    }))
+  }
+
+  async function createCheckoutSession(checkoutPayload) {
+    const checkoutApiUrl = getCheckoutApiUrl()
+    if (!checkoutApiUrl) throw new Error('Stripe Checkout has not been configured yet.')
+
+    const response = await fetch(checkoutApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(checkoutPayload),
+    })
+    const result = await response.json().catch(() => ({}))
+    if (!response.ok || !result.url) throw new Error(result.error || 'Unable to start secure checkout.')
+    sessionStorage.setItem('leaderBeeCheckout', JSON.stringify(checkoutPayload))
+    return result.url
+  }
+
+  async function openStripeCheckout() {
+    if (!lastCheckoutPayload) return
+    const originalLabel = stripePaymentButton?.innerHTML || ''
+    if (stripePaymentButton) {
+      stripePaymentButton.disabled = true
+      stripePaymentButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening secure checkout…'
+    }
+    try {
+      window.location.assign(await createCheckoutSession(lastCheckoutPayload))
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : 'Unable to start secure checkout.')
+      if (stripePaymentButton) {
+        stripePaymentButton.disabled = false
+        stripePaymentButton.innerHTML = originalLabel
+      }
+    }
+  }
+
   function setupFormValidation() {
     if (!registrationForm) return
 
-    const fields = registrationForm.querySelectorAll('input, select, textarea')
+    if (childrenList && childrenList.children.length === 0) createChildEntry()
+    addChildButton?.addEventListener('click', createChildEntry)
+    stripePaymentButton?.addEventListener('click', openStripeCheckout)
     const parentPhone = registrationForm.querySelector('#parentPhone')
 
     parentPhone?.addEventListener('input', () => {
@@ -162,13 +323,14 @@
 
     const validateAll = () => {
       let valid = true
+      const fields = registrationForm.querySelectorAll('input, select, textarea')
       fields.forEach(field => {
         if (!updateFieldState(field)) valid = false
       })
       return valid
     }
 
-    fields.forEach(field => {
+    registrationForm.querySelectorAll('input, select, textarea').forEach(field => {
       const validateField = () => updateFieldState(field)
       field.addEventListener('input', validateField)
       field.addEventListener('change', validateField)
@@ -197,6 +359,13 @@
       const parentFirstName = formData.get('parentFirstName')?.toString() || ''
       const parentLastName = formData.get('parentLastName')?.toString() || ''
       const parentName = `${parentFirstName} ${parentLastName}`.trim() || 'Parent / Guardian'
+      lastCheckoutPayload = {
+        parentEmail,
+        parentName,
+        parentPhone: formData.get('parentPhone')?.toString() || '',
+        children: getChildren(),
+      }
+      sessionStorage.setItem('leaderBeeCheckout', JSON.stringify(lastCheckoutPayload))
       const payload = new URLSearchParams()
 
       formData.forEach((value, key) => {
@@ -232,8 +401,18 @@
         return
       }
 
+      if (getCheckoutApiUrl()) {
+        if (submitButton) submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening secure checkout…'
+        try {
+          window.location.assign(await createCheckoutSession(lastCheckoutPayload))
+          return
+        } catch (error) {
+          window.alert(`${error instanceof Error ? error.message : 'Unable to start secure checkout.'} Your registration was saved; please use the payment button to try again.`)
+        }
+      }
+
       registrationForm.reset()
-      fields.forEach(field => {
+      registrationForm.querySelectorAll('input, select, textarea').forEach(field => {
         field.classList.remove('is-valid', 'is-invalid')
       })
 
@@ -253,7 +432,9 @@
       button.addEventListener('click', () => {
         registrationForm.reset()
         registrationForm.classList.remove('was-validated')
-        fields.forEach(field => {
+        childrenList?.replaceChildren()
+        createChildEntry()
+        registrationForm.querySelectorAll('input, select, textarea').forEach(field => {
           field.classList.remove('is-valid', 'is-invalid')
         })
         if (successPanel) {
@@ -326,6 +507,7 @@
     setupActiveNav()
     setupButtonRipple()
     setupRegisterScroll()
+    setupPaymentReturn()
     setupMobileCollapse()
     setupFormValidation()
     setupSharing()
