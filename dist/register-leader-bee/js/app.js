@@ -373,11 +373,11 @@
       })
 
       payload.set('email', parentEmail)
+      payload.set('_replyto', parentEmail)
       payload.set('_subject', `New Leader-BEE Registration: ${parentName}`)
-      payload.set('_cc', 'freshpage.tech@gmail.com')
+      payload.set('_cc', `freshpage.tech@gmail.com,${parentEmail}`)
       payload.set('_template', 'table')
       payload.set('_captcha', 'false')
-      payload.set('_autoresponse', `Dear ${parentName}, thank you for registering for the Leader-BEE Workshop. Confirmation has been shared with you and our coordinators. We will contact you soon.`)
 
       try {
         const response = await fetch('https://formsubmit.co/ajax/leaderbee@shakhasewasetu.com', {

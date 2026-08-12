@@ -23,12 +23,22 @@ Deno.serve(async request => {
   if (request.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
   if (request.method !== 'POST') return jsonResponse({ error: 'Method not allowed' }, 405)
 
-  const stripeSecretKey = Deno.env.get('STRIPE_SECRET_KEY')
+  const rawStripeSecret = Deno.env.get('STRIPE_SECRET_KEY') || ''
+  const normalizedStripeSecret = rawStripeSecret.trim().replace(/^["']|["']$/g, '')
+  const embeddedApiKey = normalizedStripeSecret.match(/(?:sk|rk)_(?:test|live)_[A-Za-z0-9]+/)?.[0]
+  const stripeSecretKey = embeddedApiKey || normalizedStripeSecret
   const siteUrl = (Deno.env.get('LEADER_BEE_SITE_URL') || 'https://join.shakhasewasetu.com').replace(/\/$/, '')
   if (!stripeSecretKey) return jsonResponse({ error: 'Stripe is not configured' }, 500)
   if (!/^(sk|rk)_(test|live)_/.test(stripeSecretKey)) {
+    const detectedType = stripeSecretKey.startsWith('pk_')
+      ? 'publishable key (pk_)'
+      : stripeSecretKey.startsWith('smk_')
+        ? 'sandbox management key (smk_)'
+        : stripeSecretKey.startsWith('whsec_')
+          ? 'webhook signing secret (whsec_)'
+          : 'unknown key type'
     return jsonResponse(
-      { error: 'Stripe is configured with the wrong key type. Use an sk_test_, sk_live_, or permitted rk_ API key.' },
+      { error: `Stripe is configured with a ${detectedType}. Use the server secret from Developers → API keys (sk_test_ or sk_live_).` },
       500,
     )
   }
