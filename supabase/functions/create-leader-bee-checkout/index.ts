@@ -55,13 +55,17 @@ Deno.serve(async request => {
   const parentPhone = input.parentPhone?.replace(/\D/g, '') || ''
   const children = (input.children || [])
     .map(child => ({ name: child.name?.trim() || '', grade: child.grade?.trim() || '' }))
-    .filter(child => child.name && /^Grade [4-8]$/.test(child.grade))
+    .filter(child => child.name && /^Grade (?:[1-9]|1[0-2])$/.test(child.grade))
+  const participatingChildren = children.filter(child => /^Grade [4-8]$/.test(child.grade))
 
   if (!/^\S+@\S+\.\S+$/.test(parentEmail) || !parentName || !/^\d{10}$/.test(parentPhone)) {
     return jsonResponse({ error: 'Valid parent contact details are required' }, 400)
   }
   if (children.length < 1 || children.length > 10) {
     return jsonResponse({ error: 'Please register between 1 and 10 children' }, 400)
+  }
+  if (participatingChildren.length < 1) {
+    return jsonResponse({ error: 'No payment is required for registrations outside grades 4–8' }, 400)
   }
 
   // The price is defined here on the trusted server, never accepted from the browser.
@@ -74,13 +78,15 @@ Deno.serve(async request => {
   params.set('line_items[0][price_data][unit_amount]', '1000')
   params.set('line_items[0][price_data][product_data][name]', 'Leader-BEE Child Registration')
   params.set('line_items[0][price_data][product_data][description]', '12-week leadership programme')
-  params.set('line_items[0][quantity]', String(children.length))
+  params.set('line_items[0][quantity]', String(participatingChildren.length))
   params.set('metadata[parent_name]', parentName.slice(0, 500))
   params.set('metadata[parent_phone]', parentPhone)
   params.set('metadata[child_count]', String(children.length))
+  params.set('metadata[participant_count]', String(participatingChildren.length))
   params.set('metadata[children]', children.map(child => `${child.name} (${child.grade})`).join(', ').slice(0, 500))
   params.set('payment_intent_data[metadata][parent_email]', parentEmail)
   params.set('payment_intent_data[metadata][child_count]', String(children.length))
+  params.set('payment_intent_data[metadata][participant_count]', String(participatingChildren.length))
 
   const stripeResponse = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',

@@ -334,7 +334,7 @@
           <div class="registration-panel reveal-up">
             <p class="label registration-eyebrow"><i class="fa-solid fa-shield-halved"></i> Secure registration</p>
             <h2 class="panel-title">Parent and Child Registration</h2>
-            <p class="form-support">Add one or more children, review the total, and complete payment securely with Stripe.</p>
+            <p class="form-support">Select grades 1–12. Grades 4–8 participate in Leader-BEE for $10 each. For all other grades, the host will arrange a separate group at the same location and time, free of charge.</p>
 
             <form id="leaderBeeForm" class="needs-validation" novalidate>
               <div class="registration-grid">
@@ -369,9 +369,16 @@
                   <div class="children-heading">
                     <div>
                       <h3 id="childrenDetailsTitle"><span class="form-section-icon"><i class="fa-solid fa-children"></i></span> Children</h3>
-                      <p>$10 per child · total updates automatically</p>
+                      <p>Grades 4–8: Leader-BEE Programme ($10) · Other grades: separate host-arranged group (free)</p>
                     </div>
                     <button class="btn btn-add-child" id="addChildButton" type="button"><i class="fa-solid fa-plus"></i> Add another child</button>
+                  </div>
+                  <div class="checkout-notice" role="note">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <div>
+                      <strong>Children outside Grades 4–8 are welcome.</strong>
+                      <span>The host will arrange a separate group for them at the same location and time. There is no charge for this group.</span>
+                    </div>
                   </div>
                   <div id="childrenList" aria-live="polite"></div>
                   <div class="row g-2 location-row">
@@ -412,16 +419,16 @@
               <aside class="checkout-summary" aria-label="Registration total">
                 <div>
                   <span class="checkout-label">Order summary</span>
-                  <strong><span id="summaryChildCount">1 child</span> × $10.00</strong>
+                  <strong><span id="summaryChildCount">0 Leader-BEE participants (1 child registered)</span></strong>
                 </div>
                 <div class="checkout-total">
                   <span>Total</span>
-                  <strong id="registrationTotalDisplay">$10.00</strong>
+                  <strong id="registrationTotalDisplay">$0.00</strong>
                 </div>
               </aside>
 
               <div class="form-actions">
-                <button class="btn btn-register-large btn-stripe-checkout" type="submit"><i class="fa-solid fa-lock"></i> Continue to payment · <span id="checkoutButtonAmount">$10.00</span></button>
+                <button class="btn btn-register-large btn-stripe-checkout" id="registrationSubmitButton" type="submit"><i class="fa-solid fa-check"></i> Submit free registration · <span id="checkoutButtonAmount">$0.00</span></button>
                 <button class="btn btn-reset js-reset-registration" type="button">Reset Form</button>
               </div>
               <p class="stripe-security"><i class="fa-brands fa-stripe"></i> Secure payment powered by Stripe</p>
@@ -527,6 +534,6 @@
       defer
     ></script>
     <script src="/register-leader-bee/js/config.js?v=20260811-4"></script>
-    <script src="/register-leader-bee/js/app.js?v=20260811-4" defer></script>
+    <script src="/register-leader-bee/js/app.js?v=20260815-1" defer></script>
   </body>
 </html>

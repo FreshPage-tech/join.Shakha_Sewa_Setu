@@ -22,8 +22,10 @@
   const registrationTotalDisplay = document.getElementById('registrationTotalDisplay')
   const successPaymentTotal = document.getElementById('successPaymentTotal')
   const checkoutButtonAmount = document.getElementById('checkoutButtonAmount')
+  const registrationSubmitButton = document.getElementById('registrationSubmitButton')
   const stripePaymentButton = document.getElementById('stripePaymentButton')
   const PRICE_PER_CHILD = 10
+  const PARTICIPATING_GRADES = new Set(['Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8'])
   const DEFAULT_CHECKOUT_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/create-leader-bee-checkout'
   let childSequence = 0
   let lastCheckoutPayload = null
@@ -177,8 +179,8 @@
       const intro = successPanel.querySelector('.success-intro')
       if (title) title.textContent = 'Payment not completed'
       if (intro) intro.textContent = 'Your registration was saved. Use the secure payment button below whenever you are ready.'
-      const count = lastCheckoutPayload?.children?.length || 1
-      if (successPaymentTotal) successPaymentTotal.textContent = `$${(count * PRICE_PER_CHILD).toFixed(2)}`
+      const participantCount = lastCheckoutPayload?.children?.filter(child => PARTICIPATING_GRADES.has(child.grade)).length || 0
+      if (successPaymentTotal) successPaymentTotal.textContent = `$${(participantCount * PRICE_PER_CHILD).toFixed(2)}`
       if (!lastCheckoutPayload && stripePaymentButton) stripePaymentButton.disabled = true
     }
 
@@ -203,15 +205,24 @@
   }
 
   function updateRegistrationTotal() {
-    const count = childrenList?.querySelectorAll('.child-entry').length || 1
-    const total = count * PRICE_PER_CHILD
+    const entries = Array.from(childrenList?.querySelectorAll('.child-entry') || [])
+    const count = entries.length || 1
+    const participantCount = entries.filter(entry => PARTICIPATING_GRADES.has(entry.querySelector('.child-grade')?.value)).length
+    const total = participantCount * PRICE_PER_CHILD
     const formattedTotal = `$${total.toFixed(2)}`
     if (childCountInput) childCountInput.value = String(count)
     if (registrationTotalInput) registrationTotalInput.value = formattedTotal
-    if (summaryChildCount) summaryChildCount.textContent = `${count} ${count === 1 ? 'child' : 'children'}`
+    if (summaryChildCount) {
+      summaryChildCount.textContent = `${participantCount} Leader-BEE ${participantCount === 1 ? 'participant' : 'participants'} (${count} ${count === 1 ? 'child' : 'children'} registered)`
+    }
     if (registrationTotalDisplay) registrationTotalDisplay.textContent = formattedTotal
     if (successPaymentTotal) successPaymentTotal.textContent = formattedTotal
     if (checkoutButtonAmount) checkoutButtonAmount.textContent = formattedTotal
+    if (registrationSubmitButton) {
+      registrationSubmitButton.innerHTML = participantCount > 0
+        ? `<i class="fa-solid fa-lock"></i> Continue to payment · <span id="checkoutButtonAmount">${formattedTotal}</span>`
+        : `<i class="fa-solid fa-check"></i> Submit free registration · <span id="checkoutButtonAmount">${formattedTotal}</span>`
+    }
   }
 
   function createChildEntry() {
@@ -237,17 +248,36 @@
           <div class="form-floating mb-2">
             <select class="form-select child-grade" id="grade${childSequence}" name="grade${childSequence}" required>
               <option value="" selected disabled>Select grade</option>
-              <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+              <optgroup label="Leader-BEE Programme · $10">
+                <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+              </optgroup>
+              <optgroup label="Separate Host-Arranged Group · Free">
+                <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+              </optgroup>
             </select>
             <label for="grade${childSequence}">Grade *</label>
             <div class="invalid-feedback">Choose a grade.</div>
           </div>
+          <p class="child-program-status mb-0 small" aria-live="polite">Select a grade to see participation and fee.</p>
         </div>
       </div>`
 
     entry.querySelector('.btn-remove-child')?.addEventListener('click', () => {
       entry.remove()
       refreshChildEntries()
+    })
+    const gradeSelect = entry.querySelector('.child-grade')
+    const status = entry.querySelector('.child-program-status')
+    gradeSelect?.addEventListener('change', () => {
+      const participates = PARTICIPATING_GRADES.has(gradeSelect.value)
+      if (status) {
+        status.textContent = participates
+          ? 'Leader-BEE Programme participant · $10 registration fee.'
+          : 'Separate group · The host will arrange activities at the same location and time · No charge.'
+        status.classList.toggle('text-success', participates)
+        status.classList.toggle('text-secondary', !participates)
+      }
+      updateRegistrationTotal()
     })
     entry.querySelectorAll('input, select').forEach(field => {
       field.addEventListener('input', () => updateFieldState(field))
@@ -401,7 +431,8 @@
         return
       }
 
-      if (getCheckoutApiUrl()) {
+      const participantCount = lastCheckoutPayload.children.filter(child => PARTICIPATING_GRADES.has(child.grade)).length
+      if (participantCount > 0 && getCheckoutApiUrl()) {
         if (submitButton) submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening secure checkout…'
         try {
           window.location.assign(await createCheckoutSession(lastCheckoutPayload))
@@ -419,6 +450,14 @@
       registrationForm.classList.add('d-none')
       if (successPanel) {
         successPanel.classList.remove('d-none')
+        const title = successPanel.querySelector('.panel-title')
+        const intro = successPanel.querySelector('.success-intro')
+        const paymentCard = successPanel.querySelector('.payment-card')
+        if (participantCount === 0) {
+          if (title) title.textContent = 'Registration received!'
+          if (intro) intro.textContent = 'Your children are registered for the separate host-arranged group at the same location and time. No payment is required.'
+          if (paymentCard) paymentCard.classList.add('d-none')
+        }
         successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
 
