@@ -845,9 +845,7 @@ a {
   margin-top: 1.25rem;
 }
 
-.location-row {
-  margin-top: 0.15rem;
-}
+.location-row { margin-top: 0.15rem; }
 
 .registration-eyebrow {
   display: inline-flex;
@@ -931,11 +929,7 @@ a {
 }
 
 @media (max-width: 991px) {
-  .registration-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
+  .registration-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .children-section {
     padding-top: 1.25rem;
     padding-left: 0;

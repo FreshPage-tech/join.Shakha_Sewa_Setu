@@ -1,5 +1,6 @@
 .vercel
 .env*
+!.env.scraper.example
 node_modules
 join-app/node_modules
 

@@ -13,7 +13,10 @@
     "update:shakhas": "node scripts/update-shakhas.mjs && pnpm run generate:share-pages",
     "generate:share-pages": "node scripts/generate-shakha-share-pages.mjs",
     "seed:shakhas": "node scripts/seed-shakhas-to-supabase.mjs",
-    "seed:admin": "node scripts/seed-admin-user.mjs"
+    "seed:admin": "node scripts/seed-admin-user.mjs",
+    "scrape:shakhas": "node --env-file-if-exists=.env.scraper --import tsx src/scraper.ts",
+    "sync:shakhas": "node --env-file-if-exists=.env.scraper --import tsx src/ingest.ts",
+    "typecheck:scraper": "tsc -p tsconfig.scraper.json"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.7",
@@ -28,7 +31,9 @@
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^6.0.0",
     "oxfmt": "^0.2.0",
+    "playwright": "^1.54.0",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.20.0",
     "typescript": "^5.7.0",
     "vite": "^8.0.0"
   }
