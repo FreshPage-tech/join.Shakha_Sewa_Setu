@@ -1,4 +1,5 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import familyImg from './imports/4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png'
 import sssLogo from './imports/SSS_logo.png'
 import type { ShakhaChapter } from './shakhaData'
@@ -2572,6 +2573,7 @@ export default function App() {
         </>
       )}
       <Footer onNav={scrollTo} />
+      <Analytics />
     </div>
   )
 }
