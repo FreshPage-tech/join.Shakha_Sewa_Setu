@@ -1751,16 +1751,14 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
     "Namaste Utkarsh, I'm interested in learning more about Shakha Sewa Setu.",
   )
   const contactMethods = [
-    { icon: '📧', label: 'Email', value: 'info@hssus.org', sub: 'Replies within 24 hours' },
-    { icon: '📞', label: 'Phone', value: '+1 (800) 477-8720', sub: 'Mon–Sat, 9am–6pm ET' },
-    { icon: '🌐', label: 'Website', value: 'www.hssus.org', sub: 'National portal and updates' },
+    { icon: '📧', label: 'Email', value: 'info@shakhasewasetu.com', sub: 'Replies within 24 hours', href: 'mailto:info@shakhasewasetu.com' },
+    { icon: '📞', label: 'Phone', value: '+1 201-889-6610', sub: 'Call or text us', href: contactPhoneHref },
+    { icon: '🌐', label: 'Website', value: 'ShakhaSewaSetu.com', sub: 'Shakha information and updates', href: 'https://ShakhaSewaSetu.com' },
   ]
 
   const socialLinks = [
-    { icon: '📘', name: 'Facebook', handle: '/HSSUSA' },
-    { icon: '📷', name: 'Instagram', handle: '@hss_usa' },
-    { icon: '🐦', name: 'Twitter / X', handle: '@HSSUSA' },
-    { icon: '▶️', name: 'YouTube', handle: 'Sangh Parivar USA' },
+    { icon: '📘', name: 'Facebook', handle: '@shakhasewasetu', href: 'https://www.facebook.com/shakhasewasetu' },
+    { icon: '📷', name: 'Instagram', handle: '@shakhasewasetu', href: 'https://www.instagram.com/shakhasewasetu/' },
   ]
 
   if (!standalone) {
@@ -1824,7 +1822,7 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
                   <div className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-1" style={{ color: '#fb923c' }}>
                     {method.label}
                   </div>
-                  <div className="text-sm font-semibold text-white break-all">{method.value}</div>
+                  <a href={method.href} className="text-sm font-semibold text-white break-all hover:text-orange-200">{method.value}</a>
                   <div className="text-xs mt-1 text-white/48">{method.sub}</div>
                 </div>
               </div>
@@ -1834,27 +1832,33 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
 
         <div className="grid grid-cols-2 gap-2.5 mb-5">
           {socialLinks.map(link => (
-            <div
+            <a
               key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${link.name}: ${link.handle}`}
               className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium"
               style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.74)' }}
             >
               <span>{link.icon}</span>
               <span>{link.handle}</span>
-            </div>
+            </a>
           ))}
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <a
-            href="mailto:info@hssus.org"
+            href="mailto:info@shakhasewasetu.com"
             className="rounded-xl px-4 py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)', color: '#fff' }}
           >
             Email Team
           </a>
           <a
-            href="https://www.hssus.org"
+            href="https://ShakhaSewaSetu.com"
+            target="_blank"
+            rel="noreferrer"
             className="rounded-xl px-4 py-3 text-center text-sm font-semibold border"
             style={{ borderColor: 'rgba(255,255,255,0.16)', color: '#fff' }}
           >
@@ -1905,7 +1909,7 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
               <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#fb923c' }}>
                 {c.label}
               </div>
-              <div className="font-semibold text-white text-sm mb-1">{c.value}</div>
+              <a href={c.href} className="block font-semibold text-white text-sm mb-1 hover:text-orange-200">{c.value}</a>
               <div className="text-xs text-white/45">{c.sub}</div>
             </div>
           ))}
@@ -1914,14 +1918,18 @@ function Contact({ standalone = true }: { standalone?: boolean }) {
         {/* Social media */}
         <div className="flex flex-wrap justify-center gap-4">
           {socialLinks.map(s => (
-            <div
+            <a
               key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${s.name}: ${s.handle}`}
               className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium"
               style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.75)' }}
             >
               <span>{s.icon}</span>
               <span>{s.handle}</span>
-            </div>
+            </a>
           ))}
         </div>
       </div>
