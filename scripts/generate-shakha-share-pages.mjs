@@ -19,13 +19,13 @@ const shakhaBannerSource = path.join(projectRoot, 'src', 'imports', 'DA8EA940-C9
 const siteUrl = (process.env.SITE_URL ?? 'https://join.shakhasewasetu.com').replace(/\/$/, '')
 const countrySlug = slugify(process.env.COUNTRY_SLUG ?? 'usa') || 'usa'
 
-const shareMessage = `🚩 Join HSS Shakha - Build Yourself, Build Society
+const shareMessage = `🚩 Join Sangh Parivar Shakha - Build Yourself, Build Society
 
 Discover a weekly gathering that promotes physical fitness, leadership, Hindu values, discipline, and community service for individuals and families of all ages.
 
 🏃 Physical Fitness • 🧘 Yoga • 🤝 Brotherhood • 🌺 Culture • ❤️ Seva
 
-📍 Find an HSS Shakha near you and become part of a growing community.
+📍 Find a Sangh Parivar Shakha near you and become part of a growing community.
 
 Strong Individuals • Strong Families • Strong Society
 
@@ -280,7 +280,7 @@ function buildPageHtml(row, slug, override) {
   <body>
     <main class="wrap">
       <div class="top">
-        <span class="badge">HSS Shakha Page</span>
+        <span class="badge">Sangh Parivar Shakha Page</span>
         <a class="cta" href="${siteUrl}/register">Register Interest</a>
       </div>
 

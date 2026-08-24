@@ -14,13 +14,13 @@ type ShakhaShareOverride = {
   shareImageHeight?: string
 }
 
-const DEFAULT_SHARE_MESSAGE = `🚩 Join HSS Shakha - Build Yourself, Build Society
+const DEFAULT_SHARE_MESSAGE = `🚩 Join Sangh Parivar Shakha - Build Yourself, Build Society
 
 Discover a weekly gathering that promotes physical fitness, leadership, Hindu values, discipline, and community service for individuals and families of all ages.
 
 🏃 Physical Fitness • 🧘 Yoga • 🤝 Brotherhood • 🌺 Culture • ❤️ Seva
 
-📍 Find an HSS Shakha near you and become part of a growing community.
+📍 Find a Sangh Parivar Shakha near you and become part of a growing community.
 
 Strong Individuals • Strong Families • Strong Society
 

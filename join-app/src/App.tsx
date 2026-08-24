@@ -41,9 +41,9 @@ const WHO_CAN_JOIN = [
 ]
 
 const FAQS = [
-  { q: 'What is HSS (Hindu Swayamsevak Sangh)?', a: 'HSS is the overseas wing of the Rashtriya Swayamsevak Sangh (RSS), a Hindu cultural and service organization. It promotes Hindu values, physical fitness, leadership, and community service among the Hindu diaspora worldwide.' },
+  { q: 'What is the Sangh Parivar?', a: 'The Sangh Parivar is a broad family of community-oriented organizations inspired by shared cultural and service values. Through local initiatives such as Shakhas, volunteers encourage character building, physical well-being, leadership, cultural learning, and community service.' },
   { q: 'Is there any membership fee?', a: 'No. Shakha is completely free and open to all. There are no fees or formal memberships required to participate. Our Shakhas run on volunteer effort and community support.' },
-  { q: 'Can women join Shakha?', a: "Yes! HSS organizes Shakhas for women through the Sadhvi Shakti program and family Shakhas where everyone is welcome. Contact your local coordinator to find women's or family Shakha in your area." },
+  { q: 'Can women join Shakha?', a: "Yes! The Sangh Parivar community includes programs for women, along with family Shakhas where everyone is welcome. Contact your local coordinator to find a women's or family Shakha in your area." },
   { q: 'Can children attend Shakha?', a: 'Absolutely. Children are the heart of Shakha. Bala Gokulam programs are specifically designed for children aged 5–12, with age-appropriate games, stories, and cultural learning.' },
   { q: 'How long is a typical Shakha?', a: 'A typical Shakha session lasts 60–90 minutes, covering prayers, physical activities, yoga, group exercises, and a brief discussion (Baudhik). Times vary by location.' },
   { q: 'Do I need prior experience to join?', a: 'No experience is needed at all. Shakha is open to everyone regardless of their physical fitness level, cultural knowledge, or background. You will learn everything together as a community.' },
@@ -413,7 +413,7 @@ function Navbar({ onNav, disclaimerVisible }: { onNav: (id: string) => void; dis
                 Shakha Sewa Setu
               </span>
               <span className="text-[10px] font-medium tracking-wider uppercase hidden sm:block" style={{ color: '#6f7f9e' }}>
-                HSS Shakha Outreach
+                Sangh Parivar Shakha Outreach
               </span>
             </div>
           </div>
@@ -648,7 +648,7 @@ function About() {
             <div className="pr-0 lg:pr-2">
               <h2 className="font-display text-[2.2rem] sm:text-[2.4rem] lg:text-[2.65rem] font-bold leading-tight mb-2" style={{ color: '#132f5d' }}>What is Shakha?</h2>
               <p className="text-[14px] lg:text-[15px] leading-6 mb-3" style={{ color: '#2f4671' }}>
-                A Shakha is a weekly gathering organized by Hindu Swayamsevak Sangh (HSS), where individuals and families come together for:
+                A Shakha is a weekly community gathering connected with the Sangh Parivar, where individuals and families come together for:
               </p>
               <div className="space-y-1">
                 {highlights.map(item => (
@@ -1050,7 +1050,7 @@ function FindShakha({
           {standalone ? 'Discover a Shakha Near You' : 'Find a Shakha Near You'}
         </h2>
         <p className="mt-3 text-base" style={{ color: '#5a6f9a' }}>
-          Search by location or ZIP code to find the nearest HSS Shakha in your area.
+          Search by location or ZIP code to find the nearest Sangh Parivar Shakha in your area.
         </p>
       </div>
 
@@ -1244,8 +1244,8 @@ function RegisterForm({
   usStates,
   onRegister,
   title = 'Register Your Interest',
-  description = 'Fill in your details and our local volunteers will connect you with the nearest HSS Shakha.',
-  infoNote = 'Our local volunteers will contact you and help connect you with the nearest HSS Shakha. Your information is kept private and used only for this purpose.',
+  description = 'Fill in your details and our local volunteers will connect you with the nearest Sangh Parivar Shakha.',
+  infoNote = 'Our local volunteers will contact you and help connect you with the nearest Sangh Parivar Shakha. Your information is kept private and used only for this purpose.',
   submitLabel = 'Register My Interest 🙏',
   successHeading,
   successMessage,
@@ -1324,7 +1324,7 @@ function RegisterForm({
 
   const inputStyle = { borderColor: '#ddd6c8', color: '#0b1a32' }
   const resolvedSuccessHeading = successHeading ?? `Jai Hind! Thank You, ${form.firstName}!`
-  const resolvedSuccessMessage = successMessage ?? 'Your interest has been registered. Our local volunteers will contact you shortly and help connect you with the nearest HSS Shakha. We look forward to welcoming you to our community!'
+  const resolvedSuccessMessage = successMessage ?? 'Your interest has been registered. Our local volunteers will contact you shortly and help connect you with the nearest Sangh Parivar Shakha. We look forward to welcoming you to our community!'
 
   if (submitted) {
     const submittedContent = (
@@ -2034,7 +2034,7 @@ function LeaderBeePage({
         <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <p className="text-orange-200 text-sm">Hosted by</p>
-            <p className="mt-1 text-white text-2xl font-black">Hindu Swayamsevak Sangh (HSS)</p>
+            <p className="mt-1 text-white text-2xl font-black">Sangh Parivar</p>
             <p className="mt-1 text-orange-200 text-sm font-semibold">SANGATHAN • SANSKAR • SEVA • SAMARPAN</p>
           </div>
           <div className="flex items-center gap-3">
@@ -2068,13 +2068,13 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
               </div>
             </div>
             <p className="text-white/45 text-sm leading-relaxed mb-3">
-              A community-run portal helping individuals and families connect with nearby HSS Shakhas across the USA.
+              A community-run portal helping individuals and families connect with nearby Sangh Parivar Shakhas across the USA.
             </p>
             <div
               className="px-3 py-2.5 rounded-lg text-xs leading-relaxed"
               style={{ background: 'rgba(212,83,26,0.12)', border: '1px solid rgba(212,83,26,0.22)', color: 'rgba(255,180,100,0.8)' }}
             >
-              <span className="font-semibold">⚠ Disclaimer:</span> This is not an official HSS website. Run by a member in individual capacity.
+              <span className="font-semibold">⚠ Disclaimer:</span> This is not an official Sangh Parivar website. Run by a member in individual capacity.
             </div>
           </div>
 
@@ -2145,7 +2145,7 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
           style={{ borderColor: 'rgba(255,255,255,0.07)' }}
         >
           <p className="text-xs text-white/30">
-            © 2025 Hindu Swayamsevak Sangh USA. All rights reserved.
+            © 2025 Sangh Parivar USA. All rights reserved.
           </p>
           <p className="text-xs text-white/30">
             A non-profit cultural organization dedicated to Hindu values & community service.
@@ -2260,16 +2260,16 @@ export default function App() {
     }
 
     if (!matchedShakha) {
-      setMetaTagByName('description', 'Find and join the nearest HSS Shakha in your area. Register your interest and connect with local volunteers.')
-      setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join HSS Shakha')
-      setMetaTagByProperty('og:description', 'Find your nearest HSS Shakha and register your interest.')
+      setMetaTagByName('description', 'Find and join the nearest Sangh Parivar Shakha in your area. Register your interest and connect with local volunteers.')
+      setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join Sangh Parivar Shakha')
+      setMetaTagByProperty('og:description', 'Find your nearest Sangh Parivar Shakha and register your interest.')
       setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
       setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
-      setMetaTagByName('twitter:title', 'Shakha Sewa Setu - Join HSS Shakha')
-      setMetaTagByName('twitter:description', 'Find your nearest HSS Shakha and register your interest.')
+      setMetaTagByName('twitter:title', 'Shakha Sewa Setu - Join Sangh Parivar Shakha')
+      setMetaTagByName('twitter:description', 'Find your nearest Sangh Parivar Shakha and register your interest.')
       setMetaTagByName('twitter:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
-      document.title = 'Shakha Sewa Setu - Join HSS Shakha'
+      document.title = 'Shakha Sewa Setu - Join Sangh Parivar Shakha'
       return
     }
 
@@ -2394,7 +2394,7 @@ export default function App() {
       key: 'shakha' as const,
       eyebrow: 'Community',
       title: 'Interested in Shakha',
-      description: 'Join a nearby HSS Shakha for family activities, values, yoga, seva, and local connections.',
+      description: 'Join a nearby Sangh Parivar Shakha for family activities, values, yoga, seva, and local connections.',
     },
     {
       key: 'leader-bee' as const,
@@ -2417,7 +2417,7 @@ export default function App() {
           >
             <span className="text-xs sm:text-sm leading-snug" style={{ color: 'rgba(255,255,255,0.75)' }}>
               <span className="font-semibold" style={{ color: '#fb923c' }}>⚠ Disclaimer:</span>{' '}
-              This is <span className="font-semibold text-white">not an official HSS website</span>. It is run by one of the members in their individual capacity to help the community.
+              This is <span className="font-semibold text-white">not an official Sangh Parivar website</span>. It is run by one of the members in their individual capacity to help the community.
             </span>
             <button
               onClick={() => setDisclaimerVisible(false)}
