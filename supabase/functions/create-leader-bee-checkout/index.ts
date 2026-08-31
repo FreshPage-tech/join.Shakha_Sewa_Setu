@@ -6,6 +6,7 @@ const corsHeaders = {
 
 type Child = { name?: string; grade?: string }
 type CheckoutRequest = {
+  submissionKey?: string
   parentEmail?: string
   parentName?: string
   parentPhone?: string
@@ -51,6 +52,7 @@ Deno.serve(async request => {
   }
 
   const parentEmail = input.parentEmail?.trim().toLowerCase() || ''
+  const submissionKey = input.submissionKey?.trim() || ''
   const parentName = input.parentName?.trim() || ''
   const parentPhone = input.parentPhone?.replace(/\D/g, '') || ''
   const children = (input.children || [])
@@ -58,7 +60,7 @@ Deno.serve(async request => {
     .filter(child => child.name && /^Grade (?:[1-9]|1[0-2])$/.test(child.grade))
   const participatingChildren = children.filter(child => /^Grade [4-8]$/.test(child.grade))
 
-  if (!/^\S+@\S+\.\S+$/.test(parentEmail) || !parentName || !/^\d{10}$/.test(parentPhone)) {
+  if (!/^[0-9a-f-]{36}$/i.test(submissionKey) || !/^\S+@\S+\.\S+$/.test(parentEmail) || !parentName || !/^\d{10}$/.test(parentPhone)) {
     return jsonResponse({ error: 'Valid parent contact details are required' }, 400)
   }
   if (children.length < 1 || children.length > 10) {
@@ -80,11 +82,13 @@ Deno.serve(async request => {
   params.set('line_items[0][price_data][product_data][description]', '12-week leadership programme')
   params.set('line_items[0][quantity]', String(participatingChildren.length))
   params.set('metadata[parent_name]', parentName.slice(0, 500))
+  params.set('metadata[submission_key]', submissionKey)
   params.set('metadata[parent_phone]', parentPhone)
   params.set('metadata[child_count]', String(children.length))
   params.set('metadata[participant_count]', String(participatingChildren.length))
   params.set('metadata[children]', children.map(child => `${child.name} (${child.grade})`).join(', ').slice(0, 500))
   params.set('payment_intent_data[metadata][parent_email]', parentEmail)
+  params.set('payment_intent_data[metadata][submission_key]', submissionKey)
   params.set('payment_intent_data[metadata][child_count]', String(children.length))
   params.set('payment_intent_data[metadata][participant_count]', String(participatingChildren.length))
 
@@ -110,5 +114,19 @@ Deno.serve(async request => {
     )
   }
 
-  return jsonResponse({ url: stripeData.url })
+  const supabaseUrl = Deno.env.get('SUPABASE_URL') || ''
+  const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || ''
+  if (supabaseUrl && serviceKey && stripeData.id) {
+    const storageResponse = await fetch(
+      `${supabaseUrl}/rest/v1/leader_bee_registrations?submission_key=eq.${encodeURIComponent(submissionKey)}`,
+      {
+        method: 'PATCH',
+        headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stripe_checkout_session_id: stripeData.id }),
+      },
+    )
+    if (!storageResponse.ok) console.error('Unable to attach Stripe session to registration', await storageResponse.text())
+  }
+
+  return jsonResponse({ url: stripeData.url, sessionId: stripeData.id })
 })

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   type ContactDetail,
   type InterestedPersonRecord,
+  type LeaderBeeRegistration,
   type ShakhaRecord,
 } from './shakhaTypes'
 import {
@@ -10,12 +11,13 @@ import {
   deleteShakha,
   getSession,
   listInterestedPeople,
-  listShakhaRecordsAdmin,
+  listLeaderBeeRegistrations,
   requestAdminOtp,
   signOutAdmin,
   updateShakha,
   verifyAdminOtp,
 } from './adminApi'
+import LeaderBeeAdmin from './LeaderBeeAdmin'
 
 const emptyContact = (): ContactDetail => ({ name: '', mobile: '', email: '' })
 
@@ -280,9 +282,11 @@ export default function AdminPanel({
   const [otpSent, setOtpSent] = useState(false)
   const [authLoading, setAuthLoading] = useState(false)
   const [error, setError] = useState('')
-  const [tab, setTab] = useState<'people' | 'shakhas'>('people')
+  const [tab, setTab] = useState<'people' | 'leader-bee' | 'shakhas'>('people')
   const [loadingPeople, setLoadingPeople] = useState(false)
   const [people, setPeople] = useState<InterestedPersonRecord[]>([])
+  const [leaderBeeRegistrations, setLeaderBeeRegistrations] = useState<LeaderBeeRegistration[]>([])
+  const [loadingLeaderBee, setLoadingLeaderBee] = useState(false)
 
   const fullPhone = `${countryCode.trim()}${mobile.replace(/\D/g, '')}`
 
@@ -297,7 +301,13 @@ export default function AdminPanel({
   }
 
   const refreshAllAdminData = async () => {
-    await Promise.all([refreshShakhas(), refreshPeople()])
+    setLoadingLeaderBee(true)
+    try {
+      const [, , registrations] = await Promise.all([refreshShakhas(), refreshPeople(), listLeaderBeeRegistrations()])
+      setLeaderBeeRegistrations(registrations)
+    } finally {
+      setLoadingLeaderBee(false)
+    }
   }
 
   useEffect(() => {
@@ -356,6 +366,7 @@ export default function AdminPanel({
     setOtpSent(false)
     setTab('people')
     setPeople([])
+    setLeaderBeeRegistrations([])
   }
 
   if (checkingSession) {
@@ -413,6 +424,9 @@ export default function AdminPanel({
           <button onClick={() => setTab('people')} className="rounded-full px-4 py-2 text-sm font-semibold" style={{ background: tab === 'people' ? '#1B3A6B' : 'transparent', color: tab === 'people' ? '#fff' : '#1B3A6B' }}>
             Registered Interested People
           </button>
+          <button onClick={() => setTab('leader-bee')} className="rounded-full px-4 py-2 text-sm font-semibold" style={{ background: tab === 'leader-bee' ? '#1B3A6B' : 'transparent', color: tab === 'leader-bee' ? '#fff' : '#1B3A6B' }}>
+            Leader-BEE Registrations
+          </button>
           <button onClick={() => setTab('shakhas')} className="rounded-full px-4 py-2 text-sm font-semibold" style={{ background: tab === 'shakhas' ? '#1B3A6B' : 'transparent', color: tab === 'shakhas' ? '#fff' : '#1B3A6B' }}>
             Shakha Management
           </button>
@@ -427,6 +441,12 @@ export default function AdminPanel({
             ) : (
               <InterestedPeopleTable people={people} />
             )
+          ) : tab === 'leader-bee' ? (
+            loadingLeaderBee ? (
+              <div className="rounded-2xl border bg-white p-8 text-center" style={{ borderColor: '#eadfce' }}>
+                <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Leader-BEE registrations...</p>
+              </div>
+            ) : <LeaderBeeAdmin registrations={leaderBeeRegistrations} />
           ) : (
             <ShakhaEditor records={shakhaRecords} onRefresh={refreshShakhas} />
           )}

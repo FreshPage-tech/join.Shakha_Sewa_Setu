@@ -40,6 +40,21 @@ export type InterestedPersonRecord = {
   comments: string
 }
 
+export type LeaderBeeRegistration = {
+  id: string
+  createdAt: string
+  parentName: string
+  parentEmail: string
+  parentPhone: string
+  children: { name: string; grade: string }[]
+  childCount: number
+  participantCount: number
+  amountCents: number
+  paymentStatus: 'not_required' | 'pending' | 'paid' | 'failed' | 'refunded'
+  stripeCheckoutSessionId: string
+  paidAt: string
+}
+
 export type ShakhaLocationIndex = Record<string, string[]>
 
 export type ShakhaShareOverride = {

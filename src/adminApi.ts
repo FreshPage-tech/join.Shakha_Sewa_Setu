@@ -1,7 +1,7 @@
 import type { Session } from '@supabase/supabase-js'
 import { SHAKHA_DATA } from './shakhaData'
 import { hasSupabaseConfig, supabase } from './supabaseClient'
-import type { InterestedPersonRecord, ShakhaRecord } from './shakhaTypes'
+import type { InterestedPersonRecord, LeaderBeeRegistration, ShakhaRecord } from './shakhaTypes'
 
 type SupabaseShakhaRow = {
   id: string
@@ -47,6 +47,13 @@ type SupabaseInterestedRow = {
   no_shakha_nearby: boolean
   preferred_day: string | null
   comments: string | null
+}
+
+type SupabaseLeaderBeeRow = {
+  id: string; created_at: string; parent_name: string; parent_email: string; parent_phone: string
+  children: { name: string; grade: string }[]; child_count: number; participant_count: number
+  amount_cents: number; payment_status: LeaderBeeRegistration['paymentStatus']
+  stripe_checkout_session_id: string | null; paid_at: string | null
 }
 
 function getSupabaseConfigError(): string | null {
@@ -327,6 +334,17 @@ export async function listInterestedPeople(): Promise<InterestedPersonRecord[]> 
   }
 
   return (data as SupabaseInterestedRow[]).map(mapInterestedRow)
+}
+
+export async function listLeaderBeeRegistrations(): Promise<LeaderBeeRegistration[]> {
+  const { data, error } = await supabase.from('leader_bee_registrations').select('*').order('created_at', { ascending: false })
+  if (error) throw error
+  return (data as SupabaseLeaderBeeRow[]).map(row => ({
+    id: row.id, createdAt: row.created_at, parentName: row.parent_name, parentEmail: row.parent_email,
+    parentPhone: row.parent_phone, children: row.children || [], childCount: row.child_count,
+    participantCount: row.participant_count, amountCents: row.amount_cents, paymentStatus: row.payment_status,
+    stripeCheckoutSessionId: row.stripe_checkout_session_id || '', paidAt: row.paid_at || '',
+  }))
 }
 
 export async function submitInterestedPerson(

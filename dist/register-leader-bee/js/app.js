@@ -27,6 +27,7 @@
   const PRICE_PER_CHILD = 10
   const PARTICIPATING_GRADES = new Set(['Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8'])
   const DEFAULT_CHECKOUT_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/create-leader-bee-checkout'
+  const DEFAULT_REGISTRATION_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/save-leader-bee-registration'
   let childSequence = 0
   let lastCheckoutPayload = null
   const shareButtons = {
@@ -202,6 +203,21 @@
 
   function getCheckoutApiUrl() {
     return window.LEADER_BEE_CONFIG?.checkoutApiUrl || DEFAULT_CHECKOUT_API_URL
+  }
+
+  function getRegistrationApiUrl() {
+    return window.LEADER_BEE_CONFIG?.registrationApiUrl || DEFAULT_REGISTRATION_API_URL
+  }
+
+  async function saveRegistration(checkoutPayload) {
+    const response = await fetch(getRegistrationApiUrl(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(checkoutPayload),
+    })
+    const result = await response.json().catch(() => ({}))
+    if (!response.ok) throw new Error(result.error || 'Unable to save registration.')
+    return result
   }
 
   function updateRegistrationTotal() {
@@ -390,6 +406,7 @@
       const parentLastName = formData.get('parentLastName')?.toString() || ''
       const parentName = `${parentFirstName} ${parentLastName}`.trim() || 'Parent / Guardian'
       lastCheckoutPayload = {
+        submissionKey: window.crypto.randomUUID(),
         parentEmail,
         parentName,
         parentPhone: formData.get('parentPhone')?.toString() || '',
@@ -410,6 +427,7 @@
       payload.set('_captcha', 'false')
 
       try {
+        await saveRegistration(lastCheckoutPayload)
         const response = await fetch('https://formsubmit.co/ajax/leaderbee@shakhasewasetu.com', {
           method: 'POST',
           headers: {
