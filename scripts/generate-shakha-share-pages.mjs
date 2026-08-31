@@ -194,7 +194,7 @@ function buildPageHtml(row, slug, override) {
   const image = `${siteUrl}/assets/usa-07733-sri-krishna-shakha.png`
   const contacts = row.contacts.filter(contact => contact.name || contact.mobile || contact.email)
 
-  const isSpecialShakha = slug === 'usa-07733-sri-krishna-shakha'
+  const isSpecialShakha = slug === 'usa-07751-sri-krishna-shakha'
   const profileImage = isSpecialShakha ? '/assets/usa-07733-sri-krishna-shakha.png' : ''
 
   return `<!doctype html>

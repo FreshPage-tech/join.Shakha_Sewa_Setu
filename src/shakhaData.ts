@@ -1659,16 +1659,16 @@ export const SHAKHA_DATA: Record<string, Record<string, ShakhaChapter[]>> = {
         "detailUrl": "https://www.hssus.org/chapter-detail/?username=shakti-shakha19"
       }
     ],
-    "Holmdel": [
+    "Morganville": [
       {
         "name": "Sri Krishna Shakha",
-        "city": "Holmdel",
+        "city": "Morganville",
         "state": "New Jersey",
-        "address": "44 Longstreet Rd, Holmdel, NJ 07733",
+        "address": "479 Hwy 79 A4, Morganville, NJ 07751",
         "day": "Every Thursday",
         "time": "6:00 PM - 7:30 PM",
         "timing": "Every Thursday from 6:00 PM - 7:30 PM",
-        "detailUrl": "https://maps.app.goo.gl/ECm8uDJhiMmXWuiV9?g_st=ic"
+        "detailUrl": "https://maps.app.goo.gl/X31NDJmnNQGeAXcz9"
       }
     ],
     "Parsippany": [
