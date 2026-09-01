@@ -16,7 +16,7 @@ const shakhaOverridesFile = path.join(projectRoot, 'src', 'shakhaOverrides.json'
 const siteBannerSource = path.join(projectRoot, 'src', 'imports', '4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png')
 const shakhaBannerSource = path.join(projectRoot, 'src', 'imports', 'DA8EA940-C9A9-4F9C-B405-14103451AAAD.PNG')
 
-const siteUrl = (process.env.SITE_URL ?? 'https://join.shakhasewasetu.com').replace(/\/$/, '')
+const siteUrl = (process.env.SITE_URL ?? 'https://shakhasewasetu.com/join').replace(/\/$/, '')
 const countrySlug = slugify(process.env.COUNTRY_SLUG ?? 'usa') || 'usa'
 
 const shareMessage = `🚩 Join Sangh Parivar Shakha - Build Yourself, Build Society
@@ -195,7 +195,7 @@ function buildPageHtml(row, slug, override) {
   const contacts = row.contacts.filter(contact => contact.name || contact.mobile || contact.email)
 
   const isSpecialShakha = slug === 'usa-07751-sri-krishna-shakha'
-  const profileImage = isSpecialShakha ? '/assets/usa-07733-sri-krishna-shakha.png' : ''
+  const profileImage = isSpecialShakha ? `${siteUrl}/assets/usa-07733-sri-krishna-shakha.png` : ''
 
   return `<!doctype html>
 <html lang="en">
@@ -286,7 +286,7 @@ function buildPageHtml(row, slug, override) {
 
       <section class="shell">
         <div class="hero-banner">
-          <img src="/assets/usa-07733-sri-krishna-shakha.png" alt="${escapeHtml(row.name)} banner" />
+          <img src="${siteUrl}/assets/usa-07733-sri-krishna-shakha.png" alt="${escapeHtml(row.name)} banner" />
           <div class="hero-head">
             <div class="hero-row">
               <div class="profile-wrap">
@@ -378,11 +378,11 @@ async function ensureFallbackPage() {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting to Register</title>
-    <meta http-equiv="refresh" content="0;url=/register" />
-    <script>window.location.replace('/register')</script>
+    <meta http-equiv="refresh" content="0;url=${siteUrl}/register" />
+    <script>window.location.replace(${JSON.stringify(`${siteUrl}/register`)})</script>
   </head>
   <body>
-    <p>Redirecting to <a href="/register">/register</a> ...</p>
+    <p>Redirecting to <a href="${siteUrl}/register">${siteUrl}/register</a> ...</p>
   </body>
 </html>
 `

@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/join",
+      "destination": "/"
+    },
+    {
+      "source": "/join/:path*",
+      "destination": "/:path*"
+    },
+    {
       "source": "/register-leader-bee",
       "destination": "/register-leader-bee.html"
     },

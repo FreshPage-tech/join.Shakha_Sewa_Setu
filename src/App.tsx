@@ -56,9 +56,11 @@ const FAQS = [
 ]
 
 const DEFAULT_COUNTRY_SLUG = (import.meta.env.VITE_COUNTRY_SLUG ?? 'usa').toLowerCase()
-const SITE_SHARE_IMAGE = '/social/site-banner.png'
-const SHAKHA_PAGE_BANNER_IMAGE = '/assets/usa-07733-sri-krishna-shakha.png'
-const SHAKHA_PROFILE_IMAGE = '/assets/usa_07733.png'
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '')
+const withBasePath = (path: string) => `${BASE_PATH}${path === '/' ? '/' : path}`
+const SITE_SHARE_IMAGE = withBasePath('/social/site-banner.png')
+const SHAKHA_PAGE_BANNER_IMAGE = withBasePath('/assets/usa-07733-sri-krishna-shakha.png')
+const SHAKHA_PROFILE_IMAGE = withBasePath('/assets/usa_07733.png')
 const SHAKHA_SHARE_IMAGE = SHAKHA_PAGE_BANNER_IMAGE
 
 function slugify(value: string): string {
@@ -69,6 +71,10 @@ function slugify(value: string): string {
 }
 
 function normalizePathname(path: string): string {
+  if (BASE_PATH && (path === BASE_PATH || path.startsWith(`${BASE_PATH}/`))) {
+    path = path.slice(BASE_PATH.length) || '/'
+  }
+
   if (!path || path === '/') {
     return '/'
   }
@@ -142,7 +148,7 @@ function ShakhaSharePage({
   record: ShakhaRecord
   onBack: () => void
 }) {
-  const shareUrl = `${window.location.origin}${getShakhaRoute(record)}`
+  const shareUrl = `${window.location.origin}${withBasePath(getShakhaRoute(record))}`
   const shareMessage = getShareMessage(record)
   const announcementLines = shareMessage
     .split('\n')
@@ -1956,14 +1962,14 @@ function LeaderBeePage() {
     'Parent-child participation journey',
   ]
 
-  const registrationUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
+  const registrationUrl = 'https://shakhasewasetu.com/join/register-leader-bee'
 
   return (
     <div className="min-h-screen" style={{ background: '#ffffff', color: '#1F2937' }}>
       <section className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 pt-4 pb-8">
         <div className="rounded-[1.7rem] overflow-hidden border shadow-[0_20px_44px_rgba(19,47,93,0.14)]" style={{ borderColor: '#f1d7bf', background: '#fff' }}>
           <img
-            src="/assets/leader-bee_hero.png"
+            src={withBasePath('/assets/leader-bee_hero.png')}
             alt="Leader-BEE workshop poster"
             className="w-full h-auto block"
           />
@@ -2222,8 +2228,9 @@ export default function App() {
 
   const navigateToPage = (page: 'home' | 'register' | 'leader-bee') => {
     const targetPath = page === 'register' ? '/register' : page === 'leader-bee' ? '/register-leader-bee' : '/'
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState({}, '', targetPath)
+    const publicTargetPath = withBasePath(targetPath)
+    if (window.location.pathname !== publicTargetPath) {
+      window.history.pushState({}, '', publicTargetPath)
     }
     setPathname(targetPath)
     setActiveShakha(null)
@@ -2316,7 +2323,7 @@ export default function App() {
           return
         }
 
-        window.history.replaceState({}, '', '/register')
+        window.history.replaceState({}, '', withBasePath('/register'))
         setPathname('/register')
         setActivePage('register')
       } finally {
@@ -2339,7 +2346,7 @@ export default function App() {
       setMetaTagByProperty('og:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
       setMetaTagByProperty('og:type', 'website')
       setMetaTagByProperty('og:description', 'Free summer leadership workshop for students in Grade 4 to Grade 8. Limited seats available.')
-      setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
+      setMetaTagByProperty('og:url', `${window.location.origin}${withBasePath(pathname)}`)
       setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
       setMetaTagByName('twitter:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
@@ -2354,7 +2361,7 @@ export default function App() {
       setMetaTagByProperty('og:title', 'Shakha Sewa Setu - Join Sangh Parivar Shakha')
       setMetaTagByProperty('og:type', 'website')
       setMetaTagByProperty('og:description', 'Find your nearest Sangh Parivar Shakha and register your interest.')
-      setMetaTagByProperty('og:url', `${window.location.origin}${pathname}`)
+      setMetaTagByProperty('og:url', `${window.location.origin}${withBasePath(pathname)}`)
       setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
       setMetaTagByName('twitter:title', 'Shakha Sewa Setu - Join Sangh Parivar Shakha')
@@ -2366,7 +2373,7 @@ export default function App() {
 
     const title = getShareTitle(activeShakha)
     const description = getShareDescription(activeShakha)
-    const url = `${window.location.origin}${getShakhaRoute(activeShakha)}`
+    const url = `${window.location.origin}${withBasePath(getShakhaRoute(activeShakha))}`
 
     document.title = title
     setMetaTagByName('description', description)
@@ -2453,7 +2460,7 @@ export default function App() {
     }
 
     const targetPath = getShakhaRoute(record)
-    window.history.pushState({}, '', targetPath)
+    window.history.pushState({}, '', withBasePath(targetPath))
     setActiveShakha(record)
     setPathname(targetPath)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -2461,7 +2468,7 @@ export default function App() {
 
   // Keep /register-leader-bee aligned with the canonical static page.
   if (isLeaderBeePath && typeof window !== 'undefined') {
-    window.location.replace('/register-leader-bee.html')
+    window.location.replace(withBasePath('/register-leader-bee.html'))
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: '#ffffff' }}>
         <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Leader-BEE page...</p>

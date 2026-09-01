@@ -26,7 +26,7 @@ type SupabaseShakhaRow = {
   contact_3_email: string | null
 }
 
-const SHAKHA_DATA_BASE = '/shakha-data'
+const SHAKHA_DATA_BASE = `${import.meta.env.BASE_URL}shakha-data`.replace(/\/$/, '')
 
 function slugify(value: string): string {
   return value

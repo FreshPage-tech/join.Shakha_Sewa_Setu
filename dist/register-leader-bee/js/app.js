@@ -503,7 +503,7 @@
   }
 
   function setupSharing() {
-    const pageUrl = 'https://join.shakhasewasetu.com/register-leader-bee'
+    const pageUrl = 'https://shakhasewasetu.com/join/register-leader-bee'
     const details = [
       '• Grades: 4–8',
       '• Starts: 13 September 2026',
