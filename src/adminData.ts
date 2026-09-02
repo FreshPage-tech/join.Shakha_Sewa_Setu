@@ -1,5 +1,5 @@
 import { SHAKHA_DATA, type ShakhaChapter } from './shakhaData'
-import type { ContactDetail, InterestedPersonRecord, ShakhaRecord } from './shakhaTypes'
+import type { ContactDetail, ShakhaRecord } from './shakhaTypes'
 
 function createBlankContacts(): ContactDetail[] {
   return [

@@ -3,6 +3,7 @@ import {
   type ContactDetail,
   type InterestedPersonRecord,
   type LeaderBeeRegistration,
+  type ShakhaLeader,
   type ShakhaRecord,
 } from './shakhaTypes'
 import {
@@ -20,6 +21,8 @@ import {
 import LeaderBeeAdmin from './LeaderBeeAdmin'
 
 const emptyContact = (): ContactDetail => ({ name: '', mobile: '', email: '' })
+const DEFAULT_LEADER_ROLES = ['Shakha Mukhya Shikshak', 'Karyawah', 'Sharirik Shikshak', 'Bauddhik Pramukh', 'Dhwaj Pramukh']
+const emptyLeader = (role = ''): ShakhaLeader => ({ role, name: '', mobile: '', email: '' })
 
 const emptyShakhaForm = (): Omit<ShakhaRecord, 'id'> => ({
   name: '',
@@ -32,7 +35,10 @@ const emptyShakhaForm = (): Omit<ShakhaRecord, 'id'> => ({
   mapLink: '',
   day: 'Weekly on Sunday',
   time: '10:00am to 11:30am',
+  bannerUrl: '',
+  profileImageUrl: '',
   contacts: [emptyContact(), emptyContact(), emptyContact()],
+  leaders: DEFAULT_LEADER_ROLES.map(emptyLeader),
 })
 
 function formatDate(value: string): string {
@@ -128,6 +134,14 @@ function ShakhaEditor({
     })
   }
 
+  const setLeaderField = (index: number, key: keyof ShakhaLeader, value: string) => {
+    setForm(prev => {
+      const leaders = [...(prev.leaders ?? [])]
+      leaders[index] = { ...leaders[index], [key]: value }
+      return { ...prev, leaders }
+    })
+  }
+
   const resetForm = () => {
     setEditingId(null)
     setForm(emptyShakhaForm())
@@ -146,11 +160,14 @@ function ShakhaEditor({
       mapLink: record.mapLink,
       day: record.day,
       time: record.time,
+      bannerUrl: record.bannerUrl ?? '',
+      profileImageUrl: record.profileImageUrl ?? '',
       contacts: [
         record.contacts[0] ?? emptyContact(),
         record.contacts[1] ?? emptyContact(),
         record.contacts[2] ?? emptyContact(),
       ],
+      leaders: record.leaders?.length ? record.leaders : DEFAULT_LEADER_ROLES.map(emptyLeader),
     })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -208,7 +225,16 @@ function ShakhaEditor({
           <input value={form.mapLink} onChange={event => setField('mapLink', event.target.value)} placeholder="Map Link" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
           <input value={form.day} onChange={event => setField('day', event.target.value)} placeholder="Day (optional)" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
           <input value={form.time} onChange={event => setField('time', event.target.value)} placeholder="Time (optional)" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+          <input value={form.bannerUrl ?? ''} onChange={event => setField('bannerUrl', event.target.value)} placeholder="Banner image URL" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+          <input value={form.profileImageUrl ?? ''} onChange={event => setField('profileImageUrl', event.target.value)} placeholder="Profile image URL" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
         </div>
+
+        {(form.bannerUrl || form.profileImageUrl) && (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {form.bannerUrl && <img src={form.bannerUrl} alt="Banner preview" className="h-32 w-full rounded-xl border object-cover" />}
+            {form.profileImageUrl && <img src={form.profileImageUrl} alt="Profile preview" className="h-32 w-32 rounded-full border object-cover" />}
+          </div>
+        )}
 
         <div className="mt-5 space-y-3">
           <p className="text-sm font-semibold" style={{ color: '#132f5d' }}>Contact Details (3 boxes)</p>
@@ -217,6 +243,24 @@ function ShakhaEditor({
               <input value={contact.name} onChange={event => setContactField(index, 'name', event.target.value)} placeholder={`Contact ${index + 1} Name`} className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
               <input value={contact.mobile} onChange={event => setContactField(index, 'mobile', event.target.value)} placeholder={`Contact ${index + 1} Mobile`} className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
               <input value={contact.email} onChange={event => setContactField(index, 'email', event.target.value)} placeholder={`Contact ${index + 1} Email`} className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5 space-y-3">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-sm font-semibold" style={{ color: '#132f5d' }}>Shakha Karyakarini</p>
+            <button type="button" onClick={() => setForm(prev => ({ ...prev, leaders: [...(prev.leaders ?? []), emptyLeader()] }))} className="rounded-lg border px-3 py-1.5 text-xs font-semibold" style={{ borderColor: '#1B3A6B', color: '#1B3A6B' }}>+ Add role</button>
+          </div>
+          {(form.leaders ?? []).map((leader, index) => (
+            <div key={index} className="rounded-xl border p-3" style={{ borderColor: '#ede5d8' }}>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <input value={leader.role} onChange={event => setLeaderField(index, 'role', event.target.value)} placeholder="Role (e.g. Karyawah)" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+                <input value={leader.name} onChange={event => setLeaderField(index, 'name', event.target.value)} placeholder="Name" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+                <input value={leader.mobile} onChange={event => setLeaderField(index, 'mobile', event.target.value)} placeholder="Mobile" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+                <input value={leader.email} onChange={event => setLeaderField(index, 'email', event.target.value)} placeholder="Email" className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: '#ddd6c8' }} />
+              </div>
+              <button type="button" onClick={() => setForm(prev => ({ ...prev, leaders: (prev.leaders ?? []).filter((_, leaderIndex) => leaderIndex !== index) }))} className="mt-2 text-xs font-semibold" style={{ color: '#c2410c' }}>Remove role</button>
             </div>
           ))}
         </div>

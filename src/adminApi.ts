@@ -1,7 +1,7 @@
 import type { Session } from '@supabase/supabase-js'
 import { SHAKHA_DATA } from './shakhaData'
 import { hasSupabaseConfig, supabase } from './supabaseClient'
-import type { InterestedPersonRecord, LeaderBeeRegistration, ShakhaRecord } from './shakhaTypes'
+import type { InterestedPersonRecord, LeaderBeeRegistration, ShakhaLeader, ShakhaRecord } from './shakhaTypes'
 
 type SupabaseShakhaRow = {
   id: string
@@ -17,6 +17,9 @@ type SupabaseShakhaRow = {
   map_link: string | null
   day: string | null
   time: string | null
+  banner_url: string | null
+  profile_image_url: string | null
+  leaders: ShakhaLeader[] | null
   contact_1_name: string | null
   contact_1_mobile: string | null
   contact_1_email: string | null
@@ -98,11 +101,14 @@ function defaultSeedShakhas(): ShakhaRecord[] {
           mapLink: shakha.detailUrl,
           day: shakha.day,
           time: shakha.time,
+          bannerUrl: '',
+          profileImageUrl: '',
           contacts: [
             { name: '', mobile: '', email: '' },
             { name: '', mobile: '', email: '' },
             { name: '', mobile: '', email: '' },
           ],
+          leaders: [],
         })
       }
     }
@@ -124,11 +130,14 @@ function mapShakhaRow(row: SupabaseShakhaRow): ShakhaRecord {
     mapLink: row.map_link ?? '',
     day: row.day ?? '',
     time: row.time ?? '',
+    bannerUrl: row.banner_url ?? '',
+    profileImageUrl: row.profile_image_url ?? '',
     contacts: [
       { name: row.contact_1_name ?? '', mobile: row.contact_1_mobile ?? '', email: row.contact_1_email ?? '' },
       { name: row.contact_2_name ?? '', mobile: row.contact_2_mobile ?? '', email: row.contact_2_email ?? '' },
       { name: row.contact_3_name ?? '', mobile: row.contact_3_mobile ?? '', email: row.contact_3_email ?? '' },
     ],
+    leaders: Array.isArray(row.leaders) ? row.leaders : [],
   }
 }
 
@@ -144,6 +153,9 @@ function toShakhaRow(record: Omit<ShakhaRecord, 'id'>) {
     map_link: record.mapLink || null,
     day: record.day || null,
     time: record.time || null,
+    banner_url: record.bannerUrl || null,
+    profile_image_url: record.profileImageUrl || null,
+    leaders: record.leaders ?? [],
     contact_1_name: record.contacts[0]?.name || null,
     contact_1_mobile: record.contacts[0]?.mobile || null,
     contact_1_email: record.contacts[0]?.email || null,

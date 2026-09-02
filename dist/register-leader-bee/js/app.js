@@ -428,6 +428,19 @@
 
       try {
         await saveRegistration(lastCheckoutPayload)
+      } catch (error) {
+        console.error('Leader-BEE registration could not be saved', error)
+        window.alert(error instanceof Error ? error.message : 'Unable to save your registration right now. Please try again in a moment.')
+        if (submitButton) {
+          submitButton.disabled = false
+          submitButton.innerHTML = submitLabel
+        }
+        return
+      }
+
+      // Email delivery is helpful, but it must never block a registration that
+      // has already been safely stored or prevent the user from paying.
+      try {
         const response = await fetch('https://formsubmit.co/ajax/leaderbee@shakhasewasetu.com', {
           method: 'POST',
           headers: {
@@ -441,12 +454,7 @@
           throw new Error('Unable to send registration email notifications.')
         }
       } catch (error) {
-        window.alert('Unable to send confirmation emails right now. Please try again in a moment.')
-        if (submitButton) {
-          submitButton.disabled = false
-          submitButton.innerHTML = submitLabel
-        }
-        return
+        console.warn('Registration saved, but confirmation email delivery failed', error)
       }
 
       const participantCount = lastCheckoutPayload.children.filter(child => PARTICIPATING_GRADES.has(child.grade)).length

@@ -155,6 +155,9 @@ function ShakhaSharePage({
     .map(line => line.trim())
     .filter(Boolean)
   const contactEntries = record.contacts.filter(contact => contact.name || contact.mobile || contact.email)
+  const leaders = record.leaders ?? []
+  const bannerImage = record.bannerUrl || SHAKHA_PAGE_BANNER_IMAGE
+  const profileImage = record.profileImageUrl || SHAKHA_PROFILE_IMAGE
   const stateName = record.state?.trim() || 'State'
   const cityName = record.city?.trim() || 'City'
   const whatsappMessage = `Namaste, I'm interested to join ${record.name} Shakha.`
@@ -192,14 +195,14 @@ function ShakhaSharePage({
           <div className="overflow-hidden rounded-2xl border" style={{ background: '#ffffff', borderColor: '#e7e9ee' }}>
             <div className="overflow-hidden border-b" style={{ borderColor: '#eef1f6', background: '#ffffff' }}>
               <div className="relative bg-white flex items-center justify-center px-2 py-2 lg:py-3">
-                <img src={SHAKHA_PAGE_BANNER_IMAGE} alt="Shakha banner" className="block w-full h-auto lg:w-auto lg:max-h-[540px]" />
+                <img src={bannerImage} alt={`${record.name} banner`} className="block max-h-[540px] w-full object-cover" />
               </div>
 
               <div className="relative px-4 pb-4 sm:px-6">
                 <div className="-mt-14 flex flex-col gap-4 sm:-mt-16 lg:flex-row lg:items-end lg:justify-between">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
                     <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)] sm:h-36 sm:w-36">
-                      <img src={SHAKHA_PROFILE_IMAGE} alt="Shakha profile" className="h-full w-full object-cover" />
+                      <img src={profileImage} alt={`${record.name} profile`} className="h-full w-full object-cover" />
                     </div>
 
                     <div className="sm:pb-2">
@@ -279,6 +282,22 @@ function ShakhaSharePage({
                       </p>
                     ))}
                   </div>
+
+                  {leaders.length > 0 && (
+                    <div className="mt-5 border-t pt-5" style={{ borderColor: '#f1f4f8' }}>
+                      <h3 className="font-display text-lg font-semibold" style={{ color: '#132f5d' }}>Shakha Karyakarini</h3>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        {leaders.map((leader, index) => (
+                          <div key={`${leader.role}-${index}`} className="rounded-xl border p-3" style={{ borderColor: '#f0f3f8' }}>
+                            <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#D4531A' }}>{leader.role || 'Karyakarta'}</p>
+                            <p className="mt-1 font-semibold" style={{ color: '#1e3761' }}>{leader.name || 'To be announced'}</p>
+                            {leader.mobile && <a href={`tel:${leader.mobile}`} className="block text-sm" style={{ color: '#304a78' }}>{leader.mobile}</a>}
+                            {leader.email && <a href={`mailto:${leader.email}`} className="block break-all text-xs" style={{ color: '#6a7da3' }}>{leader.email}</a>}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-3">

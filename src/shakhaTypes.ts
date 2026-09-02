@@ -4,6 +4,13 @@ export type ContactDetail = {
   email: string
 }
 
+export type ShakhaLeader = {
+  role: string
+  name: string
+  mobile: string
+  email: string
+}
+
 export type ShakhaRecord = {
   id: string
   name: string
@@ -16,7 +23,10 @@ export type ShakhaRecord = {
   mapLink: string
   day: string
   time: string
+  bannerUrl?: string
+  profileImageUrl?: string
   contacts: ContactDetail[]
+  leaders?: ShakhaLeader[]
 }
 
 export type InterestedPersonRecord = {

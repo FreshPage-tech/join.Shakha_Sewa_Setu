@@ -1,5 +1,5 @@
 import type { ShakhaChapter } from './shakhaData'
-import type { ContactDetail, ShakhaRecord } from './shakhaTypes'
+import type { ContactDetail, ShakhaLeader, ShakhaRecord } from './shakhaTypes'
 
 function normalizeContacts(contacts: ContactDetail[] | undefined): ContactDetail[] {
   const safeContacts = contacts ?? []
@@ -15,6 +15,17 @@ function normalizeContacts(contacts: ContactDetail[] | undefined): ContactDetail
   return normalized
 }
 
+function normalizeLeaders(leaders: ShakhaLeader[] | undefined): ShakhaLeader[] {
+  return (leaders ?? [])
+    .map(leader => ({
+      role: leader.role?.trim() ?? '',
+      name: leader.name?.trim() ?? '',
+      mobile: leader.mobile?.trim() ?? '',
+      email: leader.email?.trim() ?? '',
+    }))
+    .filter(leader => leader.role || leader.name || leader.mobile || leader.email)
+}
+
 export function normalizeShakhaRecord(record: ShakhaRecord): ShakhaRecord {
   return {
     ...record,
@@ -28,7 +39,10 @@ export function normalizeShakhaRecord(record: ShakhaRecord): ShakhaRecord {
     mapLink: record.mapLink.trim(),
     day: record.day.trim(),
     time: record.time.trim(),
+    bannerUrl: record.bannerUrl?.trim() ?? '',
+    profileImageUrl: record.profileImageUrl?.trim() ?? '',
     contacts: normalizeContacts(record.contacts),
+    leaders: normalizeLeaders(record.leaders),
   }
 }
 

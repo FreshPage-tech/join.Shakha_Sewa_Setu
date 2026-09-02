@@ -1,7 +1,7 @@
 import { hasSupabaseConfig, supabase } from './supabaseClient'
 import { applyShakhaOverride, mergeLocationIndexes, mergeShakhaRecords } from './shakhaOverrides'
 import { normalizeShakhaRecord, normalizeShakhaRecords } from './shakhaRuntime'
-import type { InterestedPersonRecord, ShakhaLocationIndex, ShakhaRecord } from './shakhaTypes'
+import type { InterestedPersonRecord, ShakhaLeader, ShakhaLocationIndex, ShakhaRecord } from './shakhaTypes'
 
 type SupabaseShakhaRow = {
   id: string
@@ -15,6 +15,9 @@ type SupabaseShakhaRow = {
   map_link: string | null
   day: string | null
   time: string | null
+  banner_url: string | null
+  profile_image_url: string | null
+  leaders: ShakhaLeader[] | null
   contact_1_name: string | null
   contact_1_mobile: string | null
   contact_1_email: string | null
@@ -35,6 +38,11 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+function getRecordSlug(record: ShakhaRecord): string {
+  const zip = record.zipCode.match(/\d{5}/)?.[0] || record.address.match(/\d{5}/)?.[0] || '00000'
+  return `${slugify(import.meta.env.VITE_COUNTRY_SLUG ?? 'usa')}-${zip}-${slugify(record.name)}`
+}
+
 function mapShakhaRow(row: SupabaseShakhaRow): ShakhaRecord {
   return normalizeShakhaRecord({
     id: row.id,
@@ -48,11 +56,14 @@ function mapShakhaRow(row: SupabaseShakhaRow): ShakhaRecord {
     mapLink: row.map_link ?? '',
     day: row.day ?? '',
     time: row.time ?? '',
+    bannerUrl: row.banner_url ?? '',
+    profileImageUrl: row.profile_image_url ?? '',
     contacts: [
       { name: row.contact_1_name ?? '', mobile: row.contact_1_mobile ?? '', email: row.contact_1_email ?? '' },
       { name: row.contact_2_name ?? '', mobile: row.contact_2_mobile ?? '', email: row.contact_2_email ?? '' },
       { name: row.contact_3_name ?? '', mobile: row.contact_3_mobile ?? '', email: row.contact_3_email ?? '' },
     ],
+    leaders: Array.isArray(row.leaders) ? row.leaders : [],
   })
 }
 
@@ -137,8 +148,21 @@ export async function listPublicShakhaRecordsByLocation(state: string, city: str
 }
 
 export async function findPublicShakhaBySlug(slug: string): Promise<ShakhaRecord | null> {
-  const record = await readStaticJson<ShakhaRecord | null>(`${SHAKHA_DATA_BASE}/slugs/${slug}.json`, null)
-  return record ? applyShakhaOverride(normalizeShakhaRecord(record)) : null
+  const staticRecord = await readStaticJson<ShakhaRecord | null>(`${SHAKHA_DATA_BASE}/slugs/${slug}.json`, null)
+
+  if (hasSupabaseConfig) {
+    const { data, error } = await supabase.from('shakhas_admin').select('*')
+    if (!error && data) {
+      const dynamicRecord = (data as SupabaseShakhaRow[])
+        .map(mapShakhaRow)
+        .find(record => getRecordSlug(record) === slug)
+      if (dynamicRecord) {
+        return applyShakhaOverride(dynamicRecord)
+      }
+    }
+  }
+
+  return staticRecord ? applyShakhaOverride(normalizeShakhaRecord(staticRecord)) : null
 }
 
 export async function submitInterestedPerson(
