@@ -1,3 +1,7 @@
+import { programDirectory } from './data/programDirectory'
+import ShakhaProgramLinks from './components/ShakhaProgramLinks'
+import LeaderBeeBranchPicker from './components/LeaderBeeBranchPicker'
+import HomePrograms from './components/HomePrograms'
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react'
 import familyImg from './imports/4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png'
 import sssLogo from './imports/SSS_logo.png'
@@ -12,7 +16,9 @@ import { getShareDescription, getShareMessage, getShareTitle } from './shakhaOve
 import { buildShakhaDataMap } from './shakhaRuntime'
 import type { ShakhaLocationIndex, ShakhaRecord } from './shakhaTypes'
 
+const ProgramPublicPage = lazy(() => import('./components/ProgramPublicPage'))
 const AdminPanel = lazy(() => import('./AdminPanel'))
+const ShakhaLeaderBeePage = lazy(() => import('./components/ShakhaLeaderBeePage'))
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -74,6 +80,9 @@ function normalizePathname(path: string): string {
   if (BASE_PATH && (path === BASE_PATH || path.startsWith(`${BASE_PATH}/`))) {
     path = path.slice(BASE_PATH.length) || '/'
   }
+
+  if (path.startsWith('/join/programs/')) path = path.slice('/join'.length)
+  if (path.replace(/\/+$/, '') === '/join/register-leader-bee') return '/register-leader-bee'
 
   if (!path || path === '/') {
     return '/'
@@ -209,6 +218,7 @@ function ShakhaSharePage({
                       <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold" style={{ color: '#132f5d' }}>
                         {record.name}
                       </h1>
+                      <ShakhaProgramLinks record={record} />
                       <p className="mt-1 text-sm sm:text-base" style={{ color: '#5a6f9a' }}>
                         {stateName} &gt;&gt; {cityName} &gt;&gt; {record.name}
                       </p>
@@ -382,10 +392,11 @@ function Navbar({ onNav, disclaimerVisible }: { onNav: (id: string) => void; dis
 
   const links = [
     { label: 'Home', id: 'home' },
+    { label: 'Programs', id: 'programs' },
     { label: 'About Shakha', id: 'about' },
     { label: 'Why Join', id: 'benefits' },
     { label: 'Activities', id: 'timeline' },
-    { label: 'Find Shakha', id: 'find' },
+    { label: 'Explore Nearby', id: 'find' },
     { label: 'FAQ', id: 'faq' },
     { label: 'Contact', id: 'contact' },
   ]
@@ -535,7 +546,7 @@ function Hero({ onNav }: { onNav: (id: string) => void }) {
                 boxShadow: '0 10px 30px rgba(212,83,26,0.28)',
               }}
             >
-              Find Nearest Shakha
+              Find Shakhas & Programs
             </button>
             <button
               onClick={() => onNav('register')}
@@ -549,6 +560,12 @@ function Hero({ onNav }: { onNav: (id: string) => void }) {
             >
               Register Your Interest
             </button>
+          </div>
+
+          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-semibold">
+            <span className="text-slate-600">Explore programs:</span>
+            <a href={withBasePath('/register-leader-bee')} className="text-orange-800 underline decoration-orange-300 underline-offset-4 hover:decoration-orange-800">Leader-BEE ↗</a>
+            <a href={withBasePath('/programs/krishna-my-sharthi')} className="text-blue-950 underline decoration-blue-300 underline-offset-4 hover:decoration-blue-950">Krishna My Sharthi ↗</a>
           </div>
 
           {/* Stats */}
@@ -974,257 +991,6 @@ function WhoCanJoin() {
   )
 }
 
-function FindShakha({
-  standalone = true,
-  locationIndex,
-  onOpenShakhaPage,
-  onSearchLocation,
-}: {
-  standalone?: boolean
-  locationIndex: ShakhaLocationIndex
-  onOpenShakhaPage: (chapter: ShakhaChapter) => void
-  onSearchLocation: (state: string, city: string) => Promise<ShakhaChapter[]>
-}) {
-  const [mode, setMode] = useState<'dropdown' | 'zip'>('dropdown')
-  const [state, setState] = useState('')
-  const [city, setCity] = useState('')
-  const [zip, setZip] = useState('')
-  const [radius, setRadius] = useState('10')
-  const [results, setResults] = useState<ShakhaChapter[]>([])
-  const [searched, setSearched] = useState(false)
-  const [searching, setSearching] = useState(false)
-
-  const usStates = useMemo(() => Object.keys(locationIndex), [locationIndex])
-  const cities = state ? (locationIndex[state] ?? []) : []
-
-  const handleSearch = async () => {
-    if (mode === 'dropdown' && state && city) {
-      setSearching(true)
-      try {
-        setResults(await onSearchLocation(state, city))
-        setSearched(true)
-      } finally {
-        setSearching(false)
-      }
-    } else if (mode === 'zip') {
-      // Mock: show results for any valid-looking ZIP
-      if (zip.length >= 5) {
-        setResults([
-          {
-            name: 'Vivekananda Shakha',
-            day: 'Every Saturday',
-            time: '8:00 AM',
-            city: 'Nearby Area',
-            state: state || 'USA',
-            address: 'Nearby Area',
-            timing: 'Every Saturday from 8:00 AM',
-            detailUrl: '',
-          },
-          {
-            name: 'Bharata Shakha',
-            day: 'Every Sunday',
-            time: '7:30 AM',
-            city: 'Nearby Area',
-            state: state || 'USA',
-            address: 'Nearby Area',
-            timing: 'Every Sunday from 7:30 AM',
-            detailUrl: '',
-          },
-        ])
-        setSearched(true)
-      }
-    }
-  }
-
-  const content = (
-    <div className={standalone ? 'max-w-[82rem] mx-auto px-2 sm:px-3 lg:px-4' : ''}>
-      <div className={standalone ? 'text-center mb-12' : 'mb-8'}>
-        <div className={`flex items-center ${standalone ? 'justify-center' : ''} gap-2 mb-4`}>
-          <div className="h-px w-8" style={{ background: '#D4531A' }} />
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#D4531A' }}>
-            {standalone ? 'Find a Shakha' : 'Search Shakha'}
-          </span>
-          <div className="h-px w-8" style={{ background: '#D4531A' }} />
-        </div>
-        <h2 className={`font-display font-bold ${standalone ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`} style={{ color: '#0b1a32' }}>
-          {standalone ? 'Discover a Shakha Near You' : 'Find a Shakha Near You'}
-        </h2>
-        <p className="mt-3 text-base" style={{ color: '#5a6f9a' }}>
-          Search by location or ZIP code to find the nearest Sangh Parivar Shakha in your area.
-        </p>
-      </div>
-
-        {/* Toggle mode */}
-        <div className="flex rounded-full overflow-hidden mb-8 mx-auto w-fit border" style={{ borderColor: '#ddd6c8' }}>
-          {[{ key: 'dropdown', label: 'Search by Location' }, { key: 'zip', label: 'Search by ZIP Code' }].map(m => (
-            <button
-              key={m.key}
-              onClick={() => { setMode(m.key as 'dropdown' | 'zip'); setSearched(false); setResults([]) }}
-              className="px-5 py-2.5 text-sm font-medium transition-all"
-              style={{
-                background: mode === m.key ? '#1B3A6B' : 'transparent',
-                color: mode === m.key ? '#fff' : '#5a6f9a',
-              }}
-            >
-              {m.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Search card */}
-        <div className="bg-white rounded-2xl shadow-sm border p-6 lg:p-8" style={{ borderColor: '#ede5d8' }}>
-          {mode === 'dropdown' ? (
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: '#1B3A6B' }}>State</label>
-                <select
-                  value={state}
-                  onChange={e => { setState(e.target.value); setCity(''); setResults([]); setSearched(false) }}
-                  className="w-full px-4 py-3 rounded-xl border text-sm outline-none focus:ring-2"
-                  style={{ borderColor: '#ddd6c8', color: '#0b1a32', focusRingColor: '#D4531A' } as React.CSSProperties}
-                >
-                  <option value="">Select State</option>
-                  {usStates.map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: '#1B3A6B' }}>City</label>
-                <select
-                  value={city}
-                  onChange={e => { setCity(e.target.value); setResults([]); setSearched(false) }}
-                  disabled={!state}
-                  className="w-full px-4 py-3 rounded-xl border text-sm outline-none disabled:opacity-50"
-                  style={{ borderColor: '#ddd6c8', color: '#0b1a32' }}
-                >
-                  <option value="">Select City</option>
-                  {cities.map(c => <option key={c} value={c}>{c}</option>)}
-                </select>
-              </div>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: '#1B3A6B' }}>ZIP Code</label>
-                <input
-                  type="text"
-                  value={zip}
-                  onChange={e => setZip(e.target.value)}
-                  placeholder="Enter ZIP code (e.g. 07733)"
-                  maxLength={5}
-                  className="w-full px-4 py-3 rounded-xl border text-sm outline-none"
-                  style={{ borderColor: '#ddd6c8', color: '#0b1a32' }}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: '#1B3A6B' }}>Radius</label>
-                <select
-                  value={radius}
-                  onChange={e => setRadius(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border text-sm outline-none"
-                  style={{ borderColor: '#ddd6c8', color: '#0b1a32' }}
-                >
-                  <option value="5">5 Miles</option>
-                  <option value="10">10 Miles</option>
-                  <option value="20">20 Miles</option>
-                </select>
-              </div>
-            </div>
-          )}
-
-          <button
-            onClick={() => void handleSearch()}
-            className="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #D4531A, #c2410c)' }}
-          >
-            {searching ? 'Searching...' : 'Search Shakhas'}
-          </button>
-        </div>
-
-        {/* Results */}
-        {searched && (
-          <div className="mt-8">
-            {results.length > 0 ? (
-              <div className="space-y-4">
-                <p className="text-sm font-medium" style={{ color: '#5a6f9a' }}>
-                  Found {results.length} Shakha{results.length !== 1 ? 's' : ''} near you
-                </p>
-                {results.map((r, i) => (
-                  <div
-                    key={i}
-                    className="bg-white rounded-2xl border p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-                    style={{ borderColor: '#ede5d8' }}
-                  >
-                    <div className="flex gap-4 items-start">
-                      <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-lg"
-                        style={{ background: 'linear-gradient(135deg, #D4531A, #e87c3e)' }}
-                      >
-                        🙏
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-base" style={{ color: '#0b1a32' }}>{r.name}</h4>
-                        <div className="flex flex-wrap gap-3 mt-1.5">
-                          <span className="flex items-center gap-1 text-xs" style={{ color: '#5a6f9a' }}>
-                            📅 {r.day}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs" style={{ color: '#5a6f9a' }}>
-                            🕐 {r.time}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs" style={{ color: '#5a6f9a' }}>
-                            📍 {r.city}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 flex-shrink-0">
-                      <button
-                        onClick={() => onOpenShakhaPage(r)}
-                        className="px-4 py-2 rounded-lg text-xs font-semibold text-white"
-                        style={{ background: '#1B3A6B' }}
-                      >
-                        Open Shakha Page
-                      </button>
-                      <a
-                        href={r.detailUrl || '#'}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2 rounded-lg text-xs font-semibold border"
-                        style={{ borderColor: '#D4531A', color: '#D4531A', pointerEvents: r.detailUrl ? 'auto' : 'none', opacity: r.detailUrl ? 1 : 0.5 }}
-                      >
-                        Get Directions
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                className="rounded-2xl border p-8 text-center"
-                style={{ background: 'rgba(212,83,26,0.04)', borderColor: 'rgba(212,83,26,0.2)' }}
-              >
-                <div className="text-3xl mb-3">🔍</div>
-                <p className="font-medium" style={{ color: '#0b1a32' }}>No Shakhas found in this area yet.</p>
-                <p className="text-sm mt-1" style={{ color: '#5a6f9a' }}>
-                  Register your interest below — our volunteers will reach out to help start or connect you with a nearby Shakha.
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-    </div>
-  )
-
-  if (!standalone) {
-    return content
-  }
-
-  return (
-    <section id="find" className="py-20 lg:py-28" style={{ background: '#ffffff' }}>
-      {content}
-    </section>
-  )
-}
-
 type FormData = {
   firstName: string; lastName: string; email: string; mobile: string;
   age: string; gender: string; occupation: string;
@@ -1542,7 +1308,7 @@ function RegisterForm({
           {/* Nearest Shakha */}
           <div className={`${standalone ? 'rounded-2xl p-6 lg:p-8' : 'rounded-[1.35rem] p-5 lg:p-6'}`} style={{ background: '#ffffff', border: '1px solid #eadfce' }}>
             <h3 className={`font-display ${standalone ? 'text-lg mb-6' : 'text-base mb-5'} font-semibold flex items-center gap-2`} style={{ color: '#132f5d' }}>
-              <span style={{ color: '#D4531A' }}>04</span> Find Nearest Shakha
+              <span style={{ color: '#D4531A' }}>04</span> Your Local Shakha
             </h3>
 
             {shakhas.length > 0 ? (
@@ -1724,48 +1490,17 @@ function FAQ({ standalone = true }: { standalone?: boolean }) {
   )
 }
 
-function FindFaqSideBySide({
-  locationIndex,
-  onOpenShakhaPage,
-  onSearchLocation,
-}: {
-  locationIndex: ShakhaLocationIndex
-  onOpenShakhaPage: (chapter: ShakhaChapter) => void
-  onSearchLocation: (state: string, city: string) => Promise<ShakhaChapter[]>
-}) {
-  return (
-    <section className="py-20 lg:py-24" style={{ background: '#ffffff' }}>
-      <div className="max-w-[90rem] mx-auto px-2 sm:px-3 lg:px-4">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-8" style={{ background: '#D4531A' }} />
-            <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#D4531A' }}>
-              Shakha Support
-            </span>
-            <div className="h-px w-8" style={{ background: '#D4531A' }} />
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold" style={{ color: '#0b1a32' }}>
-            Search Shakha & Common Questions
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          <div id="find" className="rounded-3xl p-6 sm:p-8 border bg-white" style={{ borderColor: '#eadfce' }}>
-            <FindShakha
-              standalone={false}
-              locationIndex={locationIndex}
-              onOpenShakhaPage={onOpenShakhaPage}
-              onSearchLocation={onSearchLocation}
-            />
-          </div>
-
-          <div id="faq" className="rounded-3xl p-6 sm:p-8 border bg-white" style={{ borderColor: '#eadfce' }}>
-            <FAQ standalone={false} />
-          </div>
-        </div>
+function DiscoveryAndFaq() {
+  return <section className="bg-white px-5 py-16 sm:px-8 lg:py-20">
+    <div className="mx-auto max-w-7xl">
+      <div id="find" className="scroll-mt-36 rounded-3xl border border-stone-200 bg-[#faf9f6] p-6 sm:p-8">
+        <LeaderBeeBranchPicker />
       </div>
-    </section>
-  )
+      <div id="faq" className="mt-10 scroll-mt-36 rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+        <FAQ standalone={false} />
+      </div>
+    </div>
+  </section>
 }
 
 function Contact({ standalone = true }: { standalone?: boolean }) {
@@ -2107,8 +1842,9 @@ function Footer({ onNav }: { onNav: (id: string) => void }) {
             <div className="space-y-2">
               {[
                 { label: 'About Shakha', id: 'about' },
+                { label: 'Our Programs', id: 'programs' },
                 { label: 'Benefits', id: 'benefits' },
-                { label: 'Find a Shakha', id: 'find' },
+                { label: 'Shakhas & Programs', id: 'find' },
                 { label: 'Register Interest', id: 'register' },
               ].map(l => (
                 <button
@@ -2207,13 +1943,10 @@ export default function App() {
   })
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null)
 
-  const publicShakhaRecords = useMemo(
-    () => Object.values(loadedLocationRecords).flat(),
-    [loadedLocationRecords],
-  )
   const isAdminPath = pathname === '/admin-join-app'
   const isLeaderBeePath = pathname === '/register-leader-bee'
-  const isKnownPath = pathname === '/' || pathname === '/register' || isLeaderBeePath || isAdminPath
+  const isProgramPath = pathname.startsWith('/programs/')
+  const isKnownPath = isProgramPath || pathname === '/' || pathname === '/register' || isLeaderBeePath || isAdminPath
   const isLoading = isAdminPath
     ? loadingAdminShakhas
     : loadingLocationIndex || loadingSharePage
@@ -2360,16 +2093,31 @@ export default function App() {
   }, [isAdminPath, isKnownPath, pathname])
 
   useEffect(() => {
+    if (isProgramPath) {
+      const program = programDirectory.find(item => item.slug === pathname.slice('/programs/'.length))
+      const title = program ? `${program.name} | Shakha Sewa Setu` : 'Program not found | Shakha Sewa Setu'
+      const description = program?.summary || 'Explore programs at Shakha Sewa Setu.'
+      document.title = title
+      setMetaTagByName('description', description)
+      setMetaTagByProperty('og:title', title)
+      setMetaTagByProperty('og:description', description)
+      setMetaTagByProperty('og:type', 'website')
+      setMetaTagByProperty('og:url', `${window.location.origin}${withBasePath(pathname)}`)
+      setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
+      setMetaTagByName('twitter:title', title)
+      setMetaTagByName('twitter:description', description)
+      return
+    }
     if (isLeaderBeePath) {
-      setMetaTagByName('description', 'Leader-BEE is a free 10-week leadership workshop for Grade 4 to Grade 8 students with parent participation.')
+      setMetaTagByName('description', 'Family Shakha and a 10-week Leader-BEE leadership module for Grades K–8, at the same time and location.')
       setMetaTagByProperty('og:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
       setMetaTagByProperty('og:type', 'website')
-      setMetaTagByProperty('og:description', 'Free summer leadership workshop for students in Grade 4 to Grade 8. Limited seats available.')
+      setMetaTagByProperty('og:description', 'Family Shakha and a 10-week Leader-BEE leadership module for Grades K–8.')
       setMetaTagByProperty('og:url', `${window.location.origin}${withBasePath(pathname)}`)
       setMetaTagByProperty('og:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       setMetaTagByName('twitter:card', 'summary_large_image')
       setMetaTagByName('twitter:title', 'Leader-BEE - 10 Weeks Leadership Workshop')
-      setMetaTagByName('twitter:description', 'Free leadership development program for Grade 4 to Grade 8 students with parent participation.')
+      setMetaTagByName('twitter:description', 'Leadership development for Grades K–8 alongside the family Shakha routine.')
       setMetaTagByName('twitter:image', `${window.location.origin}${SITE_SHARE_IMAGE}`)
       document.title = 'Leader-BEE | Join Shakha Sewa Setu'
       return
@@ -2405,7 +2153,7 @@ export default function App() {
     setMetaTagByName('twitter:title', title)
     setMetaTagByName('twitter:description', description)
     setMetaTagByName('twitter:image', `${window.location.origin}${SHAKHA_SHARE_IMAGE}`)
-  }, [activeShakha, isLeaderBeePath, pathname])
+  }, [activeShakha, isLeaderBeePath, isProgramPath, pathname])
 
   useEffect(() => {
     if (activePage === 'home' && pendingScrollTarget) {
@@ -2466,34 +2214,8 @@ export default function App() {
     setAdminShakhaRecords(records)
   }, [])
 
-  const openShakhaPage = (chapter: ShakhaChapter) => {
-    const record = publicShakhaRecords.find(item => (
-      item.name === chapter.name &&
-      item.city === chapter.city &&
-      item.state === chapter.state
-    ))
-
-    if (!record) {
-      navigateToPage('register')
-      return
-    }
-
-    const targetPath = getShakhaRoute(record)
-    window.history.pushState({}, '', withBasePath(targetPath))
-    setActiveShakha(record)
-    setPathname(targetPath)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  // Keep /register-leader-bee aligned with the canonical static page.
-  if (isLeaderBeePath && typeof window !== 'undefined') {
-    window.location.replace(withBasePath('/register-leader-bee.html'))
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#ffffff' }}>
-        <p className="text-sm" style={{ color: '#5a6f9a' }}>Loading Leader-BEE page...</p>
-      </div>
-    )
-  }
+  if (isProgramPath) return <Suspense fallback={<main className="p-12 text-center">Loading program…</main>}><ProgramPublicPage slug={pathname.slice('/programs/'.length)} /></Suspense>
+  if (isLeaderBeePath) return <Suspense fallback={<main className="p-12 text-center" role="status">Loading Leader-BEE…</main>}><ShakhaLeaderBeePage /></Suspense>
 
   if (isAdminPath) {
     return (
@@ -2558,11 +2280,8 @@ export default function App() {
           <About />
           <Benefits />
           <Timeline />
-          <FindFaqSideBySide
-            locationIndex={locationIndex}
-            onOpenShakhaPage={openShakhaPage}
-            onSearchLocation={searchLocation}
-          />
+          <HomePrograms />
+          <DiscoveryAndFaq />
           <WhoCanJoin />
           <Contact />
         </>

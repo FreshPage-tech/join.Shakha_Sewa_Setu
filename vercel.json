@@ -11,7 +11,7 @@
     },
     {
       "source": "/register-leader-bee",
-      "destination": "/register-leader-bee.html"
+      "destination": "/index.html"
     },
     {
       "source": "/admin-join-app",

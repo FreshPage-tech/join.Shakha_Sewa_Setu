@@ -14,7 +14,19 @@ create table if not exists public.shakhas (
   constraint shakhas_name_city_country_key unique nulls not distinct (shakha_name, city, country)
 );
 
-create index if not exists shakhas_state_city_idx on public.shakhas (state_or_region, city);
+do $$
+begin
+  if exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'shakhas' and column_name = 'state_or_region'
+  ) and exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'shakhas' and column_name = 'city'
+  ) then
+    create index if not exists shakhas_state_city_idx on public.shakhas (state_or_region, city);
+  end if;
+end
+$$;
 
 alter table public.shakhas enable row level security;
 

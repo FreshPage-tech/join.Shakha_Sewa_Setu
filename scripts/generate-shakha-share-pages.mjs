@@ -16,7 +16,7 @@ const shakhaOverridesFile = path.join(projectRoot, 'src', 'shakhaOverrides.json'
 const siteBannerSource = path.join(projectRoot, 'src', 'imports', '4EC6908E-FA0A-4A98-BEA2-169574B8DF4C.png')
 const shakhaBannerSource = path.join(projectRoot, 'src', 'imports', 'DA8EA940-C9A9-4F9C-B405-14103451AAAD.PNG')
 
-const siteUrl = (process.env.SITE_URL ?? 'https://shakhasewasetu.com/join').replace(/\/$/, '')
+const siteUrl = (process.env.SITE_URL ?? 'https://join.shakhasewasetu.com').replace(/\/$/, '')
 const countrySlug = slugify(process.env.COUNTRY_SLUG ?? 'usa') || 'usa'
 
 const shareMessage = `🚩 Join Sangh Parivar Shakha - Build Yourself, Build Society
@@ -136,6 +136,7 @@ async function writePublicSearchData(shakhaData, overrides) {
 
   const locationIndex = {}
   const usedSlugs = new Set()
+  const searchRecords = []
 
   for (const [state, cityMap] of Object.entries(shakhaData)) {
     locationIndex[state] = Object.keys(cityMap).sort((left, right) => left.localeCompare(right))
@@ -158,6 +159,7 @@ async function writePublicSearchData(shakhaData, overrides) {
         const slug = getUniqueSlug(baseSlug, usedSlugs)
         const override = getOverride(overrides, state, city, shakha.name)
 
+        searchRecords.push({ ...buildStaticRecord(state, city, shakha, override), searchSlug: slug })
         await fs.writeFile(
           path.join(slugDataDir, `${slug}.json`),
           JSON.stringify(buildStaticRecord(state, city, shakha, override), null, 2),
@@ -167,6 +169,7 @@ async function writePublicSearchData(shakhaData, overrides) {
     }
   }
 
+  await fs.writeFile(path.join(publicDataDir, 'search-index.json'), JSON.stringify(searchRecords), 'utf8')
   await fs.writeFile(path.join(publicDataDir, 'locations.json'), JSON.stringify(locationIndex, null, 2), 'utf8')
 }
 

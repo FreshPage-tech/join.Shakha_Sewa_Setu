@@ -21,10 +21,13 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.110.7",
     "@vercel/analytics": "^2.0.1",
+    "lucide-react": "^1.43.0",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",

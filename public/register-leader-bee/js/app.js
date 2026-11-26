@@ -6,6 +6,9 @@
 (() => {
   'use strict'
 
+  const pageParams = new URLSearchParams(window.location.search)
+  const shakhaSlug = pageParams.get('shakha') || 'usa-07751-sri-krishna-shakha'
+  const storageKey = `leaderBeeCheckout:${shakhaSlug}`
   const navbar = document.querySelector('.main-navbar')
   const revealElements = document.querySelectorAll('.reveal-up')
   const navLinks = document.querySelectorAll('.navbar .nav-link')
@@ -25,7 +28,7 @@
   const registrationSubmitButton = document.getElementById('registrationSubmitButton')
   const stripePaymentButton = document.getElementById('stripePaymentButton')
   const PRICE_PER_CHILD = 10
-  const PARTICIPATING_GRADES = new Set(['Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8'])
+  const PARTICIPATING_GRADES = new Set(['Grade K', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8'])
   const DEFAULT_CHECKOUT_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/create-leader-bee-checkout'
   const DEFAULT_REGISTRATION_API_URL = 'https://vxznjyhlbirtnrliqunm.supabase.co/functions/v1/save-leader-bee-registration'
   let childSequence = 0
@@ -159,7 +162,7 @@
 
     registrationPanel.classList.remove('d-none')
     if (paymentStatus === 'success' && successPanel) {
-      sessionStorage.removeItem('leaderBeeCheckout')
+      sessionStorage.removeItem(storageKey)
       registrationForm.classList.add('d-none')
       successPanel.classList.remove('d-none')
       const title = successPanel.querySelector('.panel-title')
@@ -170,7 +173,7 @@
       if (paymentCard) paymentCard.classList.add('d-none')
     } else if (paymentStatus === 'cancelled' && successPanel) {
       try {
-        lastCheckoutPayload = JSON.parse(sessionStorage.getItem('leaderBeeCheckout') || 'null')
+        lastCheckoutPayload = JSON.parse(sessionStorage.getItem(storageKey) || 'null')
       } catch {
         lastCheckoutPayload = null
       }
@@ -265,10 +268,10 @@
             <select class="form-select child-grade" id="grade${childSequence}" name="grade${childSequence}" required>
               <option value="" selected disabled>Select grade</option>
               <optgroup label="Leader-BEE Programme · $10">
-                <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+                <option>Grade K</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
               </optgroup>
               <optgroup label="Separate Host-Arranged Group · Free">
-                <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                <option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
               </optgroup>
             </select>
             <label for="grade${childSequence}">Grade *</label>
@@ -333,7 +336,7 @@
     })
     const result = await response.json().catch(() => ({}))
     if (!response.ok || !result.url) throw new Error(result.error || 'Unable to start secure checkout.')
-    sessionStorage.setItem('leaderBeeCheckout', JSON.stringify(checkoutPayload))
+    sessionStorage.setItem(storageKey, JSON.stringify(checkoutPayload))
     return result.url
   }
 
@@ -407,13 +410,15 @@
       const parentName = `${parentFirstName} ${parentLastName}`.trim() || 'Parent / Guardian'
       lastCheckoutPayload = {
         submissionKey: window.crypto.randomUUID(),
+        shakhaSlug,
         parentEmail,
         parentName,
         parentPhone: formData.get('parentPhone')?.toString() || '',
         children: getChildren(),
       }
-      sessionStorage.setItem('leaderBeeCheckout', JSON.stringify(lastCheckoutPayload))
+      sessionStorage.setItem(storageKey, JSON.stringify(lastCheckoutPayload))
       const payload = new URLSearchParams()
+      payload.set('shakhaSlug', shakhaSlug)
 
       formData.forEach((value, key) => {
         payload.append(key, value.toString())
@@ -513,7 +518,7 @@
   function setupSharing() {
     const pageUrl = 'https://shakhasewasetu.com/join/register-leader-bee'
     const details = [
-      '• Grades: 4–8',
+      '• Grades: K–8',
       '• Starts: 13 September 2026',
       '• Time: Every Sunday, 4:00 PM–5:30 PM',
       '• Location: The Dance Spot, Morganville, NJ',
@@ -567,6 +572,19 @@
   }
 
   function init() {
+    if (pageParams.get('formOnly') === '1') {
+      document.querySelectorAll('header, footer, main > section').forEach(element => {
+        if (element !== registrationPanel) element.style.display = 'none'
+      })
+      registrationPanel?.classList.remove('d-none')
+      const title = registrationPanel?.querySelector('.panel-title')
+      if (title) title.textContent = `Parent and Child Registration — ${pageParams.get('name') || shakhaSlug}`
+      const back = document.createElement('a')
+      back.href = `register-leader-bee?shakha=${encodeURIComponent(shakhaSlug)}`
+      back.textContent = '← Back to your Shakha'
+      back.className = 'btn btn-light my-3'
+      registrationPanel?.prepend(back)
+    }
     handleNavbarState()
     setupRevealObserver()
     setupActiveNav()

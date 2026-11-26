@@ -147,6 +147,17 @@ export async function listPublicShakhaRecordsByLocation(state: string, city: str
   return mergeShakhaRecords(staticRecords)
 }
 
+export async function findPublicShakhaById(id: string): Promise<ShakhaRecord | null> {
+  if (hasSupabaseConfig) {
+    const { data, error } = await supabase.from('shakhas_admin').select('*').eq('id', id).maybeSingle()
+    if (!error && data) return applyShakhaOverride(mapShakhaRow(data as SupabaseShakhaRow))
+  }
+  const [state, city] = id.split('|')
+  if (!state || !city) return null
+  const records = await listPublicShakhaRecordsByLocation(state, city)
+  return records.find(record => record.id === id) || null
+}
+
 export async function findPublicShakhaBySlug(slug: string): Promise<ShakhaRecord | null> {
   const staticRecord = await readStaticJson<ShakhaRecord | null>(`${SHAKHA_DATA_BASE}/slugs/${slug}.json`, null)
 
@@ -194,4 +205,17 @@ export async function submitInterestedPerson(
   if (error) {
     throw error
   }
+}
+
+export type ShakhaSearchRecord = ShakhaRecord & { searchSlug?: string }
+
+export async function listPublicShakhaSearchRecords(): Promise<ShakhaSearchRecord[]> {
+  const staticRecords = await readStaticJson<ShakhaSearchRecord[]>(`${SHAKHA_DATA_BASE}/search-index.json`, [])
+  let liveRecords: ShakhaRecord[] = []
+  if (hasSupabaseConfig) {
+    const { data, error } = await supabase.from('shakhas_admin').select('*').order('name').limit(1000)
+    if (!error && data) liveRecords = (data as SupabaseShakhaRow[]).map(mapShakhaRow)
+  }
+  const routes = new Map(staticRecords.map(record => [record.id, record.searchSlug]))
+  return mergeShakhaRecords([...staticRecords, ...liveRecords]).map(record => ({ ...record, searchSlug: routes.get(record.id) }))
 }

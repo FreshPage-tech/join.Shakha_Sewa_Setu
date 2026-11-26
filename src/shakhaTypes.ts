@@ -51,6 +51,8 @@ export type InterestedPersonRecord = {
 }
 
 export type LeaderBeeRegistration = {
+  registrationDetails?: { parentFirstName?: string; parentLastName?: string; city?: string; state?: string; notes?: string; parentAttendanceConsent?: boolean }
+  shakhaSlug: string
   id: string
   createdAt: string
   parentName: string

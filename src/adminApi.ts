@@ -53,8 +53,10 @@ type SupabaseInterestedRow = {
 }
 
 type SupabaseLeaderBeeRow = {
+  shakha_slug: string
   id: string; created_at: string; parent_name: string; parent_email: string; parent_phone: string
   children: { name: string; grade: string }[]; child_count: number; participant_count: number
+  registration_details?: LeaderBeeRegistration['registrationDetails']
   amount_cents: number; payment_status: LeaderBeeRegistration['paymentStatus']
   stripe_checkout_session_id: string | null; paid_at: string | null
 }
@@ -352,6 +354,8 @@ export async function listLeaderBeeRegistrations(): Promise<LeaderBeeRegistratio
   const { data, error } = await supabase.from('leader_bee_registrations').select('*').order('created_at', { ascending: false })
   if (error) throw error
   return (data as SupabaseLeaderBeeRow[]).map(row => ({
+    registrationDetails: row.registration_details,
+    shakhaSlug: row.shakha_slug || '',
     id: row.id, createdAt: row.created_at, parentName: row.parent_name, parentEmail: row.parent_email,
     parentPhone: row.parent_phone, children: row.children || [], childCount: row.child_count,
     participantCount: row.participant_count, amountCents: row.amount_cents, paymentStatus: row.payment_status,
